@@ -366,6 +366,22 @@ public class Map {
 		}
 		return sb;
 	}
+	
+	public int getCountForObjectType(int objectType){
+		int objectCount = 0;
+		int xLen = grid.length-1;	//	Compute once
+		int yLen = grid[0].length;	//	Compute once
+
+		for( int ii = xLen; ii >= 0 ; ii-- ){
+			for( int jj = 0; jj < yLen; jj++ ){
+				if( grid[ii][jj] == objectType ){
+					objectCount++;
+				}
+			}
+		}
+		
+		return objectCount;
+	}
 
 	/**
 	 * Convenience method that calculates the area for the map

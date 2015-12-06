@@ -114,7 +114,7 @@ public class Simulation {
 	 * 
 	 * @param turn
 	 */
-	private void simulateTurn(int turn) {
+	public void simulateTurn(int turn) {
 		System.out.println("Turn: " + turn);
 
 		//	Initialize some variables prior to the loop

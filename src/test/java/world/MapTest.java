@@ -806,6 +806,16 @@ public class MapTest {
 	}
 
 	@Test
+	public void testGetCountForObjectType(){
+		Map map = new Map(5,10);
+		map.setGrid(0, 0, 2);
+		map.setGrid(0, 9, 2);
+		map.setGrid(3, 5, 2);
+		
+		Assert.assertEquals(3, map.getCountForObjectType(2));
+	}
+	
+	@Test
 	public void testMapArea(){
 		Map map = new Map(5,10);
 		//	map.printLogicalMap();
