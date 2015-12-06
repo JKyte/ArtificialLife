@@ -1,0 +1,46 @@
+package critters;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class SimpleCritterTest {
+
+	private SimpleCritter sc;
+
+	@Test
+	public void testSimpleCritterConstructor(){
+
+		sc = new SimpleCritter();
+
+		//	Confirm that defaults initialized properly
+		Assert.assertEquals(true, sc.isAlive() );
+		
+		sc.setAlive(false);
+		Assert.assertEquals(false, sc.isAlive() );
+	}
+
+	@Test
+	public void testSimpleCritterLoadedConstructor(){
+		String parentUUID = "ParentID";
+		sc = new SimpleCritter(parentUUID);
+		int[] food = new int[1];
+		food[0] = 1;
+		
+		//	Confirm that defaults initialized properly
+		Assert.assertEquals(true, sc.isAlive() );
+		Assert.assertEquals(parentUUID, sc.getParentUUID());
+
+		sc.setCurHealth(20);
+		sc.setMaxHealth(20);
+		sc.setCurEnergy(5);
+		sc.setMaxEnergy(5);
+		sc.setFood(food);
+		
+		Assert.assertEquals(20, sc.getCurHealth());
+		Assert.assertEquals(20, sc.getMaxHealth());
+		Assert.assertEquals(5, sc.getCurEnergy());
+		Assert.assertEquals(5, sc.getMaxEnergy());
+		Assert.assertEquals(1, sc.getFood()[0]);		
+	}
+
+}
