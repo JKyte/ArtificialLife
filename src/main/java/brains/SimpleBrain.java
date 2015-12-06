@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import critters.SimpleCritter;
+import utils.ActionTarget;
+import utils.Coord;
 import utils.CritterAction;
 import utils.Direction;
-import world.ActionTarget;
-import world.Coord;
+import utils.VisionCritCoord;
 import world.Map;
-import world.VisionCritCoord;
 
 public class SimpleBrain {
 

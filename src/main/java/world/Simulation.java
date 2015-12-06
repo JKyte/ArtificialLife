@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Set;
 
 import population.Population;
+import utils.ActionTarget;
 import utils.CritterAction;
+import utils.VisionCritCoord;
 import brains.SimpleBrain;
 import critters.SimpleCritter;
 

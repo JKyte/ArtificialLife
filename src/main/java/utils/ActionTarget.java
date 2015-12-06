@@ -1,6 +1,5 @@
-package world;
+package utils;
 
-import utils.CritterAction;
 
 public class ActionTarget {
 

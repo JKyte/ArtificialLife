@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import utils.Coord;
+import utils.VisionCritCoord;
+
 
 /**
  * This class will test many of the possible cases possible when getting a vision map

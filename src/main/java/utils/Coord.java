@@ -1,4 +1,4 @@
-package world;
+package utils;
 
 /**
  * Simple class to keep track of X and Y coordinate pairs

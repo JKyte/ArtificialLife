@@ -1,7 +1,11 @@
-package world;
+package utils;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import utils.Coord;
+import utils.VisionCritCoord;
+import world.Map;
 
 public class VisionCritCoordTest {
 

@@ -1,6 +1,6 @@
 package critters;
 
-import world.Coord;
+import utils.Coord;
 
 public class BaseCritter {
 	

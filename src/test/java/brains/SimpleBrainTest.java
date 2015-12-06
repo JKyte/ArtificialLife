@@ -5,11 +5,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import critters.SimpleCritter;
+import utils.ActionTarget;
+import utils.Coord;
 import utils.CritterAction;
-import world.ActionTarget;
-import world.Coord;
+import utils.VisionCritCoord;
 import world.Map;
-import world.VisionCritCoord;
 
 public class SimpleBrainTest {
 

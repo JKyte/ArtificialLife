@@ -1,8 +1,10 @@
-package world;
+package utils;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import utils.ActionTarget;
+import utils.Coord;
 import utils.CritterAction;
 
 public class ActionTargetTest {

@@ -1,4 +1,6 @@
-package world;
+package utils;
+
+import world.Map;
 
 public class VisionCritCoord {
 	private Map visionMap;

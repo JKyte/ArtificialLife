@@ -1,5 +1,8 @@
 package world;
 
+import utils.Coord;
+import utils.VisionCritCoord;
+
 /**
  * @author JKyte
  * 
