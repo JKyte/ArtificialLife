@@ -23,4 +23,11 @@ please do!
 
 ## Future Features (in no particular order)
 1. Evolvable critters
-2. Dynamic 2D world with plan growth
+2. Dynamic 2D world with plant growth
+
+## The World Map
+Running in default mode you see a small 15x15 grid in the UI. Below is a brief table
+of contents to assist with interpreting the world.
+0. Empty Space
+1. Food, probably of the green variety
+2. A Critter
