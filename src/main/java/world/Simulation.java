@@ -32,15 +32,18 @@ public class Simulation {
 	 * @param startPopSize - number of starting critters
 	 */
 	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize){
-		initializeWorld(mapWidth, mapHeight);
+		initializeWorldMap(mapWidth, mapHeight);
 		placeFoodByPerc(foodPercent);
 		initializePopulation(startPopSize);
 	}
 
-	public void initializeWorld(int mapWidth, int mapHeight){
+	public void initializeWorldMap(int mapWidth, int mapHeight){
 		worldMap = new WorldMap(mapWidth, mapHeight);
 	}
 
+	/**
+	 * @param targetPerc -- a double between 0.0 and 1.0
+	 */
 	public void placeFoodByPerc(double targetPerc){
 		double totalSpaces = worldMap.mapArea();
 		double preTarget = totalSpaces * targetPerc;
