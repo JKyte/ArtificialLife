@@ -132,14 +132,14 @@ public class Population {
 	 * Future work shall include breeding critters together
 	 */
 	
+	public int getPopSize() {
+		return popSize;
+	}
+
 	/**
 	 * @returns a HashMap containing the critters
 	 */
 	public HashMap<Integer, SimpleCritter> getPopMap() {
 		return popMap;
-	}
-
-	public void setPopMap(HashMap<Integer, SimpleCritter> popMap) {
-		this.popMap = popMap;
 	}
 }
