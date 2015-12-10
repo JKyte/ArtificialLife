@@ -36,7 +36,7 @@ public class SimulationManager {
 	public void runFastSimulationSmallMap(){
 		sim = new Simulation();
 		sim.setupWorld(10, 10, 0.4, 15);
-		sim.runSimulation(70000, 1);
+		sim.runSimulation(1000, 1);
 	}
 	
 	public void runTestSimOneCreature(){

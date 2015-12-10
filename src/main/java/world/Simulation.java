@@ -73,6 +73,7 @@ public class Simulation {
 	 * @param turns - duration of simulation
 	 */
 	public void runSimulation(int turns){
+		long start = System.currentTimeMillis();
 		worldMap.createAndDisplayFixedGUI();
 		for( int ii = 0; ii < turns; ii++ ){
 			worldMap.updateGUI("Turn: " + ii);
@@ -87,6 +88,11 @@ public class Simulation {
 
 		//	Final update
 		worldMap.updateGUI("Turn: " + turns);
+		long totalDelay = turns*1000;
+		long total = System.currentTimeMillis()-start;
+		System.out.println("Simulation ran in " + total + "ms.");
+		System.out.println("Time in delay: " + totalDelay + "ms.");
+		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
 	}
 
 	/**
@@ -95,6 +101,8 @@ public class Simulation {
 	 * @param updateDelay - delay in milliseconds between turns
 	 */
 	public void runSimulation(int turns, long updateDelay){
+		long start = System.currentTimeMillis();
+		
 		worldMap.createAndDisplayFixedGUI();
 		for( int ii = 0; ii < turns; ii++ ){
 			worldMap.updateGUI("Turn: " + ii);
@@ -109,6 +117,13 @@ public class Simulation {
 
 		//	Final update
 		worldMap.updateGUI("Turn: " + turns);
+		
+		long total = System.currentTimeMillis()-start;
+		long totalDelay = turns*updateDelay;
+		System.out.println("Simulation ran in " + total + "ms.");
+		System.out.println("Time in delay: " + totalDelay + "ms.");
+		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
+		
 	}
 
 	/**
