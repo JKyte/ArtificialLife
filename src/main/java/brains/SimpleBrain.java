@@ -7,8 +7,8 @@ import java.util.Random;
 import critters.SimpleCritter;
 import utils.ActionTarget;
 import utils.Coord;
+import utils.CoordHelper;
 import utils.CritterAction;
-import utils.Direction;
 import utils.VisionCritCoord;
 import world.Map;
 
@@ -184,7 +184,7 @@ public class SimpleBrain {
 		Coord closest = null;
 		for( Coord food: foodCoords ){
 
-			tmpDistance = getNormalizedDistance(food, critterLocation);
+			tmpDistance = CoordHelper.getNormalizedDistance(food, critterLocation);
 
 			System.out.println("Compare " + food.toString() + " with " + critterLocation.toString() + " -> " + tmpDistance);
 			if( tmpDistance < normalizedDistance ){
@@ -201,7 +201,7 @@ public class SimpleBrain {
 			action = CritterAction.MOVE;
 			//	Default to looking for open spaces
 			List<Coord> validMoves = getValidMoves(visionMap, new int[]{0});
-			target = getClosestCoord(closest, validMoves);
+			target = CoordHelper.getClosestCoord(closest, validMoves);
 		}
 
 		//	Compute delta between critterLocation and target. Store in target.
@@ -213,50 +213,6 @@ public class SimpleBrain {
 		target.setY( target.getY() + worldLocation.getY() );
 
 		return new ActionTarget( action, target);
-	}
-
-	//	For use in an ELSE MOVE case.
-	public Coord getClosestCoord( Coord center, List<Coord> destinations ){
-		int closestNormalized = Integer.MAX_VALUE;
-		Coord closest = null;
-		for( Coord tmpDest : destinations ){
-			int tmpDistance = getNormalizedDistance( center, tmpDest );
-
-			if( tmpDistance < closestNormalized ){
-				closestNormalized = tmpDistance;
-				closest = tmpDest;
-			}
-		}
-
-		return closest;
-	}
-
-	/**
-	 * <br>This method calculates the distance until a critter is adjacent to an object such that
-	 * <br>
-	 * <br>(deltaX + deltaY - adjacentSpace) = normalizedDistance
-	 * <br> 2 + 4 - 1 = 5
-	 * 
-	 * @param deltaX
-	 * @param deltaY
-	 * @return
-	 */
-	public int getNormalizedDistance( int deltaX, int deltaY ){
-		if( deltaX < 0 ) deltaX *= -1;
-		if( deltaY < 0 ) deltaY *= -1;
-		if( deltaX > 0 ) deltaX--;
-		if( deltaY > 0 ) deltaY--;
-		return deltaX+deltaY;	//	reduce actual distance by one so adjacent food source comes out as zero
-	}
-
-	public int getNormalizedDistance( Coord start, Coord end){
-		int deltaX = start.getX() - end.getX();
-		int deltaY = start.getY() - end.getY();
-		if( deltaX < 0 ) deltaX *= -1;
-		if( deltaY < 0 ) deltaY *= -1;
-		if( deltaX > 0 ) deltaX--;
-		if( deltaY > 0 ) deltaY--;
-		return deltaX+deltaY;	//	reduce actual distance by one so adjacent food source comes out as zero
 	}
 
 	public void setCritter(SimpleCritter critter) {

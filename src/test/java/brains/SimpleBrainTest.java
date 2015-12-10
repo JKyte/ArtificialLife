@@ -203,42 +203,6 @@ public class SimpleBrainTest {
 	//	TODO -- Test NE, NW, SE, SW
 
 	@Test
-	public void testGetNormalizedDistance(){
-		//	Over 2, up 4. Distance should be 4+2-2 = 4
-		int expectedDistance = 4, deltaX = 2, deltaY = 4;
-		int normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
-		Assert.assertEquals(expectedDistance, normalizedDistance);
-		
-		//	Above case, but with coords
-		Coord start = new Coord(2,2);
-		Coord end = new Coord(4,6);
-		normalizedDistance = brain.getNormalizedDistance(start, end);
-		Assert.assertEquals(expectedDistance, normalizedDistance);
-		
-		//	Now test adjacent case
-		expectedDistance = 0;
-		deltaX = 0;
-		deltaY = 1;
-		normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
-		Assert.assertEquals(expectedDistance, normalizedDistance);
-
-		//	Now test negative deltaX/Y values. Should never encounter this, but it never
-		//	hurts to be prepared.
-		expectedDistance = 6;
-		deltaX = -1;
-		deltaY = -7;
-		normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
-		Assert.assertEquals(expectedDistance, normalizedDistance);
-
-		//	Negative case, but with coords
-		expectedDistance = 0;
-		start = new Coord(4,4);
-		end = new Coord(3,3);
-		normalizedDistance = brain.getNormalizedDistance(start, end);
-		Assert.assertEquals(expectedDistance, normalizedDistance);
-	}
-
-	@Test
 	public void testMoveTowardClosestObject(){
 
 		Map map = new Map(9);
