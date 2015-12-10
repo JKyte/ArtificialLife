@@ -15,7 +15,7 @@ public class SimpleBrainTest {
 
 	private static SimpleBrain brain;
 	private static SimpleCritter sc;
-	
+
 	@BeforeClass
 	public static void beforeTests(){
 		brain = new SimpleBrain();
@@ -26,7 +26,7 @@ public class SimpleBrainTest {
 		sc.setVision(1);
 		brain.setCritter(sc);
 	}
-	
+
 	@Test
 	public void testIsFoodInRange(){
 		Map vision = new Map(5);
@@ -34,179 +34,185 @@ public class SimpleBrainTest {
 		food[0] = 1;
 		boolean foodExists = brain.isFoodInRange(vision);
 		Assert.assertEquals(false, foodExists);
-		
+
 		//	Test that organic plant food is in range
 		vision.setGrid(0, 1, food[0]);
 		foodExists = brain.isFoodInRange(vision);
 		Assert.assertEquals(true, foodExists);
 	}
-	
+
 	@Test
 	public void testExploreNoOptionsSoWait(){
-		
+
 		Map map = new Map(5);
-		
+
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
 		map.setGrid(2, 0, 1);
-		
+
 		map.setGrid(0, 1, 1);
 		map.setGrid(1, 1, 2);
 		map.setGrid(2, 1, 1);
-		
+
 		map.setGrid(0, 2, 1);
 		map.setGrid(1, 2, 1);
 		map.setGrid(2, 2, 1);
-		
+
 		Coord visionLocation = new Coord(1,1);
 		Coord worldLocation = new Coord(90,90);
 		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
-		
+
 		ActionTarget at = brain.explore(vcc, true);
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.WAIT, critterAction);
 		Assert.assertEquals(worldLocation, target);
 	}
-	
+
 	@Test
 	public void testExploreNorthOption(){
-		
+
 		Map map = new Map(5);
-		
+
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
 		map.setGrid(2, 0, 1);
-		
+
 		map.setGrid(0, 1, 1);
 		map.setGrid(1, 1, 2);
 		map.setGrid(2, 1, 1);
-		
+
 		map.setGrid(0, 2, 1);
 		map.setGrid(1, 2, 0);
 		map.setGrid(2, 2, 1);
-		
+
 		Coord visionLocation = new Coord(1,1);
 		Coord worldLocation = new Coord(90,90);
 		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
-		
+
 		ActionTarget at = brain.explore(vcc, true);
-		
+
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.MOVE, critterAction);
-		
+
 		Assert.assertEquals(90, target.getX());
 		Assert.assertEquals(91, target.getY());
 	}
-	
+
 	@Test
 	public void testExploreSouthOption(){
-		
+
 		Map map = new Map(5);
-		
+
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 0);
 		map.setGrid(2, 0, 1);
-		
+
 		map.setGrid(0, 1, 1);
 		map.setGrid(1, 1, 2);
 		map.setGrid(2, 1, 1);
-		
+
 		map.setGrid(0, 2, 1);
 		map.setGrid(1, 2, 1);
 		map.setGrid(2, 2, 1);
-		
+
 		Coord visionLocation = new Coord(1,1);
 		Coord worldLocation = new Coord(90,90);
 		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
-		
+
 		ActionTarget at = brain.explore(vcc, true);
-		
+
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.MOVE, critterAction);
-		
+
 		Assert.assertEquals(90, target.getX());
 		Assert.assertEquals(89, target.getY());
 	}
-	
+
 	@Test
 	public void testExploreEastOption(){
-		
+
 		Map map = new Map(5);
-		
+
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
 		map.setGrid(2, 0, 1);
-		
+
 		map.setGrid(0, 1, 1);
 		map.setGrid(1, 1, 2);
 		map.setGrid(2, 1, 0);
-		
+
 		map.setGrid(0, 2, 1);
 		map.setGrid(1, 2, 1);
 		map.setGrid(2, 2, 1);
-		
+
 		Coord visionLocation = new Coord(1,1);
 		Coord worldLocation = new Coord(90,90);
 		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
-		
+
 		ActionTarget at = brain.explore(vcc, true);
-		
+
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.MOVE, critterAction);
-		
+
 		Assert.assertEquals(91, target.getX());
 		Assert.assertEquals(90, target.getY());
 	}
-	
+
 	@Test
 	public void testExploreWestOption(){
-		
+
 		Map map = new Map(5);
-		
+
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
 		map.setGrid(2, 0, 1);
-		
+
 		map.setGrid(0, 1, 0);
 		map.setGrid(1, 1, 2);
 		map.setGrid(2, 1, 1);
-		
+
 		map.setGrid(0, 2, 1);
 		map.setGrid(1, 2, 1);
 		map.setGrid(2, 2, 1);
-		
+
 		Coord visionLocation = new Coord(1,1);
 		Coord worldLocation = new Coord(90,90);
 		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
-		
+
 		ActionTarget at = brain.explore(vcc, true);
-		
+
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.MOVE, critterAction);
-		
+
 		Assert.assertEquals(89, target.getX());
 		Assert.assertEquals(90, target.getY());
 	}
-	
+
 	//	TODO -- Test cardinal directions
-	
+
 	//	TODO -- Test NE, NW, SE, SW
-	
+
 	@Test
 	public void testGetNormalizedDistance(){
-		//	Over 2, up 4. Distance should be 4+2-1 = 5
-		int expectedDistance = 5, deltaX = 2, deltaY = 4;
+		//	Over 2, up 4. Distance should be 4+2-2 = 4
+		int expectedDistance = 4, deltaX = 2, deltaY = 4;
 		int normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
+		Assert.assertEquals(expectedDistance, normalizedDistance);
+		
+		//	Above case, but with coords
+		Coord start = new Coord(2,2);
+		Coord end = new Coord(4,6);
+		normalizedDistance = brain.getNormalizedDistance(start, end);
 		Assert.assertEquals(expectedDistance, normalizedDistance);
 		
 		//	Now test adjacent case
@@ -215,38 +221,139 @@ public class SimpleBrainTest {
 		deltaY = 1;
 		normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
 		Assert.assertEquals(expectedDistance, normalizedDistance);
-		
+
 		//	Now test negative deltaX/Y values. Should never encounter this, but it never
 		//	hurts to be prepared.
-		expectedDistance = 7;
+		expectedDistance = 6;
 		deltaX = -1;
 		deltaY = -7;
 		normalizedDistance = brain.getNormalizedDistance(deltaX, deltaY);
 		Assert.assertEquals(expectedDistance, normalizedDistance);
+
+		//	Negative case, but with coords
+		expectedDistance = 0;
+		start = new Coord(4,4);
+		end = new Coord(3,3);
+		normalizedDistance = brain.getNormalizedDistance(start, end);
+		Assert.assertEquals(expectedDistance, normalizedDistance);
 	}
-	
+
 	@Test
 	public void testMoveTowardClosestObject(){
-		
+
 		Map map = new Map(9);
 		map.setGrid(8, 7, 1);	//	Set food at [1][1]
 		map.setGrid(8, 6, 2);	//	Set critter at [0][1]
 		map.printLogicalMap();
-		
+
+		int[] validOpts = new int[]{1};	
 		Coord visionLocation = new Coord(8,6);
-		
 		VisionCritCoord vcc = map.getVisionMap(1, visionLocation);
 		vcc.getVisionMap().printLogicalMap();
-		
-		ActionTarget at = brain.moveTowardsClosestObject(vcc, 1);
-		
+
+		ActionTarget at = brain.moveTowardsClosestFood(vcc, validOpts);
+
 		CritterAction critterAction = at.getAction();
 		Coord target = at.getTarget();
-		
+
 		Assert.assertEquals(CritterAction.EAT, critterAction);
-		
+
 		Assert.assertEquals(8, target.getX());
 		Assert.assertEquals(7, target.getY());
+	}
+
+	@Test
+	public void testProcessVisionMap_surrounded(){
+
+		Map map = new Map(5);	//	0	0	0	0	0
+								//	0	7	7	7	0
+		map.setGrid(1, 1, 7);	//	0	7	2	7	0
+		map.setGrid(2, 1, 7);	//	0	7	7	7	0
+		map.setGrid(3, 1, 7);	//	0	0	0	0	0
+
+		map.setGrid(1, 2, 7);
+		map.setGrid(2, 2, 2);
+		map.setGrid(3, 2, 7);
+
+		map.setGrid(1, 3, 7);
+		map.setGrid(2, 3, 7);
+		map.setGrid(3, 3, 7);
+
+		Coord visionLocation = new Coord(2,2);
+		Coord worldLocation = new Coord(90,90);
+		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
+
+		ActionTarget at = brain.processVisionMap(vcc);
+		CritterAction critterAction = at.getAction();
+		Coord target = at.getTarget();
+
+		Assert.assertEquals(CritterAction.WAIT, critterAction);
+		Assert.assertEquals(worldLocation, target);
+	}
+
+	@Test
+	public void testProcessVisionMap_emptySpace(){
+
+		Map map = new Map(5);	//	0	0	0	0	0
+								//	0	0	0	0	0
+		map.setGrid(2, 2, 2);	//	0	0	2	0	0
+								//	0	0	0	0	0
+								//	0	0	0	0	0
+
+		Coord visionLocation = new Coord(2,2);
+		Coord worldLocation = new Coord(90,90);
+		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
+
+		ActionTarget at = brain.processVisionMap(vcc);
+		CritterAction critterAction = at.getAction();
+		Coord target = at.getTarget();
+
+		Assert.assertEquals(CritterAction.MOVE, critterAction);
+		Assert.assertNotEquals(worldLocation, target);
+	}
+
+	@Test
+	public void testProcessVisionMap_eatSomeFood(){
+
+		Map map = new Map(5);	//	0	0	0	0	0
+								//	0	0	1	0	0
+		map.setGrid(2, 2, 2);	//	0	0	2	0	0
+								//	0	0	0	0	0
+		map.setGrid(2, 3, 1);	//	0	0	0	0	0
+
+		Coord visionLocation = new Coord(2,2);
+		Coord worldLocation = new Coord(90,90);
+		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
+
+		ActionTarget at = brain.processVisionMap(vcc);
+		CritterAction critterAction = at.getAction();
+		Coord target = at.getTarget();
+
+		Assert.assertEquals(CritterAction.EAT, critterAction);
+		Assert.assertEquals(90, target.getX());
+		Assert.assertEquals(91, target.getY());
+	}
+
+	@Test
+	public void testProcessVisionMap_moveTowardsFood(){
+
+		Map map = new Map(7);	//	0	0	0	0	0
+								//	0	0	0	1	0
+		map.setGrid(1, 1, 2);	//	0	0	0	0	0
+								//	0	2	0	0	0
+		map.setGrid(3, 3, 1);	//	0	0	0	0	0
+
+		Coord visionLocation = new Coord(1,1);
+		Coord worldLocation = new Coord(90,90);
+		VisionCritCoord vcc = new VisionCritCoord(map, visionLocation, worldLocation);
+
+		ActionTarget at = brain.processVisionMap(vcc);
+		CritterAction critterAction = at.getAction();
+		Coord target = at.getTarget();
+
+		Assert.assertEquals(CritterAction.MOVE, critterAction);
+		Assert.assertEquals(91, target.getX());
+		Assert.assertEquals(91, target.getY());
 	}
 	
 	//	TODO will eventually have issue where a critter will be surrounded, but can still

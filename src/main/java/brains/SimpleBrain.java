@@ -1,6 +1,7 @@
 package brains;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import critters.SimpleCritter;
@@ -35,22 +36,16 @@ public class SimpleBrain {
 	public ActionTarget processVisionMap( VisionCritCoord visionMap ){
 		ActionTarget actionTarget = null;
 
-		//	Currently unused, just groundwork for future update
 		boolean foodInRange = isFoodInRange( visionMap.getVisionMap());
-
-		if( foodInRange ){
-			//	Then move towards food
-			actionTarget = null;	
-			
-			//	Placeholder until moveTowardsClosestObject() is integrated
-			actionTarget = explore(visionMap, false);
-			
+		System.out.println("FoodInRange: " + foodInRange);
+		if( foodInRange ){	//	Then move towards food
+			//	Default option for finding food is 0,1
+			int[] validOpts = new int[]{1};	
+			actionTarget = moveTowardsClosestFood(visionMap, validOpts);
 		}else{
 			actionTarget = explore(visionMap, false);
 		}
-		
-		actionTarget = explore(visionMap, false);
-		
+
 		return actionTarget;
 	}
 
@@ -85,37 +80,21 @@ public class SimpleBrain {
 	 */
 	public ActionTarget explore( VisionCritCoord vcc, boolean verbose ){
 
-		Map vision = vcc.getVisionMap();
-		Coord visionLocation = vcc.getCritterVisionLocation();
-		ArrayList<Coord> validDestinations = new ArrayList<Coord>();
-
-		vision.printLogicalMap();
-
-		/**
-		 * 	This checks each square immediately surrounding the critter's vision
-		 * location for a valid path
-		 */
-		for(int ii = -1; ii < 2; ii++ ){
-			for(int jj = -1; jj < 2; jj++ ){
-				//	System.out.println(ii + " " + jj);
-				if( vision.getGrid(visionLocation.getX()+ii, visionLocation.getY()+jj) == 0 ){
-					validDestinations.add(new Coord(visionLocation.getX()+ii, visionLocation.getY()+jj));
-				}
-			}
-		}
+		int[] validOpts = new int[]{0};	//	Default option for exploring is open spaces
+		ArrayList<Coord> validMoves = getValidMoves(vcc, validOpts);
 
 		/**
 		 * If no valid directions exist, then a WAIT action will be returned. If there is more than one valid direction available
 		 * then a random direction will be picked.
 		 */
-		if( validDestinations.size() == 0 ){
+		if( validMoves.size() == 0 ){
 			return new ActionTarget( CritterAction.WAIT, vcc.getCritterWorldLocation());
 		}else{
 			Random rand = new Random();
 
-			Coord c = validDestinations.get(rand.nextInt(validDestinations.size()));
-			c.setX(c.getX()-visionLocation.getX());
-			c.setY(c.getY()-visionLocation.getY());
+			Coord c = validMoves.get(rand.nextInt(validMoves.size()));
+			c.setX(c.getX()-vcc.getCritterVisionLocation().getX());
+			c.setY(c.getY()-vcc.getCritterVisionLocation().getY());
 
 			Coord worldDest = new Coord(vcc.getCritterWorldLocation());
 
@@ -131,82 +110,125 @@ public class SimpleBrain {
 		}
 	}
 
+	public ArrayList<Coord> getValidMoves( VisionCritCoord vcc, int[] validOpts ){
+		Map vision = vcc.getVisionMap();
+		Coord visionLocation = vcc.getCritterVisionLocation();
+		ArrayList<Coord> validDestinations = new ArrayList<Coord>();
+		vision.printLogicalMap();
+
+		/**
+		 * 	This checks each square immediately surrounding the critter's vision
+		 * location for a valid path
+		 */
+		boolean validDirection = false;
+		for(int ii = -1; ii < 2; ii++ ){
+			for(int jj = -1; jj < 2; jj++ ){
+				//	System.out.println(ii + " " + jj);
+				validDirection = false;
+				for( int kk = 0; kk < validOpts.length; kk++ ){
+					if( vision.getGrid(visionLocation.getX()+ii, visionLocation.getY()+jj) == validOpts[kk] ){
+						validDirection = true;
+					}
+				}
+
+				if( validDirection ){
+					validDestinations.add(new Coord(visionLocation.getX()+ii, visionLocation.getY()+jj));
+				}
+			}
+		}
+		System.out.println("Returning " + validDestinations.size() + " valid destinations.");
+		return validDestinations;
+	}
+
 	/**
-	 * This will likely have to be copied and modified to handle "move towards food/range of objects"
-	 * 
-	 * TODO -- refactor names on this
+	 * This is a "move towards closest object" method that is used for moving towards food.
 	 * 
 	 * @param visionMap
 	 * @param n
 	 * @return
 	 */
-	public ActionTarget moveTowardsClosestObject( VisionCritCoord visionMap, int n ){
+	public ActionTarget moveTowardsClosestFood( VisionCritCoord visionMap, int[] validOpts){
 
-		CritterAction action = null;	//	the action we will take
-		Coord worldDelta = null;
+		/**
+		 * 1. Find all valid destinations
+		 * 2. Determine normalized distance of all destinations, if any normalized value == 0 then return ActionTarget
+		 * 3. Else, determine all valid moves.
+		 * 4. Evaluate which move gives the smallest normalized distance. 
+		 */
+
+		CritterAction action = null;	//	the ACTION to be taken by the critter, either MOVE, EAT, or WAIT
+		Coord target = null;			//	the TARGET for the critter. May be critters location (wait) or adjacent (move)
+
 		Coord worldLocation = visionMap.getCritterWorldLocation();
-		Coord skipCoord = visionMap.getCritterVisionLocation();
-		Direction dir = null;	//	direction to aid setting of target
+		Coord critterLocation = visionMap.getCritterVisionLocation();
 		Map vision = visionMap.getVisionMap();
-
 		int normalizedDistance = Integer.MAX_VALUE;
 
-		/**
-		 * 1. Iterate across the vision map, 
-		 * 		a. For each food, get normalized distance from the delta X, delta Y
-		 * 2. If normalized == 0, then eat. Else move.
-		 */
+		ArrayList<Coord> foodCoords = new ArrayList<Coord>();
 
-		/**
-		 * This will have to be edited to be dynamic for a vision length of greater than 1
-		 */
 		System.out.println("x:" + vision.mapWidth + " y:" + vision.mapHeight);
 		for(int ii = 0; ii < vision.mapWidth; ii++ ){
 			for(int jj = 0; jj < vision.mapHeight; jj++ ){
-			//	if( ii != skipCoord.getX() && jj != skipCoord.getY() ){
-
-					//for( int kk = 0; kk < critter.getFood().length; kk++){
-					if( vision.getGrid(ii, jj) == 1){
-						int deltaX = skipCoord.getX()-ii;
-						int deltaY = skipCoord.getY()-jj;
-
-						int tmpNormalizedDistance = getNormalizedDistance(deltaX, deltaY);
-						System.out.println("TmpNormDist: " + tmpNormalizedDistance);
-
-						if( tmpNormalizedDistance < normalizedDistance ){
-							normalizedDistance = tmpNormalizedDistance;
-							worldDelta = new Coord(ii,jj);
-						}
+				for( int kk = 0; kk < validOpts.length; kk++ ){
+					if( vision.getGrid(ii, jj) == validOpts[kk] ){
+						foodCoords.add(new Coord(ii,jj));
 					}
-					//}
-			//	}
-			}	
+				}
+			}
 		}
 
+		//	Coord closest = getClosestCoord(critterLocation, foodCoords );	//	duplicate.
 
+		//	Find closest food
+		int tmpDistance;
+		Coord closest = null;
+		for( Coord food: foodCoords ){
+
+			tmpDistance = getNormalizedDistance(food, critterLocation);
+
+			System.out.println("Compare " + food.toString() + " with " + critterLocation.toString() + " -> " + tmpDistance);
+			if( tmpDistance < normalizedDistance ){
+				normalizedDistance = tmpDistance;
+				closest = food;
+			}
+		}
+		
 		if( normalizedDistance == 0 ){
 			action = CritterAction.EAT;
+			target = closest;
+
+		}else{
+			action = CritterAction.MOVE;
+			//	Default to looking for open spaces
+			List<Coord> validMoves = getValidMoves(visionMap, new int[]{0});
+			target = getClosestCoord(closest, validMoves);
 		}
-		
-		System.out.println("tarX: " + worldDelta.getX() + " tarY: " + worldDelta.getY());
-		
-		//	Normalize world delta against vision location
-		worldDelta.setX( (worldDelta.getX()-skipCoord.getX()));
-		worldDelta.setY( (worldDelta.getY()-skipCoord.getY()));
-		
-		System.out.println("tarX: " + worldDelta.getX() + " tarY: " + worldDelta.getY());
-		
-		
-		System.out.println("tarX: " + worldLocation.getX() + " tarY: " + worldLocation.getY());
-		
-		
 
-		worldLocation.setX(worldLocation.getX()+worldDelta.getX());
-		worldLocation.setY(worldLocation.getY()+worldDelta.getY());
-
-		System.out.println("tarX: " + worldLocation.getX() + " tarY: " + worldLocation.getY());
+		//	Compute delta between critterLocation and target. Store in target.
+		target.setX( target.getX() - critterLocation.getX() );
+		target.setY( target.getY() - critterLocation.getY() );
 		
-		return new ActionTarget( action, worldLocation);
+		//	Apply the above delta to the world location for true target coordinates
+		target.setX( target.getX() + worldLocation.getX() );
+		target.setY( target.getY() + worldLocation.getY() );
+
+		return new ActionTarget( action, target);
+	}
+
+	//	For use in an ELSE MOVE case.
+	public Coord getClosestCoord( Coord center, List<Coord> destinations ){
+		int closestNormalized = Integer.MAX_VALUE;
+		Coord closest = null;
+		for( Coord tmpDest : destinations ){
+			int tmpDistance = getNormalizedDistance( center, tmpDest );
+
+			if( tmpDistance < closestNormalized ){
+				closestNormalized = tmpDistance;
+				closest = tmpDest;
+			}
+		}
+
+		return closest;
 	}
 
 	/**
@@ -222,7 +244,19 @@ public class SimpleBrain {
 	public int getNormalizedDistance( int deltaX, int deltaY ){
 		if( deltaX < 0 ) deltaX *= -1;
 		if( deltaY < 0 ) deltaY *= -1;
-		return deltaX+deltaY-1;	//	reduce actual distance by one so adjacent food source comes out as zero
+		if( deltaX > 0 ) deltaX--;
+		if( deltaY > 0 ) deltaY--;
+		return deltaX+deltaY;	//	reduce actual distance by one so adjacent food source comes out as zero
+	}
+
+	public int getNormalizedDistance( Coord start, Coord end){
+		int deltaX = start.getX() - end.getX();
+		int deltaY = start.getY() - end.getY();
+		if( deltaX < 0 ) deltaX *= -1;
+		if( deltaY < 0 ) deltaY *= -1;
+		if( deltaX > 0 ) deltaX--;
+		if( deltaY > 0 ) deltaY--;
+		return deltaX+deltaY;	//	reduce actual distance by one so adjacent food source comes out as zero
 	}
 
 	public void setCritter(SimpleCritter critter) {

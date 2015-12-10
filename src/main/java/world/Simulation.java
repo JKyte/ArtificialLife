@@ -148,6 +148,11 @@ public class Simulation {
 					worldMap.moveObject(critter.getWorldLocation(), actionTarget.getTarget());
 					critter.setWorldLocation(actionTarget.getTarget());
 
+				}else if( actionTarget.getAction().equals(CritterAction.EAT) ){
+					
+					worldMap.removeObject(actionTarget.getTarget());	//	Remove the food to be eaten
+					critter.setCurEnergy(critter.getCurEnergy() + 1 );	//	Increment critter's engery
+					
 				}else{
 					System.err.println("Unhandled ActionTarget:" + actionTarget.toString());
 				}
