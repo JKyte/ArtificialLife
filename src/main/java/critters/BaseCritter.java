@@ -24,6 +24,10 @@ public class BaseCritter {
 		this.currentLifeLen = 0;
 		this.parentUUID = parentUUID;
 	}
+	
+	public int calculateFitness(){
+		return currentLifeLen;
+	}
 
 	public Coord getWorldLocation() {
 		return worldLocation;
@@ -84,4 +88,5 @@ public class BaseCritter {
 	public void setCurrentLifeLen(int currentLifeLen) {
 		this.currentLifeLen = currentLifeLen;
 	}
+
 }

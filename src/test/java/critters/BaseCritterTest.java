@@ -32,6 +32,7 @@ public class BaseCritterTest {
 		
 		Assert.assertEquals(3, bc.getCritterID() );
 		Assert.assertEquals(4, bc.getCurrentLifeLen() );
+		Assert.assertEquals(4, bc.calculateFitness() );
 		Assert.assertEquals(5, bc.getGenerationID() );
 		Assert.assertEquals("2_2", bc.getParentUUID() );
 		Assert.assertEquals(6, bc.getSpeed() );

@@ -150,6 +150,7 @@ public class Simulation {
 			critter = population.get(key);
 			if( critter.isAlive() ){
 				
+				critter.setCurrentLifeLen(critter.getCurrentLifeLen()+1);
 				brain.setCritter(critter);
 
 				visionCritCoord = worldMap.getVisionMap(critter.getVision(), critter.getWorldLocation(), false);
@@ -169,7 +170,8 @@ public class Simulation {
 				}else if( actionTarget.getAction().equals(CritterAction.EAT) ){
 					
 					worldMap.removeObject(actionTarget.getTarget());	//	Remove the food to be eaten
-					critter.setCurEnergy(critter.getCurEnergy() + 1 );	//	Increment critter's engery
+					critter.setCurEnergy(critter.getCurEnergy() + 10 );	//	Increment critter's engery
+					critter.setFoodEaten(critter.getFoodEaten()+1);
 					
 				}else{
 					System.err.println("Unhandled ActionTarget:" + actionTarget.toString());

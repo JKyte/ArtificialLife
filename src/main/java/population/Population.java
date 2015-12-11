@@ -131,18 +131,36 @@ public class Population {
 	public String endOfSimStats(){
 		int alivePop = 0,
 				deadPop = 0,
-				totalPop = popMap.size();
+				totalPop = popMap.size(),
+				bestFitness = 0,
+				worstFitness = Integer.MAX_VALUE;
 		
+		SimpleCritter tmpCrit = null;
+		int tmpCritFitness = 0;
 		Set<Integer> keys = popMap.keySet();
 		for( Integer key : keys ){
-			if( popMap.get(key).isAlive() ){
+			
+			tmpCrit = popMap.get(key);
+			tmpCritFitness = tmpCrit.calculateFitness();
+			
+			if( tmpCrit.isAlive() ){
 				alivePop++;
+				tmpCritFitness += 5;	//	Make this configurable later
 			}else{
 				deadPop++;
 			}
+
+			//	Check to see if this fitness is a best/worst
+			if( tmpCritFitness > bestFitness ){
+				bestFitness = tmpCritFitness;
+			}
+			if( tmpCritFitness < worstFitness ){
+				worstFitness = tmpCritFitness;
+			}
 		}
 		
-		return "Alive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop;
+		return "Alive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
+				+ "\nBest Fitness: " + bestFitness + "\nWorst Fitness: " + worstFitness;
 	}
 	
 	

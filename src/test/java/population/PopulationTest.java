@@ -65,7 +65,7 @@ public class PopulationTest {
 		ded.setAlive(false);
 		pop.getPopMap().put(Integer.MAX_VALUE, ded);
 		
-		String expected = "Alive: 3\nDead: 1\nTotal: 4";
+		String expected = "Alive: 3\nDead: 1\nTotal: 4\nBest Fitness: 5\nWorst Fitness: 0";
 		Assert.assertEquals(expected, pop.endOfSimStats() );
 	}
 }
