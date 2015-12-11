@@ -103,12 +103,14 @@ public class Population {
 			SimpleCritter crit = new SimpleCritter();
 			crit.setGenerationID(0);
 			crit.setCritterID(ii);
+			
+			crit.setMaxHealth(curHealth_MAX);
+			crit.setMaxEnergy(energy_MAX);
 
 			//	set up stats
 			crit.setSpeed(speed_MIN);
 			crit.setVision(vision_MIN);
 			crit.setCurHealth(curHealth_MIN);
-			crit.setMaxHealth(curHealth_MAX);
 			crit.setCurEnergy(energy_MIN);
 			crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
 

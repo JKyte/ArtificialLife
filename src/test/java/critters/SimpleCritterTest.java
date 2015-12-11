@@ -32,8 +32,9 @@ public class SimpleCritterTest {
 
 		sc.setCurHealth(20);
 		sc.setMaxHealth(20);
-		sc.setCurEnergy(5);
 		sc.setMaxEnergy(5);
+		
+		sc.setCurEnergy(5);
 		sc.setFood(food);
 		sc.setFoodEaten(5);
 		
@@ -44,6 +45,9 @@ public class SimpleCritterTest {
 		Assert.assertEquals(1, sc.getFood()[0]);
 		Assert.assertEquals(5, sc.getFoodEaten());
 		Assert.assertEquals(5, sc.calculateFitness());
+		
+		sc.setCurEnergy(12345);
+		Assert.assertEquals(5, sc.getMaxEnergy());
 	}
 
 }

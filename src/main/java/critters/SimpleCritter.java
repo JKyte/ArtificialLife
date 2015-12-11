@@ -46,8 +46,12 @@ public class SimpleCritter extends BaseCritter {
 		return curEnergy;
 	}
 
-	public void setCurEnergy(int curEnergy) {
-		this.curEnergy = curEnergy;
+	public void setCurEnergy(int newEnergy) {
+		if( newEnergy > this.maxEnergy ){
+			this.curEnergy = this.maxEnergy;
+		}else{
+			this.curEnergy = newEnergy;	
+		}
 	}
 
 	public int getMaxEnergy() {
