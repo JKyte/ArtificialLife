@@ -28,6 +28,7 @@ please do!
 ## The World Map
 Running in default mode you see a small 15x15 grid in the UI. Below is a brief table
 of contents to assist with interpreting the world.
-0. Empty Space
-1. Food, probably of the green variety
-2. A Critter
+- 0. Empty Space
+- 1. Food, probably of the green variety
+- 2. A Critter
+- 3. Reserved for a deceased critter
