@@ -54,4 +54,18 @@ public class PopulationTest {
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
 	}
 	
+	@Test
+	public void testEndOfSimStats(){
+		Simulation sim = new Simulation();
+		Population pop = new Population(3, sim);
+		pop.setDefaultPopulationStats();
+		pop.generatePopulation();
+		
+		SimpleCritter ded = new SimpleCritter();
+		ded.setAlive(false);
+		pop.getPopMap().put(Integer.MAX_VALUE, ded);
+		
+		String expected = "Alive: 3\nDead: 1\nTotal: 4";
+		Assert.assertEquals(expected, pop.endOfSimStats() );
+	}
 }

@@ -128,6 +128,25 @@ public class Population {
 		System.out.println( "num placed: " + placed);
 	}
 	
+	public String endOfSimStats(){
+		int alivePop = 0,
+				deadPop = 0,
+				totalPop = popMap.size();
+		
+		Set<Integer> keys = popMap.keySet();
+		for( Integer key : keys ){
+			if( popMap.get(key).isAlive() ){
+				alivePop++;
+			}else{
+				deadPop++;
+			}
+		}
+		
+		return "Alive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop;
+	}
+	
+	
+	
 	/**
 	 * Future work shall include breeding critters together
 	 */

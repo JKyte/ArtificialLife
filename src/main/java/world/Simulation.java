@@ -93,6 +93,8 @@ public class Simulation {
 		System.out.println("Simulation ran in " + total + "ms.");
 		System.out.println("Time in delay: " + totalDelay + "ms.");
 		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
+		System.out.println(pop.endOfSimStats());
+		
 	}
 
 	/**
@@ -123,6 +125,7 @@ public class Simulation {
 		System.out.println("Simulation ran in " + total + "ms.");
 		System.out.println("Time in delay: " + totalDelay + "ms.");
 		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
+		System.out.println(pop.endOfSimStats());
 		
 	}
 
@@ -172,8 +175,16 @@ public class Simulation {
 					System.err.println("Unhandled ActionTarget:" + actionTarget.toString());
 				}
 
+				//	Update Energy. If energy reaches zero, kill the critter.
+				critter.setCurEnergy( critter.getCurEnergy()-1 );
+				if( critter.getCurEnergy() == 0 ){
+					critter.setAlive(false);	//	Kill 'em ded
+					worldMap.placeObjectAtCoord(3, critter.getWorldLocation());
+				}
+				
+				population.put(key, critter);	//	Put updated Critter back into the Population
 			}
-			population.put(key, critter);	//	Put updated Critter back into the Population
+			
 			critter = null;					//	Set Critter to null
 			brain.setCritter(null);			//	Set the Brain's Critter pointer to null
 			visionCritCoord = null;			//	Set the visionCritCoord to null
