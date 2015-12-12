@@ -14,16 +14,37 @@ public class SimpleCritter extends BaseCritter {
 	public SimpleCritter(){
 		super();
 		this.alive = true;
+		this.food = new int[]{-1};
 	}
 	
 	public SimpleCritter(String parentUUID){
 		super(parentUUID);
 		this.alive = true;
+		this.food = new int[]{-1};
 	}
 	
 	@Override
 	public int calculateFitness(){
 		return foodEaten + super.calculateFitness();
+	}
+	
+	@Override
+	public String toGeonome(){
+		return maxHealth + ":" + maxEnergy + ":" + foodToString() + ":" + super.toGeonome();
+	}
+	
+	public String foodToString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for( int ii = 0; ii < food.length; ii++ ){
+			
+			sb.append(food[ii]);
+			if( ii != food.length-1 ){
+				sb.append(",");
+			}
+		}
+		sb.append("]");
+		return sb.toString();
 	}
 
 	public int getCurHealth() {

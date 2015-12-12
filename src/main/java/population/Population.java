@@ -137,6 +137,9 @@ public class Population {
 				bestFitness = 0,
 				worstFitness = Integer.MAX_VALUE;
 		
+		SimpleCritter bestCritter = null;
+		SimpleCritter worstCritter = null;
+		
 		SimpleCritter tmpCrit = null;
 		int tmpCritFitness = 0;
 		Set<Integer> keys = popMap.keySet();
@@ -155,14 +158,17 @@ public class Population {
 			//	Check to see if this fitness is a best/worst
 			if( tmpCritFitness > bestFitness ){
 				bestFitness = tmpCritFitness;
+				bestCritter = tmpCrit;
 			}
 			if( tmpCritFitness < worstFitness ){
 				worstFitness = tmpCritFitness;
+				worstCritter = tmpCrit;
 			}
 		}
 		
 		return "Alive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
-				+ "\nBest Fitness: " + bestFitness + "\nWorst Fitness: " + worstFitness;
+				+ "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGeonome() 
+				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGeonome();
 	}
 	
 	

@@ -28,6 +28,10 @@ public class BaseCritter {
 	public int calculateFitness(){
 		return currentLifeLen;
 	}
+	
+	public String toGeonome(){
+		return speed + ":" + vision;
+	}
 
 	public Coord getWorldLocation() {
 		return worldLocation;

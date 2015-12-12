@@ -42,5 +42,8 @@ public class BaseCritterTest {
 		//	Pick up trailing method that wasn't exercised
 		bc.setParentUUID("5_5");
 		Assert.assertEquals("5_5", bc.getParentUUID());
+		
+		Assert.assertEquals("6:7", bc.toGeonome());
+		
 	}
 }

@@ -23,8 +23,9 @@ public class SimpleCritterTest {
 	public void testSimpleCritterLoadedConstructor(){
 		String parentUUID = "ParentID";
 		sc = new SimpleCritter(parentUUID);
-		int[] food = new int[1];
+		int[] food = new int[2];
 		food[0] = 1;
+		food[1] = 3;
 		
 		//	Confirm that defaults initialized properly
 		Assert.assertEquals(true, sc.isAlive() );
@@ -48,6 +49,8 @@ public class SimpleCritterTest {
 		
 		sc.setCurEnergy(12345);
 		Assert.assertEquals(5, sc.getMaxEnergy());
+		
+		Assert.assertEquals("20:5:[1,3]:0:0", sc.toGeonome());
 	}
 
 }
