@@ -13,7 +13,7 @@ public class PopulationTest {
 	@Test
 	public void testInit(){
 		StandardSimulation sim = new StandardSimulation();
-		Population pop = new Population(1, sim);
+		Population pop = new Population(1, sim.worldMap);
 		
 		Assert.assertEquals(1, pop.getPopSize());
 	}
@@ -21,7 +21,7 @@ public class PopulationTest {
 	@Test
 	public void testGeneratePopulation(){
 		StandardSimulation sim = new StandardSimulation();
-		Population pop = new Population(1, sim);
+		Population pop = new Population(1, sim.worldMap);
 		pop.setDefaultPopulationStats();
 		pop.generatePopulation();
 		
@@ -46,7 +46,7 @@ public class PopulationTest {
 		StandardSimulation sim = new StandardSimulation();
 		sim.initializeWorldMap(1, 1);
 		
-		Population pop = new Population(1, sim);
+		Population pop = new Population(1, sim.worldMap);
 		pop.setDefaultPopulationStats();
 		pop.generatePopulation();
 		pop.placePopulation();
@@ -57,7 +57,7 @@ public class PopulationTest {
 	@Test
 	public void testEndOfSimStats(){
 		StandardSimulation sim = new StandardSimulation();
-		Population pop = new Population(3, sim);
+		Population pop = new Population(3, sim.worldMap);
 		pop.setDefaultPopulationStats();
 		pop.generatePopulation();
 		

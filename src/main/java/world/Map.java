@@ -92,7 +92,7 @@ public class Map {
 	 * @param object
 	 */
 	public boolean setGrid( int x, int y, int object ){
-		System.out.println("Setting grid at ["+x+"]["+y+"] to be " + object);
+		//	System.out.println("Setting grid at ["+x+"]["+y+"] to be " + object);
 		//	Ensure we aren't going out of bounds
 		if( x < 0 || x > grid[0].length ||
 				y < 0 || y > grid.length ){
@@ -103,7 +103,7 @@ public class Map {
 	}
 
 	public int getGrid( int x, int y ){
-		System.out.println("Get grid at ["+x+"]["+y+"]");
+		//	System.out.println("Get grid at ["+x+"]["+y+"]");
 		//	Ensure we aren't going out of bounds
 		if( x < 0 || x >= grid[0].length ||
 				y < 0 || y >= grid.length ){

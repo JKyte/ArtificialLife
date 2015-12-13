@@ -11,8 +11,6 @@ import utils.Coord;
  */
 public class WorldMap extends Map{
 	
-	private  GUI gui;
-	
 	public WorldMap(int mapWidth, int mapHeight){
 		super(mapWidth, mapHeight);
 	}
@@ -50,30 +48,4 @@ public class WorldMap extends Map{
 		return coord;
 	}
 
-	public void createAndDisplayDynamicGUI(){
-		gui = new GUI(mapWidth, mapHeight);
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void createAndDisplayFixedGUI(){
-		gui = new GUI();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void updateGUI(){
-		gui.clearAndSetText(getMapForGUI());
-	}
-
-	public void updateGUI( String stats ){
-		System.out.println("Update GUI.");
-		gui.clearAndSetText(getMapForGUI(stats));
-	}
 }

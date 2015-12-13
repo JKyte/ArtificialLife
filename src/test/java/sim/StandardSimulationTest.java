@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import sim.StandardSimulation;
 
-public class SimulationTest {
+public class StandardSimulationTest {
 	
 	@Test
 	public void testEmptyInit(){

@@ -3,7 +3,7 @@ package population;
 import java.util.HashMap;
 import java.util.Set;
 
-import sim.StandardSimulation;
+import world.WorldMap;
 import critters.SimpleCritter;
 
 public class Population {
@@ -38,12 +38,12 @@ public class Population {
 	private int energy_VAR;
 	private int memory_VAR;
 	
-	private StandardSimulation world;
+	private WorldMap worldMap;
 	
-	public Population( int popSize, StandardSimulation world ){
+	public Population( int popSize, WorldMap worldMap ){
 		this.popSize = popSize;
 		popMap = new HashMap<Integer, SimpleCritter>();
-		this.world = world;
+		this.worldMap = worldMap;
 	}
 
 	public void setDefaultPopulationStats() {
@@ -124,7 +124,7 @@ public class Population {
 		Set<Integer> keys = popMap.keySet();
 		for( Integer key : keys ){
 			SimpleCritter curCrit = popMap.get(key);
-			curCrit.setWorldLocation( world.worldMap.placeObjectRandomly(2, false));
+			curCrit.setWorldLocation( worldMap.placeObjectRandomly(2, false));
 			placed++;
 		}
 		System.out.println( "num placed: " + placed);

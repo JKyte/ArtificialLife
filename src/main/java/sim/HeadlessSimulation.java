@@ -12,20 +12,13 @@ import world.WorldMap;
 import brains.SimpleBrain;
 import critters.SimpleCritter;
 
-/**
- * 
- * @author JKyte
- *
- */
-public class StandardSimulation implements Simulation {
+public class HeadlessSimulation implements Simulation {
 
 	public WorldMap worldMap;
 
 	public Population pop;
-
-	private  GUI gui;
 	
-	public StandardSimulation(){
+	public HeadlessSimulation(){
 
 	}
 
@@ -77,57 +70,14 @@ public class StandardSimulation implements Simulation {
 	 */
 	public void runSimulation(int turns){
 		long start = System.currentTimeMillis();
-		createAndDisplayFixedGUI();
 		for( int ii = 0; ii < turns; ii++ ){
-			updateGUI("Turn: " + ii);
 			simulateTurn(ii);
-
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 
-		//	Final update
-		updateGUI("Turn: " + turns);
-		long totalDelay = turns*1000;
 		long total = System.currentTimeMillis()-start;
 		System.out.println("Simulation ran in " + total + "ms.");
-		System.out.println("Time in delay: " + totalDelay + "ms.");
-		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
-		System.out.println(pop.endOfSimStats());
-		
-	}
-
-	/**
-	 * Higher level wrapper class for running the simulation
-	 * @param turns - duration of simulation
-	 * @param updateDelay - delay in milliseconds between turns
-	 */
-	public void runSimulation(int turns, long updateDelay){
-		long start = System.currentTimeMillis();
-		
-		createAndDisplayFixedGUI();
-		for( int ii = 0; ii < turns; ii++ ){
-			updateGUI("Turn: " + ii);
-			simulateTurn(ii);
-
-			try {
-				Thread.sleep(updateDelay);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
-		//	Final update
-		updateGUI("Turn: " + turns);
-		
-		long total = System.currentTimeMillis()-start;
-		long totalDelay = turns*updateDelay;
-		System.out.println("Simulation ran in " + total + "ms.");
-		System.out.println("Time in delay: " + totalDelay + "ms.");
-		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
+		//System.out.println("Time in delay: " + totalDelay + "ms.");
+		//System.out.println("Time processing: " + (total-totalDelay) + "ms.");
 		System.out.println(pop.endOfSimStats());
 		
 	}
@@ -196,33 +146,6 @@ public class StandardSimulation implements Simulation {
 			actionTarget = null;			//	Set the ActionTarget to null
 		}
 
-	}
-	
-	public void createAndDisplayDynamicGUI(){
-		gui = new GUI(worldMap.mapWidth, worldMap.mapHeight);
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void createAndDisplayFixedGUI(){
-		gui = new GUI();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void updateGUI(){
-		gui.clearAndSetText(worldMap.getMapForGUI());
-	}
-
-	public void updateGUI( String stats ){
-		System.out.println("Update GUI.");
-		gui.clearAndSetText(worldMap.getMapForGUI(stats));
 	}
 
 }
