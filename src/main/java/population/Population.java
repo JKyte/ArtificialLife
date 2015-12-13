@@ -3,8 +3,8 @@ package population;
 import java.util.HashMap;
 import java.util.Set;
 
+import sim.Simulation;
 import critters.SimpleCritter;
-import world.Simulation;
 
 public class Population {
 	

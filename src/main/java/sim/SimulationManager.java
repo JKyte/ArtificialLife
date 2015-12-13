@@ -1,6 +1,5 @@
-package main;
+package sim;
 
-import world.Simulation;
 
 /**
  * 

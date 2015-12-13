@@ -5,8 +5,8 @@ import java.util.HashMap;
 import org.junit.Assert;
 import org.junit.Test;
 
+import sim.Simulation;
 import critters.SimpleCritter;
-import world.Simulation;
 
 public class PopulationTest {
 

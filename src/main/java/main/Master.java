@@ -1,5 +1,7 @@
 package main;
 
+import sim.SimulationManager;
+
 public class Master {
 	
 	public static void main(String[] args){
