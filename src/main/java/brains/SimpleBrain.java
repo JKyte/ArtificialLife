@@ -37,7 +37,7 @@ public class SimpleBrain {
 		ActionTarget actionTarget = null;
 
 		boolean foodInRange = isFoodInRange( visionMap.getVisionMap());
-		System.out.println("FoodInRange: " + foodInRange);
+		//System.out.println("FoodInRange: " + foodInRange);
 		if( foodInRange ){	//	Then move towards food
 			//	Default option for finding food is 0,1
 			int[] validOpts = new int[]{1};	
@@ -55,12 +55,12 @@ public class SimpleBrain {
 	 * @returns - a boolean indicating if food is in range
 	 */
 	public boolean isFoodInRange(Map map) {
-		map.printLogicalMap();
-		System.out.println("h: " + map.mapHeight + " w: " + map.mapWidth);
+		//map.printLogicalMap();
+		//System.out.println("h: " + map.mapHeight + " w: " + map.mapWidth);
 		for( int ii = 0; ii < map.mapWidth; ii++ ){
 			for( int jj = 0; jj < map.mapHeight; jj++ ){
 				for( int kk = 0; kk < critter.getFood().length; kk++){
-					System.out.println("h: " + ii + " w: " + jj);
+					//System.out.println("h: " + ii + " w: " + jj);
 					if( map.getGrid(ii, jj) == critter.getFood()[kk]){	
 						return true;
 					}	
@@ -98,13 +98,13 @@ public class SimpleBrain {
 
 			Coord worldDest = new Coord(vcc.getCritterWorldLocation());
 
-			System.out.println(worldDest.getX() + " " + worldDest.getY());
-			System.out.println( c.getX() + " " + c.getY());
+			//System.out.println(worldDest.getX() + " " + worldDest.getY());
+			//System.out.println( c.getX() + " " + c.getY());
 
 			worldDest.setX(worldDest.getX()+c.getX());
 			worldDest.setY(worldDest.getY()+c.getY());
 
-			System.out.println(worldDest.getX() + " " + worldDest.getY());			
+			//System.out.println(worldDest.getX() + " " + worldDest.getY());			
 
 			return new ActionTarget( CritterAction.MOVE, worldDest);
 		}
@@ -114,7 +114,7 @@ public class SimpleBrain {
 		Map vision = vcc.getVisionMap();
 		Coord visionLocation = vcc.getCritterVisionLocation();
 		ArrayList<Coord> validDestinations = new ArrayList<Coord>();
-		vision.printLogicalMap();
+		//vision.printLogicalMap();
 
 		/**
 		 * 	This checks each square immediately surrounding the critter's vision
@@ -136,7 +136,7 @@ public class SimpleBrain {
 				}
 			}
 		}
-		System.out.println("Returning " + validDestinations.size() + " valid destinations.");
+		//System.out.println("Returning " + validDestinations.size() + " valid destinations.");
 		return validDestinations;
 	}
 
@@ -166,7 +166,7 @@ public class SimpleBrain {
 
 		ArrayList<Coord> foodCoords = new ArrayList<Coord>();
 
-		System.out.println("x:" + vision.mapWidth + " y:" + vision.mapHeight);
+		//System.out.println("x:" + vision.mapWidth + " y:" + vision.mapHeight);
 		for(int ii = 0; ii < vision.mapWidth; ii++ ){
 			for(int jj = 0; jj < vision.mapHeight; jj++ ){
 				for( int kk = 0; kk < validOpts.length; kk++ ){
@@ -186,7 +186,7 @@ public class SimpleBrain {
 
 			tmpDistance = CoordHelper.getNormalizedDistance(food, critterLocation);
 
-			System.out.println("Compare " + food.toString() + " with " + critterLocation.toString() + " -> " + tmpDistance);
+			//System.out.println("Compare " + food.toString() + " with " + critterLocation.toString() + " -> " + tmpDistance);
 			if( tmpDistance < normalizedDistance ){
 				normalizedDistance = tmpDistance;
 				closest = food;

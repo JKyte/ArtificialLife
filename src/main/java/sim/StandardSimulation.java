@@ -162,7 +162,7 @@ public class StandardSimulation implements Simulation {
 				/**
 				 * Handle ActionTarget
 				 */
-				System.out.println(critter.getCritterID() + ": " + actionTarget.toString());
+				//System.out.println(critter.getCritterID() + ": " + actionTarget.toString());
 				if( actionTarget.getAction().equals(CritterAction.WAIT) ){
 					//	Do nothing
 				}else if( actionTarget.getAction().equals(CritterAction.MOVE) ){

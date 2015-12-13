@@ -122,7 +122,7 @@ public class Map {
 	 * @param targetY
 	 */
 	public Coord moveObject( Coord start, Coord dest ){
-		System.out.println("Move from " + start.toString() + " to " + dest.toString());
+	//	System.out.println("Move from " + start.toString() + " to " + dest.toString());
 		grid[dest.getY()][dest.getX()] = grid[start.getY()][start.getX()];
 		removeObject(start);
 		return dest;
@@ -132,7 +132,7 @@ public class Map {
 	 * @param target - X,Y Coord set to zero
 	 */
 	public void removeObject( Coord target ){
-		System.out.println("removing from " + target.toString());
+	//	System.out.println("removing from " + target.toString());
 		grid[target.getY()][target.getX()] = 0;
 	}
 
