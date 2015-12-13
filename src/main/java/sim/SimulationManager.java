@@ -13,7 +13,7 @@ package sim;
  */
 public class SimulationManager {
 
-	Simulation sim;
+	StandardSimulation sim;
 	
 	public SimulationManager(){
 		
@@ -21,25 +21,25 @@ public class SimulationManager {
 	
 	public void runDefaultSimulation(){
 		//	This simulation config was used to stress test movement
-		sim = new Simulation();
+		sim = new StandardSimulation();
 		sim.setupWorld(15, 15, 0.1, 10);
 		sim.runSimulation(20, 250);
 	}
 	
 	public void runFastSimulationLargeMap(){
-		sim = new Simulation();
+		sim = new StandardSimulation();
 		sim.setupWorld(60, 60, 0.4, 45);
 		sim.runSimulation(70000, 1);
 	}
 	
 	public void runFastSimulationSmallMap(){
-		sim = new Simulation();
+		sim = new StandardSimulation();
 		sim.setupWorld(10, 10, 0.4, 15);
 		sim.runSimulation(1000, 1);
 	}
 	
 	public void runTestSimOneCreature(){
-		sim = new Simulation();
+		sim = new StandardSimulation();
 		sim.setupWorld(8, 8, 0.2, 1);
 		sim.runSimulation(1, 500);
 	}

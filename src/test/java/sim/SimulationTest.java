@@ -3,13 +3,13 @@ package sim;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sim.Simulation;
+import sim.StandardSimulation;
 
 public class SimulationTest {
 	
 	@Test
 	public void testEmptyInit(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		
 		Assert.assertNull(sim.pop);
 		Assert.assertNull(sim.worldMap);
@@ -17,7 +17,7 @@ public class SimulationTest {
 
 	@Test
 	public void testInitializeWorldMap(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.initializeWorldMap(4, 5);
 		
 		Assert.assertEquals(4, sim.worldMap.mapWidth);
@@ -26,7 +26,7 @@ public class SimulationTest {
 	
 	@Test
 	public void testPlaceFoodByPerc(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.initializeWorldMap(2,2);
 
 		sim.placeFoodByPerc(0.0);
@@ -44,7 +44,7 @@ public class SimulationTest {
 	
 	@Test
 	public void testPlaceFoodByNum(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		
 		sim.initializeWorldMap(1,1);
 
@@ -57,7 +57,7 @@ public class SimulationTest {
 	
 	@Test
 	public void testInitializePopulation(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.initializeWorldMap(1,1);
 
 		sim.initializePopulation(1);
@@ -66,14 +66,14 @@ public class SimulationTest {
 	
 	@Test
 	public void testSetupWorld(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.setupWorld(1, 1, 0.0, 1);
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
 	}
 	
 	@Test
 	public void testSimulateTurn(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.setupWorld(10, 10, 0.0, 1);
 		sim.simulateTurn(0);
 		

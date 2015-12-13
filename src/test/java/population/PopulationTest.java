@@ -5,14 +5,14 @@ import java.util.HashMap;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sim.Simulation;
+import sim.StandardSimulation;
 import critters.SimpleCritter;
 
 public class PopulationTest {
 
 	@Test
 	public void testInit(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(1, sim);
 		
 		Assert.assertEquals(1, pop.getPopSize());
@@ -20,7 +20,7 @@ public class PopulationTest {
 	
 	@Test
 	public void testGeneratePopulation(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(1, sim);
 		pop.setDefaultPopulationStats();
 		pop.generatePopulation();
@@ -43,7 +43,7 @@ public class PopulationTest {
 	
 	@Test
 	public void testPlacePopulation(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		sim.initializeWorldMap(1, 1);
 		
 		Population pop = new Population(1, sim);
@@ -56,7 +56,7 @@ public class PopulationTest {
 	
 	@Test
 	public void testEndOfSimStats(){
-		Simulation sim = new Simulation();
+		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(3, sim);
 		pop.setDefaultPopulationStats();
 		pop.generatePopulation();

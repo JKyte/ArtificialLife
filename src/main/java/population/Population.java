@@ -3,7 +3,7 @@ package population;
 import java.util.HashMap;
 import java.util.Set;
 
-import sim.Simulation;
+import sim.StandardSimulation;
 import critters.SimpleCritter;
 
 public class Population {
@@ -38,9 +38,9 @@ public class Population {
 	private int energy_VAR;
 	private int memory_VAR;
 	
-	private Simulation world;
+	private StandardSimulation world;
 	
-	public Population( int popSize, Simulation world ){
+	public Population( int popSize, StandardSimulation world ){
 		this.popSize = popSize;
 		popMap = new HashMap<Integer, SimpleCritter>();
 		this.world = world;
