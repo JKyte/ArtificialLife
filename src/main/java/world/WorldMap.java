@@ -18,6 +18,21 @@ public class WorldMap extends Map{
 	public WorldMap(int len) {
 		super(len);
 	}
+	
+	/**
+	 * @param targetPerc -- a double between 0.0 and 1.0
+	 */
+	public void placeFoodByPerc( double targetPerc ){
+		int foodSpaces = getNumFoodSpaces(targetPerc);
+		for( int ii = 0; ii < foodSpaces; ii++ ){
+			placeObjectRandomly(1, false);
+		}
+	}
+	
+	public int getNumFoodSpaces( double targetPerc ){
+		double preTarget = targetPerc * mapArea();
+		return (int) Math.round(preTarget);
+	}
 
 	/**
 	 * WARNING -- if the map is full, this method WILL put the program into an infinite loop
@@ -26,7 +41,7 @@ public class WorldMap extends Map{
 	 * @param print - T/F indicating whether information is logged to console
 	 * @return
 	 */
-	public Coord placeObjectRandomly(int objectID, boolean print ){
+	public Coord placeObjectRandomly( int objectID, boolean print ){
 		Random rand = new Random();
 		Coord coord = null;
 
@@ -46,6 +61,15 @@ public class WorldMap extends Map{
 			}	//	implicit else keeps the objectPlaced var set to false, we keep looping
 		}
 		return coord;
+	}
+	
+	public void replenishFood( double targetPerc ){
+		int currentFoodCount = getCountForObjectType(1);
+		int targetFoodCount = getNumFoodSpaces(targetPerc);
+		int numFoodToPlace = targetFoodCount-currentFoodCount;
+		for( int ii = 0; ii < numFoodToPlace; ii++ ){
+			placeObjectRandomly(1, false);
+		}
 	}
 
 }

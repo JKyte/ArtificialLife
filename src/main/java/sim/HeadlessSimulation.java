@@ -7,7 +7,6 @@ import population.Population;
 import utils.ActionTarget;
 import utils.CritterAction;
 import utils.VisionCritCoord;
-import world.GUI;
 import world.WorldMap;
 import brains.SimpleBrain;
 import critters.SimpleCritter;
@@ -17,6 +16,9 @@ public class HeadlessSimulation implements Simulation {
 	public WorldMap worldMap;
 
 	public Population pop;
+	
+	private int foodRefreshRate;
+	private double foodRefreshPercentage;
 	
 	public HeadlessSimulation(){
 
@@ -29,10 +31,12 @@ public class HeadlessSimulation implements Simulation {
 	 * @param foodPercent - percentage of world taken by food
 	 * @param startPopSize - number of starting critters
 	 */
-	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize){
+	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize, int foodRefreshRate){
 		initializeWorldMap(mapWidth, mapHeight);
 		placeFoodByPerc(foodPercent);
 		initializePopulation(startPopSize);
+		this.foodRefreshRate = foodRefreshRate;
+		this.foodRefreshPercentage = foodPercent;
 	}
 
 	public void initializeWorldMap(int mapWidth, int mapHeight){
@@ -146,6 +150,10 @@ public class HeadlessSimulation implements Simulation {
 			actionTarget = null;			//	Set the ActionTarget to null
 		}
 
+		if( foodRefreshRate > 0 && turn % foodRefreshRate == 0 ){
+			System.out.println("Replenishing food!");
+			worldMap.replenishFood(foodRefreshPercentage);
+		}
 	}
 
 }

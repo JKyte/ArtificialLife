@@ -25,6 +25,9 @@ public class StandardSimulation implements Simulation {
 
 	private  GUI gui;
 	
+	private int foodRefreshRate;
+	private double foodRefreshPercentage;
+	
 	public StandardSimulation(){
 
 	}
@@ -36,26 +39,16 @@ public class StandardSimulation implements Simulation {
 	 * @param foodPercent - percentage of world taken by food
 	 * @param startPopSize - number of starting critters
 	 */
-	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize){
+	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize, int foodRefreshRate){
 		initializeWorldMap(mapWidth, mapHeight);
-		placeFoodByPerc(foodPercent);
+		worldMap.placeFoodByPerc(foodPercent);
 		initializePopulation(startPopSize);
+		this.foodRefreshRate = foodRefreshRate;
+		this.foodRefreshPercentage = foodPercent;
 	}
 
 	public void initializeWorldMap(int mapWidth, int mapHeight){
 		worldMap = new WorldMap(mapWidth, mapHeight);
-	}
-
-	/**
-	 * @param targetPerc -- a double between 0.0 and 1.0
-	 */
-	public void placeFoodByPerc(double targetPerc){
-		double totalSpaces = worldMap.mapArea();
-		double preTarget = totalSpaces * targetPerc;
-		int foodSpaces = (int) Math.round(preTarget);
-		for( int ii = 0; ii < foodSpaces; ii++ ){
-			worldMap.placeObjectRandomly(1, false);
-		}
 	}
 
 	public void initializePopulation(int startPopSize){
@@ -196,6 +189,9 @@ public class StandardSimulation implements Simulation {
 			actionTarget = null;			//	Set the ActionTarget to null
 		}
 
+		if( foodRefreshRate > 0 && turn % foodRefreshRate == 0 ){
+			worldMap.replenishFood(foodRefreshPercentage);
+		}
 	}
 	
 	public void createAndDisplayDynamicGUI(){
