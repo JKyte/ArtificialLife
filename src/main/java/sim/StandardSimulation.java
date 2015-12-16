@@ -122,7 +122,7 @@ public class StandardSimulation implements Simulation {
 		System.out.println("Time in delay: " + totalDelay + "ms.");
 		System.out.println("Time processing: " + (total-totalDelay) + "ms.");
 		System.out.println(pop.endOfSimStats());
-		
+		System.out.println(pop.printSurvivalRatesByGeonome());
 	}
 
 	/**

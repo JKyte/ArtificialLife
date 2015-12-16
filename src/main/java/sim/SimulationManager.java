@@ -46,7 +46,7 @@ public class SimulationManager {
 	
 	public void runHeadlessSimulation(){
 		HeadlessSimulation headless = new HeadlessSimulation();
-		headless.setupWorld(5000, 5000, 0.5, 1000, 5);
+		headless.setupWorld(100, 100, 0.5, 75, 1);
 		headless.runSimulation(350);
 	}
 }

@@ -1,6 +1,7 @@
 package population;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import world.WorldMap;
@@ -166,12 +167,74 @@ public class Population {
 			}
 		}
 		
-		return "Alive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
-				+ "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGeonome() 
-				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGeonome();
+		double alive = (double) alivePop;
+		double dead = (double) deadPop;
+		double totalSurvivalRate = ( alive / (alive+dead) ) * 100;
+		
+		return "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGeonome() 
+				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGeonome()
+				+ "\nAlive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
+				+ "\nOverall survival rate: " + totalSurvivalRate + "%";
 	}
 	
-	
+	public String printSurvivalRatesByGeonome(){
+		
+		StringBuilder sb = new StringBuilder();
+		HashSet<String> uniqueGeonomes = new HashSet<String>();
+		HashMap<String,Integer> aliveMap = new HashMap<String,Integer>();
+		HashMap<String,Integer> deadMap = new HashMap<String,Integer>();
+		
+		SimpleCritter curCrit = null;
+		String curGeonome = null;
+		Set<Integer> keys = popMap.keySet();
+		for( Integer key : keys ){
+			
+			curCrit = popMap.get(key);
+			curGeonome = curCrit.toGeonome();
+			
+			uniqueGeonomes.add(curGeonome);
+			
+			if( curCrit.isAlive() ){
+				if( aliveMap.containsKey( curGeonome ) ){
+					aliveMap.put(curGeonome, aliveMap.get(curGeonome)+1 );
+				}else{
+					aliveMap.put(curGeonome, 1 );
+				}
+			} else {
+				if( deadMap.containsKey( curGeonome ) ){
+					deadMap.put(curGeonome, deadMap.get(curGeonome)+1 );
+				}else{
+					deadMap.put(curGeonome, 1 );
+				}
+			}
+		}
+		
+		double alive = -1, dead = -1, rate = -1;
+		sb.append( uniqueGeonomes.size() + " unique geonomes.\n" );
+		for( String key : uniqueGeonomes ){
+			
+			if( aliveMap.get(key) == null ){
+				sb.append( "Survival rate for: " + key + ": 0%\n" );
+				continue;
+			}else{
+				alive = (double) aliveMap.get(key);	
+			}
+			
+			if( deadMap.get(key) == null ){
+				dead = 0.0;
+			}else{
+				dead = (double) deadMap.get(key);
+					
+			}
+			
+			
+			rate = ( alive / (alive+dead) ) * 100;
+			
+			sb.append( "Survival rate for: " + key + ": " + rate + "%\n" );
+		}
+		
+		return sb.toString();
+	}
 	
 	/**
 	 * Future work shall include breeding critters together
