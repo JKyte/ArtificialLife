@@ -1,5 +1,6 @@
 package population;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,6 +41,8 @@ public class Population {
 	private int memory_VAR;
 	
 	private WorldMap worldMap;
+	
+	private DecimalFormat format = new DecimalFormat("#.##");
 	
 	public Population( int popSize, WorldMap worldMap ){
 		this.popSize = popSize;
@@ -174,7 +177,7 @@ public class Population {
 		return "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGeonome() 
 				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGeonome()
 				+ "\nAlive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
-				+ "\nOverall survival rate: " + totalSurvivalRate + "%";
+				+ "\nOverall survival rate: " + format.format(totalSurvivalRate) + "%";
 	}
 	
 	public String printSurvivalRatesByGeonome(){
@@ -209,6 +212,7 @@ public class Population {
 			}
 		}
 		
+		
 		double alive = -1, dead = -1, rate = -1;
 		sb.append( uniqueGeonomes.size() + " unique geonomes.\n" );
 		for( String key : uniqueGeonomes ){
@@ -230,7 +234,7 @@ public class Population {
 			
 			rate = ( alive / (alive+dead) ) * 100;
 			
-			sb.append( "Survival rate for: " + key + ": " + rate + "%\n" );
+			sb.append( "Survival rate for: " + key + ": " + format.format(rate) + "%\n" );
 		}
 		
 		return sb.toString();
