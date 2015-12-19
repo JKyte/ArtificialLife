@@ -20,7 +20,7 @@ public class SimulationManager {
 	}
 	
 	public void runDefaultSimulation(){
-		sim = new StandardSimulation();
+		sim = new StandardSimulation(750);
 		sim.setupWorld(15, 15, 0.1, 10);
 		sim.runSimulation(20);
 	}

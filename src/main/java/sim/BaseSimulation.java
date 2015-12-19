@@ -76,6 +76,9 @@ public class BaseSimulation implements Simulation{
 
 	public boolean simulateTurn(int turn) {
 		System.out.println("Turn: " + turn);
+		
+		//	Variable for early exit check
+		boolean critterStillAlive = false;
 
 		//	Initialize some variables prior to the loop
 		SimpleCritter critter = null;
@@ -89,6 +92,7 @@ public class BaseSimulation implements Simulation{
 		for( Integer key : popKeys ){
 			critter = population.get(key);
 			if( critter.isAlive() ){
+				critterStillAlive = true;
 				
 				critter.setCurrentLifeLen(critter.getCurrentLifeLen()+1);
 				brain.setCritter(critter);
@@ -120,7 +124,8 @@ public class BaseSimulation implements Simulation{
 				//	Update Energy. If energy reaches zero, kill the critter.
 				critter.setCurEnergy( critter.getCurEnergy()-1 );
 				if( critter.getCurEnergy() == 0 ){
-					critter.setAlive(false);	//	Kill 'em ded
+					critter.setAlive(false);	//	Kill 'em ded. If this is last critter we run for another turn
+												//	but it beats loop through the population again.
 					worldMap.placeObjectAtCoord(3, critter.getWorldLocation());
 				}
 				
@@ -133,7 +138,7 @@ public class BaseSimulation implements Simulation{
 			actionTarget = null;			//	Set the ActionTarget to null
 		}
 		
-		return true;
+		return critterStillAlive;
 	}
 
 }
