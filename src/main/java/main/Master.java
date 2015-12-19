@@ -5,10 +5,10 @@ import sim.SimulationManager;
 public class Master {
 	
 	public static void main(String[] args){
-		smallWorldOneCritter();
+		setupSimulation();
 	}
 
-	private static void smallWorldOneCritter() {
+	private static void setupSimulation() {
 		SimulationManager sm = new SimulationManager();
 		sm.runDefaultSimulation();
 		//	sm.runTestSimOneCreature();

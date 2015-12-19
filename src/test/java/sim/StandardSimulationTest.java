@@ -49,15 +49,15 @@ public class StandardSimulationTest {
 	@Test
 	public void testSetupWorld(){
 		StandardSimulation sim = new StandardSimulation();
-		sim.setupWorld(1, 1, 0.0, 1, -1);
+		sim.setupWorld(1, 1, 0.0, 1);
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
 	}
 	
 	@Test
 	public void testSimulateTurn(){
 		StandardSimulation sim = new StandardSimulation();
-		sim.setupWorld(10, 10, 0.0, 1, -1);
-		sim.simulateTurn(0);
+		sim.setupWorld(10, 10, 0.0, 1);
+		//	sim.simulateTurn(0);
 		
 		Assert.assertEquals(1, sim.worldMap.getCountForObjectType(2));
 	}

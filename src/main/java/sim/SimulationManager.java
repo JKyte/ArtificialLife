@@ -20,33 +20,35 @@ public class SimulationManager {
 	}
 	
 	public void runDefaultSimulation(){
-		//	This simulation config was used to stress test movement
 		sim = new StandardSimulation();
-		sim.setupWorld(15, 15, 0.1, 10, -1);
-		sim.runSimulation(20, 250);
+		sim.setupWorld(15, 15, 0.1, 10);
+		sim.runSimulation(20);
 	}
 	
+	//	This configuration used to stress test a larger GUI
 	public void runFastSimulationLargeMap(){
-		sim = new StandardSimulation();
-		sim.setupWorld(60, 60, 0.4, 45, 50);
-		sim.runSimulation(700, 1);
+		sim = new StandardSimulation(20);
+		sim.setupWorld(60, 60, 0.4, 45);
+		sim.runSimulation(700);
 	}
 	
+	//	This configuration used to stress test movement
 	public void runFastSimulationSmallMap(){
-		sim = new StandardSimulation();
-		sim.setupWorld(10, 10, 0.4, 15, 50);
-		sim.runSimulation(1000, 1);
+		sim = new StandardSimulation(100);
+		sim.setupWorld(10, 10, 0.4, 15);
+		sim.runSimulation(1000);
 	}
-	
+
 	public void runTestSimOneCreature(){
 		sim = new StandardSimulation();
-		sim.setupWorld(8, 8, 0.2, 1, -1);
-		sim.runSimulation(1, 500);
+		sim.setupWorld(8, 8, 0.2, 1);
+		sim.runSimulation(10);
 	}
 	
 	public void runHeadlessSimulation(){
 		HeadlessSimulation headless = new HeadlessSimulation();
 		headless.setupWorld(100, 100, 0.5, 75, 1);
+		//	headless.setupWorld(10000, 10000, 0.5, 75, 1);
 		headless.runSimulation(350);
 	}
 }

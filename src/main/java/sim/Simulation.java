@@ -4,5 +4,5 @@ public interface Simulation {
 
 	public void runSimulation(int turns);
 	
-	public void simulateTurn(int turn);
+	public boolean simulateTurn(int turn);
 }
