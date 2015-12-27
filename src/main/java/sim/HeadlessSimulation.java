@@ -31,7 +31,7 @@ public class HeadlessSimulation extends BaseSimulation {
 	@Override
 	public boolean simulateTurn(int turn) {
 		if( foodRefreshRate > 0 && turn % foodRefreshRate == 0 ){
-			System.out.println("Replenishing food!");
+		//	System.out.println("Replenishing food!");
 			worldMap.replenishFood(foodRefreshPercentage);
 		}
 		return super.simulateTurn(turn);

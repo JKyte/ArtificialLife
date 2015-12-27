@@ -88,7 +88,7 @@ public class Population {
 		vision_MAX = 1;
 		maxHealth_MAX = 5;
 		curHealth_MAX = 5;
-		energy_MAX = 10;
+		energy_MAX = 30;
 		memory_MAX = 5;
 		
 		speed_VAR = 0;

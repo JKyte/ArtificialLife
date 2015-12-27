@@ -48,7 +48,18 @@ public class SimulationManager {
 	public void runHeadlessSimulation(){
 		HeadlessSimulation headless = new HeadlessSimulation();
 		headless.setupWorld(100, 100, 0.5, 75, 1);
-		//	headless.setupWorld(10000, 10000, 0.5, 75, 1);
 		headless.runSimulation(350);
+	}
+	
+	public void runHeadlessSimulation_largeMap(){
+		HeadlessSimulation headless = new HeadlessSimulation();
+		headless.setupWorld(10000, 10000, 0.8, 75, 1);
+		headless.runSimulation(1000);
+	}
+
+	public void runHeadlessSimulation_largePop(){
+		HeadlessSimulation headless = new HeadlessSimulation();
+		headless.setupWorld(1000, 1000, 0.8, 2000, 5);
+		headless.runSimulation(100000);
 	}
 }
