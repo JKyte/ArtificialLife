@@ -23,7 +23,7 @@ public class PopulationTest {
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(1, sim.worldMap);
 		pop.setDefaultPopulationStats();
-		pop.generatePopulation();
+		pop.generateDefaultPopulation();
 		
 		HashMap<Integer, SimpleCritter> population = pop.getPopMap();
 		Assert.assertEquals(1, population.size());
@@ -48,7 +48,7 @@ public class PopulationTest {
 		
 		Population pop = new Population(1, sim.worldMap);
 		pop.setDefaultPopulationStats();
-		pop.generatePopulation();
+		pop.generateDefaultPopulation();
 		pop.placePopulation();
 
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
@@ -59,7 +59,7 @@ public class PopulationTest {
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(3, sim.worldMap);
 		pop.setDefaultPopulationStats();
-		pop.generatePopulation();
+		pop.generateDefaultPopulation();
 		
 		SimpleCritter ded = new SimpleCritter();
 		ded.setAlive(false);
@@ -80,7 +80,7 @@ public class PopulationTest {
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(3, sim.worldMap);
 		pop.setDefaultPopulationStats();
-		pop.generatePopulation();
+		pop.generateDefaultPopulation();
 		
 		SimpleCritter ded = new SimpleCritter();
 		ded.setAlive(false);
@@ -102,7 +102,7 @@ public class PopulationTest {
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(0, sim.worldMap);
 		pop.setDefaultPopulationStats();
-		pop.generatePopulation();
+		pop.generateDefaultPopulation();
 		
 		SimpleCritter g1_c1 = new SimpleCritter();
 		g1_c1.setAlive(true);

@@ -98,29 +98,36 @@ public class Population {
 		energy_VAR = 0;
 		memory_VAR = 0;
 	}
-	
+
 	/**
-	 * This is really a "Generate Default Population" method
+	 * Generate default population
 	 */
-	public void generatePopulation() {
+	public void generateDefaultPopulation() {
+		
+		SimpleCritter crit = null;
 		for(int ii = 0; ii < popSize; ii++ ){
-			SimpleCritter crit = new SimpleCritter();
-			crit.setGenerationID(0);
-			crit.setCritterID(ii);
-			
-			crit.setMaxHealth(curHealth_MAX);
-			crit.setMaxEnergy(energy_MAX);
-
-			//	set up stats
-			crit.setSpeed(speed_MIN);
-			crit.setVision(vision_MIN);
-			crit.setCurHealth(curHealth_MIN);
-			crit.setCurEnergy(energy_MIN);
-			crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
-
+			crit = generateDefaultCritter(ii);
 			popMap.put(crit.getCritterID(), crit);	//	store this little critter
 		}
 		
+	}
+	
+	public SimpleCritter generateDefaultCritter(int currentCritterID){
+		SimpleCritter crit = new SimpleCritter();
+		crit.setGenerationID(0);
+		crit.setCritterID(currentCritterID);
+		
+		crit.setMaxHealth(curHealth_MAX);
+		crit.setMaxEnergy(energy_MAX);
+
+		//	set up stats
+		crit.setSpeed(speed_MIN);
+		crit.setVision(vision_MIN);
+		crit.setCurHealth(curHealth_MIN);
+		crit.setCurEnergy(energy_MIN);
+		crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
+		
+		return crit;
 	}
 	
 	public void placePopulation(){
