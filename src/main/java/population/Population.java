@@ -13,32 +13,14 @@ public class Population {
 	private int popSize;
 	private HashMap<Integer,SimpleCritter> popMap;
 
-	//	TODO -- critter minimum stats
-	private int speed_MIN;
-	private int vision_MIN;
+	private int speed;
+	private int vision;
 	
-	private int maxHealth_MIN;
-	private int curHealth_MIN;
+	private int health_MAX;
+	private int health_MIN;
+	
 	private int energy_MIN;
-	private int memory_MIN;
-	
-	//	TODO -- critter max stats
-	private int speed_MAX;
-	private int vision_MAX;
-	
-	private int maxHealth_MAX;
-	private int curHealth_MAX;
 	private int energy_MAX;
-	private int memory_MAX;
-	
-	//	TODO -- critter variation
-	private int speed_VAR;
-	private int vision_VAR;
-	
-	private int maxHealth_VAR;
-	private int curHealth_VAR;
-	private int energy_VAR;
-	private int memory_VAR;
 	
 	private WorldMap worldMap;
 	
@@ -51,52 +33,28 @@ public class Population {
 	}
 
 	public void setDefaultPopulationStats() {
-		speed_MIN = 1;
-		vision_MIN = 1;	
-		maxHealth_MIN = 5;
-		curHealth_MIN = 5;
+		speed = 1;
+		vision = 1;	
+		
+		health_MIN = 10;
+		health_MAX = 5;
+		
 		energy_MIN = 10;
-		memory_MIN = 5;
-		
-		speed_MAX =1;
-		vision_MAX = 1;
-		maxHealth_MAX = 5;
-		curHealth_MAX = 5;
 		energy_MAX = 10;
-		memory_MAX = 5;
-		
-		speed_VAR = 0;
-		vision_VAR = 0;
-		maxHealth_VAR = 0;
-		curHealth_VAR = 0;
-		energy_VAR = 0;
-		memory_MIN = 0;
 	}
 
 	/**
 	 * A place to tweak new stat changes
 	 */
-	public void setPopulationStats(){
-		speed_MIN = 1;
-		vision_MIN = 1;	
-		maxHealth_MIN = 5;
-		curHealth_MIN = 5;
+	public void setDiversePopulationStats(){
+		speed = 1;
+		vision = 1;	
+		
+		health_MIN = 10;
+		health_MAX = 10;
+		
 		energy_MIN = 10;
-		memory_MIN = 5;
-		
-		speed_MAX =1;
-		vision_MAX = 1;
-		maxHealth_MAX = 5;
-		curHealth_MAX = 5;
 		energy_MAX = 30;
-		memory_MAX = 5;
-		
-		speed_VAR = 0;
-		vision_VAR = 0;
-		maxHealth_VAR = 0;
-		curHealth_VAR = 0;
-		energy_VAR = 0;
-		memory_VAR = 0;
 	}
 
 	/**
@@ -117,13 +75,13 @@ public class Population {
 		crit.setGenerationID(0);
 		crit.setCritterID(currentCritterID);
 		
-		crit.setMaxHealth(curHealth_MAX);
+		crit.setMaxHealth(health_MIN);
 		crit.setMaxEnergy(energy_MAX);
 
 		//	set up stats
-		crit.setSpeed(speed_MIN);
-		crit.setVision(vision_MIN);
-		crit.setCurHealth(curHealth_MIN);
+		crit.setSpeed(speed);
+		crit.setVision(vision);
+		crit.setCurHealth(health_MAX);
 		crit.setCurEnergy(energy_MIN);
 		crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
 		

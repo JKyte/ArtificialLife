@@ -55,8 +55,8 @@ public class BaseSimulation implements Simulation{
 	
 	public void initializePopulation(int startPopSize){
 		pop = new Population(startPopSize, worldMap);
-		//pop.setDefaultPopulationStats();
-		pop.setPopulationStats();
+		pop.setDefaultPopulationStats();
+		//pop.setDiversePopulationStats();
 		pop.generateDefaultPopulation();
 		pop.placePopulation();
 	}

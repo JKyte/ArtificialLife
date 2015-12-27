@@ -66,7 +66,7 @@ public class PopulationTest {
 		pop.getPopMap().put(Integer.MAX_VALUE, ded);
 		
 		StringBuilder expected = new StringBuilder();
-		expected.append("\nBest  Fitness: 5 -- 5:10:[1]:1:1\n");
+		expected.append("\nBest  Fitness: 5 -- 10:10:[1]:1:1\n");
 		expected.append("Worst Fitness: 0 -- 0:0:[-1]:0:0\n");
 		expected.append("Alive: 3\nDead: 1\nTotal: 4\n");
 		expected.append("Overall survival rate: 75%");
@@ -91,7 +91,7 @@ public class PopulationTest {
 		
 		StringBuilder expected = new StringBuilder();
 		expected.append("2 unique geonomes.\n");
-		expected.append("Survival rate for: 5:10:[1]:1:1: 100%\n");
+		expected.append("Survival rate for: 10:10:[1]:1:1: 100%\n");
 		expected.append("Survival rate for: 0:0:[-1]:0:0: 0%\n");
 		
 		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGeonome() );
