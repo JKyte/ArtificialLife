@@ -21,10 +21,9 @@ public class BaseSimulation implements Simulation{
 		
 	}
 
-	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize) {
+	public void setupWorld(int mapWidth, int mapHeight, double foodPercent) {
 		initializeWorldMap(mapWidth, mapHeight);
 		placeFoodByPerc(foodPercent);
-		initializePopulation(startPopSize);
 	}
 	
 	public void initializeWorldMap(int mapWidth, int mapHeight){
@@ -56,7 +55,6 @@ public class BaseSimulation implements Simulation{
 	public void initializePopulation(int startPopSize){
 		pop = new Population(startPopSize, worldMap);
 		pop.setDefaultPopulationStats();
-		//pop.setDiversePopulationStats();
 		pop.generateDefaultPopulation();
 		pop.placePopulation();
 	}

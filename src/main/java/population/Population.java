@@ -3,6 +3,7 @@ package population;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import world.WorldMap;
@@ -25,6 +26,7 @@ public class Population {
 	private WorldMap worldMap;
 	
 	private DecimalFormat format = new DecimalFormat("#.##");
+	private Random rand = new Random();
 	
 	public Population( int popSize, WorldMap worldMap ){
 		this.popSize = popSize;
@@ -37,7 +39,7 @@ public class Population {
 		vision = 1;	
 		
 		health_MIN = 10;
-		health_MAX = 5;
+		health_MAX = 10;
 		
 		energy_MIN = 10;
 		energy_MAX = 10;
@@ -51,9 +53,9 @@ public class Population {
 		vision = 1;	
 		
 		health_MIN = 10;
-		health_MAX = 10;
+		health_MAX = 15;
 		
-		energy_MIN = 10;
+		energy_MIN = 20;
 		energy_MAX = 30;
 	}
 
@@ -75,19 +77,55 @@ public class Population {
 		crit.setGenerationID(0);
 		crit.setCritterID(currentCritterID);
 		
-		crit.setMaxHealth(health_MIN);
+		crit.setMaxHealth(health_MAX);
 		crit.setMaxEnergy(energy_MAX);
 
 		//	set up stats
 		crit.setSpeed(speed);
 		crit.setVision(vision);
 		crit.setCurHealth(health_MAX);
-		crit.setCurEnergy(energy_MIN);
+		crit.setCurEnergy(energy_MAX);
 		crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
 		
 		return crit;
 	}
 	
+	/**
+	 * Generate a genetically diverse population
+	 */
+	public void generateDiversePopulation(){
+		SimpleCritter crit = null;
+		for(int ii = 0; ii < popSize; ii++ ){
+			crit = generateDiverseCritter(ii);
+			popMap.put(crit.getCritterID(), crit);	//	store this little critter
+		}
+	}
+	
+	public SimpleCritter generateDiverseCritter(int currentCritterID) {
+		SimpleCritter crit = new SimpleCritter();
+		crit.setGenerationID(0);
+		crit.setCritterID(currentCritterID);
+		
+		int tmpHealth = getRandomStat(health_MIN, health_MAX);
+		int tmpEnergy = getRandomStat(energy_MIN, energy_MAX);
+		
+		crit.setMaxHealth(tmpHealth);
+		crit.setMaxEnergy(tmpEnergy);
+
+		//	set up stats
+		crit.setSpeed(speed);
+		crit.setVision(vision);
+		crit.setCurHealth(tmpHealth);
+		crit.setCurEnergy(tmpEnergy);
+		crit.setFood(new int[]{1});		//	Everyone is an herbivore by default
+		
+		return crit;
+	}
+	
+	public int getRandomStat(int low, int high){
+		return (rand.nextInt(high-low) + low);
+	}
+
 	public void placePopulation(){
 		int placed = 0;
 		Set<Integer> keys = popMap.keySet();

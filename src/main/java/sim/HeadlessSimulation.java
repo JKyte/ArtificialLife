@@ -1,5 +1,15 @@
 package sim;
 
+import population.Population;
+
+/**
+ * 
+ * @author JKyte
+ * 
+ * This type of simulation re-grows food while the simulation is running and has
+ * a genetically diverse population.
+ *
+ */
 public class HeadlessSimulation extends BaseSimulation {
 	
 	private int foodRefreshRate;
@@ -16,12 +26,21 @@ public class HeadlessSimulation extends BaseSimulation {
 	 * @param foodPercent - percentage of world taken by food
 	 * @param startPopSize - number of starting critters
 	 */
-	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int startPopSize, int foodRefreshRate){
+	public void setupWorld(int mapWidth, int mapHeight, double foodPercent, int foodRefreshRate){
 		this.foodRefreshRate = foodRefreshRate;
 		this.foodRefreshPercentage = foodPercent;
-		super.setupWorld(mapWidth, mapHeight, foodPercent, startPopSize);
+		super.setupWorld(mapWidth, mapHeight, foodPercent);
 	}
 
+	
+	@Override
+	public void initializePopulation(int startPopSize){
+		pop = new Population(startPopSize, worldMap);
+		pop.setDiversePopulationStats();
+		pop.generateDiversePopulation();
+		pop.placePopulation();
+	}
+	
 	/**
 	 * There is a lot of work related to population management which should really go to the population
 	 * 

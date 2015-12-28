@@ -1,6 +1,7 @@
 package population;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class PopulationTest {
 	}
 	
 	@Test
-	public void testGeneratePopulation(){
+	public void testGenerateDefaultPopulation(){
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(1, sim.worldMap);
 		pop.setDefaultPopulationStats();
@@ -35,10 +36,26 @@ public class PopulationTest {
 		Assert.assertEquals(0, crit.getCritterID());
 		Assert.assertEquals(1, crit.getSpeed());
 		Assert.assertEquals(1, crit.getVision());
-		Assert.assertEquals(5, crit.getCurHealth());
+		Assert.assertEquals(10, crit.getCurHealth());
 		Assert.assertEquals(10, crit.getCurEnergy());
 		Assert.assertEquals(1, crit.getFood().length);
 		Assert.assertEquals(1, crit.getFood()[0]);
+	}
+	
+	@Test
+	public void testGenerateDiversePopulation(){
+		StandardSimulation sim = new StandardSimulation();
+		Population pop = new Population(15, sim.worldMap);
+		pop.setDiversePopulationStats();
+		pop.generateDiversePopulation();
+		
+		HashMap<Integer, SimpleCritter> population = pop.getPopMap();	
+		HashSet<String> geonomes = new HashSet<String>();
+		for( Integer key : population.keySet() ){
+			geonomes.add( population.get(key).toGeonome() );
+		}
+		
+		Assert.assertNotEquals(1, geonomes.size());
 	}
 	
 	@Test
@@ -129,5 +146,18 @@ public class PopulationTest {
 		
 		Assert.assertEquals(4, pop.getPopMap().size());
 		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGeonome() );
+	}
+	
+	@Test
+	public void testGetRandomStat(){
+		int low = 1;
+		int high = 1000000;
+		
+		StandardSimulation sim = new StandardSimulation();
+		Population pop = new Population(0, sim.worldMap);
+		
+		int result = pop.getRandomStat(low, high);
+		System.out.println( "Random result: " + result);
+		Assert.assertNotEquals(1, result );
 	}
 }

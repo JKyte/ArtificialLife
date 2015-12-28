@@ -58,7 +58,8 @@ public class BaseSimulationTest {
 	@Test
 	public void testSetupWorld(){
 		BaseSimulation sim = new BaseSimulation();
-		sim.setupWorld(1, 1, 0.0, 1);
+		sim.setupWorld(1, 1, 0.0);
+		sim.initializePopulation(1);
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
 	}
 }

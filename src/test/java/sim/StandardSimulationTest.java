@@ -49,7 +49,8 @@ public class StandardSimulationTest {
 	@Test
 	public void testSetupWorld(){
 		StandardSimulation sim = new StandardSimulation();
-		sim.setupWorld(1, 1, 0.0, 1);
+		sim.setupWorld(1, 1, 0.0);
+		sim.initializePopulation(1);
 		Assert.assertEquals(2, sim.worldMap.getGrid(0, 0));
 	}
 }
