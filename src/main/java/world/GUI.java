@@ -17,6 +17,9 @@ import javax.swing.SwingUtilities;
 public class GUI extends JFrame{
 
 	private JTextArea mapPane;
+	
+	private final int WIDTH = 600, HEIGHT = 600,
+			DYNAMIC_WIDTH = 14, DYNAMIC_HEIGHT = 19;
 
 	public GUI(final int mapWidth, final int mapHeight) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -29,7 +32,7 @@ public class GUI extends JFrame{
 	public GUI() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				createAndDisplayFixedGUI(600, 600);
+				createAndDisplayFixedGUI(WIDTH, HEIGHT);
 			}
 		});
 	}
@@ -46,7 +49,7 @@ public class GUI extends JFrame{
 		mapPane.setEditable(false);
 		
 		add(new JScrollPane(mapPane));
-		setSize(new Dimension(17*mapWidth, ((20*mapHeight)+120) ));
+		setSize(new Dimension(DYNAMIC_WIDTH*mapWidth, ((DYNAMIC_HEIGHT*mapHeight)) ));
 
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -54,7 +57,7 @@ public class GUI extends JFrame{
 	
 	private void createAndDisplayFixedGUI(int mapWidth, int mapHeight) {
 
-		setTitle("ALife");
+		setTitle("ArtificialLife");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mapPane = new JTextArea();

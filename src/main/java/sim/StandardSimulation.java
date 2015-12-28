@@ -27,7 +27,6 @@ public class StandardSimulation extends BaseSimulation {
 	 */
 	@Override
 	public void runSimulation(int turns){
-		createAndDisplayFixedGUI();
 
 		long start = System.currentTimeMillis();
 		for( int ii = 0; ii < turns; ii++ ){

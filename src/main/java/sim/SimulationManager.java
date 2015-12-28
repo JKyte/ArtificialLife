@@ -21,6 +21,7 @@ public class SimulationManager {
 		StandardSimulation sim = new StandardSimulation(550);
 		sim.setupWorld(15, 15, 0.1);
 		sim.initializePopulation(10);
+		sim.createAndDisplayFixedGUI();
 		sim.runSimulation(20);
 	}
 	
@@ -29,6 +30,7 @@ public class SimulationManager {
 		StandardSimulation sim = new StandardSimulation(20);
 		sim.setupWorld(60, 60, 0.4);
 		sim.initializePopulation(45);
+		sim.createAndDisplayDynamicGUI();
 		sim.runSimulation(700);
 	}
 	
@@ -37,6 +39,7 @@ public class SimulationManager {
 		StandardSimulation sim = new StandardSimulation(100);
 		sim.setupWorld(10, 10, 0.4);
 		sim.initializePopulation(15);
+		sim.createAndDisplayFixedGUI();
 		sim.runSimulation(1000);
 	}
 
@@ -44,6 +47,7 @@ public class SimulationManager {
 		StandardSimulation sim = new StandardSimulation(250);
 		sim.setupWorld(8, 8, 0.2);
 		sim.initializePopulation(1);
+		sim.createAndDisplayFixedGUI();
 		sim.runSimulation(10);
 	}
 	
