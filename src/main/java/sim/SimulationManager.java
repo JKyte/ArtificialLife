@@ -29,7 +29,7 @@ public class SimulationManager {
 	public void runFastSimulationLargeMap(){
 		StandardSimulation sim = new StandardSimulation(20);
 		sim.setupWorld(60, 60, 0.4);
-		sim.initializePopulation(45);
+		sim.initializePopulation(75);
 		sim.createAndDisplayDynamicGUI();
 		sim.runSimulation(700);
 	}

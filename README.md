@@ -22,7 +22,7 @@ please do!
 
 
 ## Future Features (in no particular order)
-1. Evolvable critters
+1. Evolve critters
 2. Dynamic 2D world with plant growth
 
 ## The World Map

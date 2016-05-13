@@ -10,13 +10,13 @@ public class Master {
 
 	private static void setupSimulation() {
 		SimulationManager sm = new SimulationManager();
-		sm.runDefaultSimulation();
+		//  sm.runDefaultSimulation();
 		//	sm.runTestSimOneCreature();
 		//	sm.runFastSimulationLargeMap();
 		//	sm.runFastSimulationSmallMap();
 		//	sm.runHeadlessSimulation();
 		//	sm.runHeadlessSimulation_largeMap();
-		//	sm.runHeadlessSimulation_largePop();
+			sm.runHeadlessSimulation_largePop();
 	}
 	
 }
