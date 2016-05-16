@@ -1,6 +1,8 @@
 package critters.geonome;
 
 import critters.genes.BaseGene;
+import critters.genes.GeneType;
+import critters.genes.Sequenceable;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -9,7 +11,7 @@ import java.util.TreeSet;
 /**
  * Created by JKyte on 5/10/2016.
  */
-public class Genome {
+public class Genome implements Sequenceable {
 
     private HashMap<String, BaseGene> critterGenes;
 
@@ -21,7 +23,7 @@ public class Genome {
         this.critterGenes = critterGenes;
     }
 
-    public String sequenceGeonome(){
+    public String sequence() {
         Set<String> keys = critterGenes.keySet();
         TreeSet<String> sortedKeys = new TreeSet<String>();
         for( String key : keys ){
@@ -31,7 +33,7 @@ public class Genome {
         StringBuilder sb = new StringBuilder();
         for( String sortedKey : sortedKeys ){
             sb.append("[");
-            sb.append(critterGenes.get(sortedKey).sequenceGene());
+            sb.append(critterGenes.get(sortedKey).sequence());
             sb.append("]");
         }
 
@@ -42,33 +44,19 @@ public class Genome {
         return critterGenes.keySet();
     }
 
-    public boolean hasGene( String key ){
+    public boolean hasGene( GeneType key ){
         return critterGenes.containsKey(key);
     }
 
-    public int getGeonomeLength(){
+    public int getLength(){
         return critterGenes.size();
     }
 
-    public BaseGene get( String key ){
+    public BaseGene getGene(String key){
         return critterGenes.get(key);
     }
 
     public boolean put( String key, BaseGene value ){
         return ( null == critterGenes.put(key, value) );
-    }
-
-    @Override
-    public String toString(){
-        Set<String> keys = critterGenes.keySet();
-        TreeSet<String> sortedKeys = new TreeSet<String>();
-        for( String key : keys ){
-            sortedKeys.add(key);
-        }
-
-//        for( String sortedKey : sortedKeys ){
-//            System.out.println("Sorted Key: " + sortedKey);
-//        }
-        return null;    //  TODO for now
     }
 }

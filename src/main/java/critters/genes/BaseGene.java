@@ -3,11 +3,9 @@ package critters.genes;
 /**
  * Created by JKyte on 5/10/2016.
  */
-public class BaseGene implements GeneTemplate{
+public class BaseGene implements Sequenceable, GeneType{
 
-    private String geneName;
-    private String shortName;
-    private String geneDescription;
+    private String name;
     private int geneStartValue;
     private int geneCurrentValue;
     private int geneMinValue;
@@ -19,9 +17,7 @@ public class BaseGene implements GeneTemplate{
     }
 
     public BaseGene( BaseGene other ){
-        this.setGeneName(other.getGeneName());
-        this.setShortName(other.getShortName());
-        this.setGeneDescription(other.getGeneDescription());
+        this.setName(other.getName());
         this.setGeneStartValue(other.getGeneStartValue());
         this.setGeneCurrentValue(other.getGeneCurrentValue());
         this.setGeneMinValue(other.getGeneMinValue());
@@ -29,9 +25,9 @@ public class BaseGene implements GeneTemplate{
         this.setGeneMutateStepSize(other.getGeneMutateStepSize());
     }
 
-    public String sequenceGene() {
+    public String sequence() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getShortName()).append(".");
+        sb.append(getName()).append(".");
         sb.append(getGeneStartValue()).append(".");
         sb.append(getGeneMinValue()).append(".");
         sb.append(getGeneMaxValue()).append(".");
@@ -39,38 +35,12 @@ public class BaseGene implements GeneTemplate{
         return sb.toString();
     }
 
-    /**
-     * This mutates either the upper or the lower value
-     *
-     * @return
-     */
-    public boolean mutate() {
-
-        return false;
+    public String getName() {
+        return name;
     }
 
-    public String getGeneName() {
-        return geneName;
-    }
-
-    public void setGeneName(String geneName) {
-        this.geneName = geneName;
-    }
-
-    public String getShortName() {
-        return shortName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
-
-    public String getGeneDescription() {
-        return geneDescription;
-    }
-
-    public void setGeneDescription(String geneDescription) {
-        this.geneDescription = geneDescription;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getGeneStartValue() {

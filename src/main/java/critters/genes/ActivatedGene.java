@@ -8,9 +8,9 @@ public class ActivatedGene extends BaseGene {
     private boolean activated;
 
     @Override
-    public String sequenceGene() {
+    public String sequence() {
         StringBuilder sb = new StringBuilder();
-        sb.append(super.sequenceGene()).append(".");
+        sb.append(super.sequence()).append(".");
         sb.append(isActivated());
         return sb.toString();   //  TODO this should work
     }

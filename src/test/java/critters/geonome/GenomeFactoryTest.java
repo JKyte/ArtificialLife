@@ -10,24 +10,22 @@ public class GenomeFactoryTest {
 
     @Test
     public void testCreateGeonomeFactoryFromSequence(){
-        Genome genome = GeonomeFactory.createSimpleGeonome();
-        String geoSeq = genome.sequenceGeonome();
+        Genome genome = GenomeFactory.createSimpleGenome();
+        String geoSeq = genome.sequence();
 
-//        System.out.println("> " + geoSeq);
-        Genome copy = GeonomeFactory.createGeonomeFromSequence(geoSeq);
-//        System.out.println("> " + copy.sequenceGeonome());
+        Genome copy = GenomeFactory.createGenomeFromSequence(geoSeq);
 
-        Assert.assertEquals(geoSeq, copy.sequenceGeonome());
+        Assert.assertEquals(geoSeq, copy.sequence());
     }
 
     @Test
     public void testGeneFactoryRandomizedCreate(){
-        Genome complexGenome = GeonomeFactory.createComplexGeonome();
-        Genome randomGenome = GeonomeFactory.createRandomizedGeonome(complexGenome);
+        Genome complexGenome = GenomeFactory.createComplexGenome();
+        Genome randomGenome = GenomeFactory.createRandomizedGenome(complexGenome);
 
 //        System.out.println("Normal: " + complexGenome.sequenceGeonome());
 //        System.out.println("Random: " + randomGenome.sequenceGeonome());
 
-        Assert.assertFalse(complexGenome.sequenceGeonome().equals(randomGenome.sequenceGeonome()));
+        Assert.assertFalse(complexGenome.sequence().equals(randomGenome.sequence()));
     }
 }

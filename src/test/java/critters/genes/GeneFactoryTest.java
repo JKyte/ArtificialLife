@@ -14,7 +14,7 @@ public class GeneFactoryTest {
     public void testGeneFactorySequencing(){
         String expectedSequence = "SPD.1.1.5.1";
         BaseGene speed = GeneFactory.createSpeedGene();
-        Assert.assertEquals(expectedSequence, speed.sequenceGene());
+        Assert.assertEquals(expectedSequence, speed.sequence());
 //        System.out.println(speed.sequenceGene());
     }
 
@@ -26,7 +26,7 @@ public class GeneFactoryTest {
         HashSet<String> sequencedGenes = new HashSet<String>();
         for (int ii = 0; ii < 100; ii++) {
             speed = GeneFactory.randomizeGeneStartValue(speed);
-            sequencedGenes.add(speed.sequenceGene());
+            sequencedGenes.add(speed.sequence());
 //            System.out.println(speed.sequenceGene());
         }
 
@@ -40,7 +40,7 @@ public class GeneFactoryTest {
         String rawSequence = "HP.5.1.25.1";
         BaseGene gene = GeneFactory.createGeneFromSequence(rawSequence);
 
-        String sequence = gene.sequenceGene();
+        String sequence = gene.sequence();
         Assert.assertEquals(rawSequence, sequence);
     }
 

@@ -9,16 +9,14 @@ public class GeneFactory {
 
     /*
         This is the most critical factory method, creating life from life
-        //  TODO -- will need to find a way to get the gene name from a cache or lookup
+        //  TODO -- will need to find a way to getGene the gene name from a cache or lookup
      */
     public static BaseGene createGeneFromSequence( String sequence ){
         String[] elements = sequence.split("\\.");
 
         //  TODO -- do stuff based on number of elements
         BaseGene gene = new BaseGene();
-        gene.setGeneName(null);
-        gene.setShortName(elements[0]);
-        gene.setGeneDescription(null);
+        gene.setName(elements[0]);
         gene.setGeneStartValue(Integer.parseInt(elements[1]));
         gene.setGeneCurrentValue(Integer.parseInt(elements[1]));
         gene.setGeneMinValue(Integer.parseInt(elements[2]));
@@ -62,9 +60,7 @@ public class GeneFactory {
 
     public static BaseGene createSpeedGene(){
         BaseGene gene = new BaseGene();
-        gene.setGeneName("Speed");
-        gene.setShortName("SPD");
-        gene.setGeneDescription("A gene determining the creature's Speed");
+        gene.setName(BaseGene.SPD);
         gene.setGeneStartValue(1);
         gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
@@ -75,9 +71,7 @@ public class GeneFactory {
 
     public static BaseGene createVisionGene(){
         BaseGene gene = new BaseGene();
-        gene.setGeneName("Vision");
-        gene.setShortName("VIS");
-        gene.setGeneDescription("A gene determining the creature's Vision");
+        gene.setName(GeneType.VIS);
         gene.setGeneStartValue(1);
         gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
@@ -92,9 +86,7 @@ public class GeneFactory {
 
     public static BaseGene createHitPointGene(){
         BaseGene gene = new BaseGene();
-        gene.setGeneName("HitPoints");
-        gene.setShortName("HP");
-        gene.setGeneDescription("A gene determining the creature's HitPoints");
+        gene.setName(GeneType.HP);
         gene.setGeneStartValue(5);
         gene.setGeneCurrentValue(5);
         gene.setGeneMinValue(1);
@@ -103,11 +95,9 @@ public class GeneFactory {
         return gene;
     }
 
-    public static BaseGene createEnergyGene(){
+    public static BaseGene createVitalityGene(){
         BaseGene gene = new BaseGene();
-        gene.setGeneName("Energy");
-        gene.setShortName("E");
-        gene.setGeneDescription("A gene determining the creature's Energy");
+        gene.setName(GeneType.VIT);
         gene.setGeneStartValue(15);
         gene.setGeneCurrentValue(15);
         gene.setGeneMinValue(10);

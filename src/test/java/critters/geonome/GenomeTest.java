@@ -9,13 +9,13 @@ public class GenomeTest {
 
     @Test
     public void testGeonomePrint(){
-        Genome genome = GeonomeFactory.createSimpleGeonome();
+        Genome genome = GenomeFactory.createSimpleGenome();
         genome.toString();
     }
 
     @Test
     public void testComplexGeonomePrint(){
-        Genome genome = GeonomeFactory.createComplexGeonome();
-        genome.sequenceGeonome();
+        Genome genome = GenomeFactory.createComplexGenome();
+        genome.sequence();
     }
 }
