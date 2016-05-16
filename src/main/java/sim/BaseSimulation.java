@@ -74,8 +74,10 @@ public class BaseSimulation implements Simulation{
 	}
 
 	public boolean simulateTurn(int turn) {
-		System.out.println("Turn: " + turn);
-		
+		if( turn % 250 == 0 ) {
+            System.out.println("Turn: " + turn);
+        }
+
 		//	Variable for early exit check
 		boolean critterStillAlive = false;
 
