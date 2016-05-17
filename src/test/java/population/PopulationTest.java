@@ -103,7 +103,7 @@ public class PopulationTest {
 		ded.setAlive(false);
 		pop.getPopMap().put(Integer.MAX_VALUE, ded);
 		
-		//	Trigger branch in the printSurvivalRatesBynome
+		//	Trigger branch in the printSurvivalRatesByGenome
 		pop.getPopMap().put(Integer.MAX_VALUE-1, ded);
 		
 		StringBuilder expected = new StringBuilder();

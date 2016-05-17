@@ -38,7 +38,7 @@ public class StandardSimulation extends BaseSimulation {
 		
 		System.out.println("Simulation ran in " + total + "ms.");
 		System.out.println(pop.endOfSimStats());
-		System.out.println(pop.printSurvivalRatesByGeonome());
+		System.out.println(pop.printSurvivalRatesByGenome());
 		
 		//	Final update
 		updateGUI("Turn: " + turns);

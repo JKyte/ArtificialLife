@@ -30,17 +30,27 @@ public class Gene implements Sequenceable, GeneType{
     }
 
     /**
-     * Sequence all values except the current value
+     * Sequence all values except the current value. Gene sequencing starts with
+     * setting the min/max values as those are used to filter setting the start
+     * and current values.
      * @return
      */
     public String sequence() {
         StringBuilder sb = new StringBuilder();
         sb.append(getName()).append(".");
-        sb.append(getGeneStartValue()).append(".");
         sb.append(getGeneMinValue()).append(".");
         sb.append(getGeneMaxValue()).append(".");
+        sb.append(getGeneStartValue()).append(".");
         sb.append(getGeneMutateStepSize());
         return sb.toString();
+    }
+
+    public boolean setValueIfValidRange(int value){
+        if( value <= getGeneMaxValue() && value >= getGeneMinValue() ){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public String getName() {
@@ -56,7 +66,9 @@ public class Gene implements Sequenceable, GeneType{
     }
 
     public void setGeneStartValue(int geneStartValue) {
-        this.geneStartValue = geneStartValue;
+        if( setValueIfValidRange(geneStartValue)) {
+            this.geneStartValue = geneStartValue;
+        }
     }
 
     public int getGeneCurrentValue() {
@@ -64,7 +76,9 @@ public class Gene implements Sequenceable, GeneType{
     }
 
     public void setGeneCurrentValue(int geneCurrentValue) {
-        this.geneCurrentValue = geneCurrentValue;
+        if( setValueIfValidRange(geneCurrentValue)) {
+            this.geneCurrentValue = geneCurrentValue;
+        }
     }
 
     public int getGeneMinValue() {

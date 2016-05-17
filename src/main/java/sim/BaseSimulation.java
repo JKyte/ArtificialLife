@@ -70,7 +70,7 @@ public class BaseSimulation implements Simulation{
 		
 		System.out.println("Simulation ran in " + total + "ms.");
 		System.out.println(pop.endOfSimStats());
-		System.out.println(pop.printSurvivalRatesByGeonome());
+		System.out.println(pop.printSurvivalRatesByGenome());
 	}
 
 	public boolean simulateTurn(int turn) {

@@ -217,7 +217,7 @@ public class Population {
 		
 		
 		double alive = -1, dead = -1, rate = -1;
-		sb.append( uniqueGenomes.size() + " unique geonomes.\n" );
+		sb.append( uniqueGenomes.size() + " unique genomes.\n" );
 		for( String key : uniqueGenomes ){
 			
 			if( aliveMap.get(key) == null ){

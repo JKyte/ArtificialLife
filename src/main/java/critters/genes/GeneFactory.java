@@ -14,10 +14,10 @@ public class GeneFactory {
         Gene gene = new Gene();
         String[] elements = sequence.split("\\.");
         gene.setName(elements[0]);
-        gene.setGeneStartValue(Integer.parseInt(elements[1]));
-        gene.setGeneCurrentValue(Integer.parseInt(elements[1]));    //  Current value not sequenced, copy start value.
-        gene.setGeneMinValue(Integer.parseInt(elements[2]));
-        gene.setGeneMaxValue(Integer.parseInt(elements[3]));
+        gene.setGeneMinValue(Integer.parseInt(elements[1]));
+        gene.setGeneMaxValue(Integer.parseInt(elements[2]));
+        gene.setGeneStartValue(Integer.parseInt(elements[3]));
+        gene.setGeneCurrentValue(Integer.parseInt(elements[3]));    //  Current value not sequenced, copy start value.
         gene.setGeneMutateStepSize(Integer.parseInt(elements[4]));
         return gene;
     }
@@ -62,10 +62,10 @@ public class GeneFactory {
     public static Gene createSpeedGene(){
         Gene gene = new Gene();
         gene.setName(Gene.SPD);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
         gene.setGeneMaxValue(5);
+        gene.setGeneStartValue(1);
+        gene.setGeneCurrentValue(1);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
@@ -77,10 +77,10 @@ public class GeneFactory {
     public static Gene createVisionGene(){
         Gene gene = new Gene();
         gene.setName(GeneType.VIS);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
         gene.setGeneMaxValue(5);
+        gene.setGeneStartValue(1);
+        gene.setGeneCurrentValue(1);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
@@ -96,10 +96,10 @@ public class GeneFactory {
     public static Gene createHitPointGene(){
         Gene gene = new Gene();
         gene.setName(GeneType.HP);
-        gene.setGeneStartValue(5);
-        gene.setGeneCurrentValue(5);
         gene.setGeneMinValue(1);
         gene.setGeneMaxValue(25);
+        gene.setGeneStartValue(5);
+        gene.setGeneCurrentValue(5);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
@@ -111,10 +111,10 @@ public class GeneFactory {
     public static Gene createVitalityGene(){
         Gene gene = new Gene();
         gene.setName(GeneType.VIT);
-        gene.setGeneStartValue(15);
-        gene.setGeneCurrentValue(15);
         gene.setGeneMinValue(1);
         gene.setGeneMaxValue(30);
+        gene.setGeneStartValue(15);
+        gene.setGeneCurrentValue(15);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
@@ -126,10 +126,10 @@ public class GeneFactory {
     public static Gene createStrengthGene(){
         Gene gene = new Gene();
         gene.setName(GeneType.STR);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
         gene.setGeneMaxValue(10);
+        gene.setGeneStartValue(1);
+        gene.setGeneCurrentValue(1);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
