@@ -9,7 +9,7 @@ import org.junit.Test;
 public class GenomeFactoryTest {
 
     @Test
-    public void testCreateGeonomeFactoryFromSequence(){
+    public void testCreateGenomeFactoryFromSequence(){
         Genome genome = GenomeFactory.createSimpleGenome();
         String geoSeq = genome.sequence();
 

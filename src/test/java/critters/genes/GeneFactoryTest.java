@@ -11,16 +11,43 @@ import java.util.HashSet;
 public class GeneFactoryTest {
 
     @Test
-    public void testGeneFactorySequencing(){
+    public void testCreateSpeedGene(){
         String expectedSequence = "SPD.1.1.5.1";
-        BaseGene speed = GeneFactory.createSpeedGene();
+        Gene speed = GeneFactory.createSpeedGene();
         Assert.assertEquals(expectedSequence, speed.sequence());
-//        System.out.println(speed.sequenceGene());
+    }
+
+    @Test
+    public void testCreateVisionGene(){
+        String expectedSequence = "VIS.1.1.5.1";
+        Gene speed = GeneFactory.createVisionGene();
+        Assert.assertEquals(expectedSequence, speed.sequence());
+    }
+
+    @Test
+    public void testCreateHitPointGene(){
+        String expectedSequence = "HP.5.1.25.1";
+        Gene speed = GeneFactory.createHitPointGene();
+        Assert.assertEquals(expectedSequence, speed.sequence());
+    }
+
+    @Test
+    public void testCreateVitalityGene(){
+        String expectedSequence = "VIT.15.1.30.1";
+        Gene speed = GeneFactory.createVitalityGene();
+        Assert.assertEquals(expectedSequence, speed.sequence());
+    }
+
+    @Test
+    public void testCreateStrengthGene(){
+        String expectedSequence = "STR.1.1.10.1";
+        Gene speed = GeneFactory.createStrengthGene();
+        Assert.assertEquals(expectedSequence, speed.sequence());
     }
 
     @Test
     public void testGeneFactoryRandomize() {
-        BaseGene speed = GeneFactory.createSpeedGene();
+        Gene speed = GeneFactory.createSpeedGene();
 //        System.out.println(speed.sequenceGene());
 
         HashSet<String> sequencedGenes = new HashSet<String>();
@@ -38,7 +65,7 @@ public class GeneFactoryTest {
     @Test
     public void testGeneFactoryCreateFromSequence(){
         String rawSequence = "HP.5.1.25.1";
-        BaseGene gene = GeneFactory.createGeneFromSequence(rawSequence);
+        Gene gene = GeneFactory.createGeneFromSequence(rawSequence);
 
         String sequence = gene.sequence();
         Assert.assertEquals(rawSequence, sequence);

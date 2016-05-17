@@ -29,7 +29,7 @@ public class BaseCritter {
 		return currentLifeLen;
 	}
 	
-	public String toGeonome(){
+	public String toGenome(){
 		return speed + ":" + vision;
 	}
 

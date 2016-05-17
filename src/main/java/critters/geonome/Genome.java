@@ -1,6 +1,6 @@
 package critters.geonome;
 
-import critters.genes.BaseGene;
+import critters.genes.Gene;
 import critters.genes.GeneType;
 import critters.genes.Sequenceable;
 
@@ -13,13 +13,13 @@ import java.util.TreeSet;
  */
 public class Genome implements Sequenceable {
 
-    private HashMap<String, BaseGene> critterGenes;
+    private HashMap<String, Gene> critterGenes;
 
     public Genome(){
-        this.critterGenes = new HashMap<String, BaseGene>();
+        this.critterGenes = new HashMap<String, Gene>();
     }
 
-    public Genome(HashMap<String, BaseGene> critterGenes){
+    public Genome(HashMap<String, Gene> critterGenes){
         this.critterGenes = critterGenes;
     }
 
@@ -52,11 +52,17 @@ public class Genome implements Sequenceable {
         return critterGenes.size();
     }
 
-    public BaseGene getGene(String key){
+    public Gene getGene(String key){
         return critterGenes.get(key);
     }
 
-    public boolean put( String key, BaseGene value ){
+    public int getGeneValue(String key){
+        return critterGenes.get(key).getGeneCurrentValue();
+    }
+
+    //  TODO getAndPutGeneValue(int i) -- yew know it.
+
+    public boolean put( String key, Gene value ){
         return ( null == critterGenes.put(key, value) );
     }
 }

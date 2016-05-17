@@ -9,16 +9,13 @@ public class GeneFactory {
 
     /*
         This is the most critical factory method, creating life from life
-        //  TODO -- will need to find a way to getGene the gene name from a cache or lookup
      */
-    public static BaseGene createGeneFromSequence( String sequence ){
+    public static Gene createGeneFromSequence( String sequence ){
+        Gene gene = new Gene();
         String[] elements = sequence.split("\\.");
-
-        //  TODO -- do stuff based on number of elements
-        BaseGene gene = new BaseGene();
         gene.setName(elements[0]);
         gene.setGeneStartValue(Integer.parseInt(elements[1]));
-        gene.setGeneCurrentValue(Integer.parseInt(elements[1]));
+        gene.setGeneCurrentValue(Integer.parseInt(elements[1]));    //  Current value not sequenced, copy start value.
         gene.setGeneMinValue(Integer.parseInt(elements[2]));
         gene.setGeneMaxValue(Integer.parseInt(elements[3]));
         gene.setGeneMutateStepSize(Integer.parseInt(elements[4]));
@@ -26,10 +23,10 @@ public class GeneFactory {
     }
 
     /*
-        This is also nice, creating a variety of life
+        They say variety is the spice of life...
      */
-    public static BaseGene randomizeGeneStartValue( BaseGene gene ){
-        BaseGene copy = new BaseGene(gene);
+    public static Gene randomizeGeneStartValue( Gene gene ){
+        Gene copy = new Gene(gene);
         Random rand = new Random();
         int newValue;
         if( rand.nextInt(2) == 0 ){
@@ -58,9 +55,13 @@ public class GeneFactory {
         Speed and Vision are needed for the most basic of simulations
      */
 
-    public static BaseGene createSpeedGene(){
-        BaseGene gene = new BaseGene();
-        gene.setName(BaseGene.SPD);
+    /**
+     * Create a speed gene with a default value of 1, max value of 5
+     * @return
+     */
+    public static Gene createSpeedGene(){
+        Gene gene = new Gene();
+        gene.setName(Gene.SPD);
         gene.setGeneStartValue(1);
         gene.setGeneCurrentValue(1);
         gene.setGeneMinValue(1);
@@ -69,8 +70,12 @@ public class GeneFactory {
         return gene;
     }
 
-    public static BaseGene createVisionGene(){
-        BaseGene gene = new BaseGene();
+    /**
+     * Create a vision gene with a default value of 1, max value of 5
+     * @return
+     */
+    public static Gene createVisionGene(){
+        Gene gene = new Gene();
         gene.setName(GeneType.VIS);
         gene.setGeneStartValue(1);
         gene.setGeneCurrentValue(1);
@@ -84,8 +89,12 @@ public class GeneFactory {
         HitPoints and Energy are needed for survival simulations
      */
 
-    public static BaseGene createHitPointGene(){
-        BaseGene gene = new BaseGene();
+    /**
+     * Create a HP gene with default value of 5, max value of 25
+     * @return
+     */
+    public static Gene createHitPointGene(){
+        Gene gene = new Gene();
         gene.setName(GeneType.HP);
         gene.setGeneStartValue(5);
         gene.setGeneCurrentValue(5);
@@ -95,13 +104,32 @@ public class GeneFactory {
         return gene;
     }
 
-    public static BaseGene createVitalityGene(){
-        BaseGene gene = new BaseGene();
+    /**
+     * Create a vitality gene with a default value of 15, max value of 30
+     * @return
+     */
+    public static Gene createVitalityGene(){
+        Gene gene = new Gene();
         gene.setName(GeneType.VIT);
         gene.setGeneStartValue(15);
         gene.setGeneCurrentValue(15);
-        gene.setGeneMinValue(10);
+        gene.setGeneMinValue(1);
         gene.setGeneMaxValue(30);
+        gene.setGeneMutateStepSize(1);
+        return gene;
+    }
+
+    /**
+     * Create a strength gene with a default value of 1, max value of 10
+     * @return
+     */
+    public static Gene createStrengthGene(){
+        Gene gene = new Gene();
+        gene.setName(GeneType.STR);
+        gene.setGeneStartValue(1);
+        gene.setGeneCurrentValue(1);
+        gene.setGeneMinValue(1);
+        gene.setGeneMaxValue(10);
         gene.setGeneMutateStepSize(1);
         return gene;
     }
@@ -118,5 +146,6 @@ public class GeneFactory {
         8. Jump
         9. Fly/Soar
         10. Food preference (Herbivore, Omnivore, Carvinore)
+        11. Neural brains, if those start working
      */
 }

@@ -8,13 +8,13 @@ import org.junit.Test;
 public class GenomeTest {
 
     @Test
-    public void testGeonomePrint(){
+    public void testGenomePrint(){
         Genome genome = GenomeFactory.createSimpleGenome();
         genome.toString();
     }
 
     @Test
-    public void testComplexGeonomePrint(){
+    public void testComplexGenomePrint(){
         Genome genome = GenomeFactory.createComplexGenome();
         genome.sequence();
     }

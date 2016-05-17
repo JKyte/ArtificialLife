@@ -3,7 +3,7 @@ package critters.genes;
 /**
  * Created by JKyte on 5/10/2016.
  */
-public class BaseGene implements Sequenceable, GeneType{
+public class Gene implements Sequenceable, GeneType{
 
     private String name;
     private int geneStartValue;
@@ -12,11 +12,15 @@ public class BaseGene implements Sequenceable, GeneType{
     private int geneMaxValue;
     private int geneMutateStepSize;
 
-    public BaseGene(){
+    public Gene(){
 
     }
 
-    public BaseGene( BaseGene other ){
+    /**
+     * Fully copy another gene's values
+     * @param other
+     */
+    public Gene(Gene other){
         this.setName(other.getName());
         this.setGeneStartValue(other.getGeneStartValue());
         this.setGeneCurrentValue(other.getGeneCurrentValue());
@@ -25,6 +29,10 @@ public class BaseGene implements Sequenceable, GeneType{
         this.setGeneMutateStepSize(other.getGeneMutateStepSize());
     }
 
+    /**
+     * Sequence all values except the current value
+     * @return
+     */
     public String sequence() {
         StringBuilder sb = new StringBuilder();
         sb.append(getName()).append(".");

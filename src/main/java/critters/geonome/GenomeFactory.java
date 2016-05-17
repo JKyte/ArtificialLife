@@ -1,8 +1,7 @@
 package critters.geonome;
 
-import critters.genes.BaseGene;
+import critters.genes.Gene;
 import critters.genes.GeneFactory;
-import critters.genes.GeneType;
 
 import java.util.Set;
 
@@ -20,7 +19,7 @@ public class GenomeFactory {
      */
     public static Genome createGenomeFromSequence(String rawSequence){
         Genome genome = new Genome();
-        BaseGene gene;
+        Gene gene;
 
         rawSequence = rawSequence.replaceAll("\\]", "").replaceAll("\\[", "");
         String[] subsequences = rawSequence.split(":");
@@ -33,7 +32,7 @@ public class GenomeFactory {
 
     public static Genome createRandomizedGenome(Genome genome){
         Genome copy = new Genome();
-        BaseGene gene;
+        Gene gene;
         Set<String> keys = genome.getKeys();
         for( String key : keys ){
             gene = GeneFactory.randomizeGeneStartValue(genome.getGene(key));
@@ -45,8 +44,8 @@ public class GenomeFactory {
     public static Genome createSimpleGenome(){
         Genome genome = new Genome();
 
-        BaseGene speed = GeneFactory.createSpeedGene();
-        BaseGene vision = GeneFactory.createVisionGene();
+        Gene speed = GeneFactory.createSpeedGene();
+        Gene vision = GeneFactory.createVisionGene();
 
         genome.put(speed.getName(), speed);
         genome.put( vision.getName(), vision );
@@ -57,10 +56,10 @@ public class GenomeFactory {
     public static Genome createComplexGenome(){
         Genome genome = new Genome();
 
-        BaseGene speed = GeneFactory.createSpeedGene();
-        BaseGene vision = GeneFactory.createVisionGene();
-        BaseGene hitpoints = GeneFactory.createHitPointGene();
-        BaseGene energy = GeneFactory.createVitalityGene();
+        Gene speed = GeneFactory.createSpeedGene();
+        Gene vision = GeneFactory.createVisionGene();
+        Gene hitpoints = GeneFactory.createHitPointGene();
+        Gene energy = GeneFactory.createVitalityGene();
 
         genome.put( speed.getName(), speed );
         genome.put( vision.getName(), vision );

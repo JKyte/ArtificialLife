@@ -3,7 +3,7 @@ package critters.genes;
 /**
  * Created by JKyte on 5/10/2016.
  */
-public class ActivatedGene extends BaseGene {
+public class ActivatedGene extends Gene {
 
     private boolean activated;
 

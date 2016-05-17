@@ -177,16 +177,16 @@ public class Population {
 		double dead = (double) deadPop;
 		double totalSurvivalRate = ( alive / (alive+dead) ) * 100;
 		
-		return "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGeonome() 
-				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGeonome()
+		return "\nBest  Fitness: " + bestFitness + " -- " + bestCritter.toGenome()
+				+ "\nWorst Fitness: " + worstFitness + " -- " + worstCritter.toGenome()
 				+ "\nAlive: " + alivePop + "\nDead: " + deadPop + "\nTotal: " + totalPop
 				+ "\nOverall survival rate: " + format.format(totalSurvivalRate) + "%";
 	}
 	
-	public String printSurvivalRatesByGeonome(){
+	public String printSurvivalRatesByGenome(){
 		
 		StringBuilder sb = new StringBuilder();
-		HashSet<String> uniqueGeonomes = new HashSet<String>();
+		HashSet<String> uniqueGenomes = new HashSet<String>();
 		HashMap<String,Integer> aliveMap = new HashMap<String,Integer>();
 		HashMap<String,Integer> deadMap = new HashMap<String,Integer>();
 		
@@ -196,9 +196,9 @@ public class Population {
 		for( Integer key : keys ){
 			
 			curCrit = popMap.get(key);
-			curGeonome = curCrit.toGeonome();
+			curGeonome = curCrit.toGenome();
 			
-			uniqueGeonomes.add(curGeonome);
+			uniqueGenomes.add(curGeonome);
 			
 			if( curCrit.isAlive() ){
 				if( aliveMap.containsKey( curGeonome ) ){
@@ -217,8 +217,8 @@ public class Population {
 		
 		
 		double alive = -1, dead = -1, rate = -1;
-		sb.append( uniqueGeonomes.size() + " unique geonomes.\n" );
-		for( String key : uniqueGeonomes ){
+		sb.append( uniqueGenomes.size() + " unique geonomes.\n" );
+		for( String key : uniqueGenomes ){
 			
 			if( aliveMap.get(key) == null ){
 				sb.append( "Survival rate for: " + key + ": 0%\n" );

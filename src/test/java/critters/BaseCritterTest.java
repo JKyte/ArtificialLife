@@ -43,7 +43,7 @@ public class BaseCritterTest {
 		bc.setParentUUID("5_5");
 		Assert.assertEquals("5_5", bc.getParentUUID());
 		
-		Assert.assertEquals("6:7", bc.toGeonome());
+		Assert.assertEquals("6:7", bc.toGenome());
 		
 	}
 }

@@ -50,12 +50,12 @@ public class PopulationTest {
 		pop.generateDiversePopulation();
 		
 		HashMap<Integer, SimpleCritter> population = pop.getPopMap();	
-		HashSet<String> geonomes = new HashSet<String>();
+		HashSet<String> genomes = new HashSet<String>();
 		for( Integer key : population.keySet() ){
-			geonomes.add( population.get(key).toGeonome() );
+			genomes.add(population.get(key).toGenome());
 		}
 		
-		Assert.assertNotEquals(1, geonomes.size());
+		Assert.assertNotEquals(1, genomes.size());
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class PopulationTest {
 	}
 	
 	@Test
-	public void testPrintSurvivalRatesByGeonome_alivePop(){
+	public void testPrintSurvivalRatesByGenome_alivePop(){
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(3, sim.worldMap);
 		pop.setDefaultPopulationStats();
@@ -103,19 +103,19 @@ public class PopulationTest {
 		ded.setAlive(false);
 		pop.getPopMap().put(Integer.MAX_VALUE, ded);
 		
-		//	Trigger branch in the printSurvivalRatesByGeonome
+		//	Trigger branch in the printSurvivalRatesBynome
 		pop.getPopMap().put(Integer.MAX_VALUE-1, ded);
 		
 		StringBuilder expected = new StringBuilder();
-		expected.append("2 unique geonomes.\n");
+		expected.append("2 unique genomes.\n");
 		expected.append("Survival rate for: 10:10:[1]:1:1: 100%\n");
 		expected.append("Survival rate for: 0:0:[-1]:0:0: 0%\n");
 		
-		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGeonome() );
+		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGenome() );
 	}
 	
 	@Test
-	public void testPrintSurvivalRatesByGeonome_deadPop(){
+	public void testPrintSurvivalRatesByGenome_deadPop(){
 		StandardSimulation sim = new StandardSimulation();
 		Population pop = new Population(0, sim.worldMap);
 		pop.setDefaultPopulationStats();
@@ -140,12 +140,12 @@ public class PopulationTest {
 		pop.getPopMap().put(4, g2_c2);
 		
 		StringBuilder expected = new StringBuilder();
-		expected.append("2 unique geonomes.\n");
+		expected.append("2 unique genomes.\n");
 		expected.append("Survival rate for: 55:0:[-1]:0:0: 50%\n");
 		expected.append("Survival rate for: 0:0:[-1]:0:0: 50%\n");
 		
 		Assert.assertEquals(4, pop.getPopMap().size());
-		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGeonome() );
+		Assert.assertEquals(expected.toString(), pop.printSurvivalRatesByGenome() );
 	}
 	
 	@Test

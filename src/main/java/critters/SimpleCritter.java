@@ -29,8 +29,8 @@ public class SimpleCritter extends BaseCritter {
 	}
 	
 	@Override
-	public String toGeonome(){
-		return maxHealth + ":" + maxEnergy + ":" + foodToString() + ":" + super.toGeonome();
+	public String toGenome(){
+		return maxHealth + ":" + maxEnergy + ":" + foodToString() + ":" + super.toGenome();
 	}
 	
 	public String foodToString(){

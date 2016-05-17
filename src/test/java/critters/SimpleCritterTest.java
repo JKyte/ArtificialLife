@@ -50,7 +50,7 @@ public class SimpleCritterTest {
 		sc.setCurEnergy(12345);
 		Assert.assertEquals(5, sc.getMaxEnergy());
 		
-		Assert.assertEquals("20:5:[1,3]:0:0", sc.toGeonome());
+		Assert.assertEquals("20:5:[1,3]:0:0", sc.toGenome());
 	}
 
 }
