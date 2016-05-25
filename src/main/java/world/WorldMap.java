@@ -9,7 +9,7 @@ import utils.Coord;
  * 
  * This class inherits the base map class but adds some more functionality and handles a GUI
  */
-public class WorldMap extends Map{
+public class WorldMap extends BaseMap {
 	
 	public WorldMap(int mapWidth, int mapHeight){
 		super(mapWidth, mapHeight);

@@ -1,30 +1,30 @@
 package utils;
 
-import world.Map;
+import world.BaseMap;
 
 public class VisionCritCoord {
-	private Map visionMap;
+	private BaseMap visionMap;
 	private Coord critterVisionLocation;
 	private Coord critterWorldLocation;
 	
 	/**
 	 * 
-	 * @param visionMap -- a Map object representing the critters view of the WorldMap
+	 * @param visionMap -- a BaseMap object representing the critters view of the WorldMap
 	 * @param critterVisionLocation -- the visionMap coordinates of the current critters location
 	 * @param critterWorldLocation -- the world map coordinates of the current critters location
 	 */
-	public VisionCritCoord(Map visionMap, Coord critterVisionLocation,
+	public VisionCritCoord(BaseMap visionMap, Coord critterVisionLocation,
 											Coord critterWorldLocation){
 		this.setVisionMap(visionMap);
 		this.setCritterVisionLocation(critterVisionLocation);
 		this.setCritterWorldLocation(critterWorldLocation);
 	}
 
-	public Map getVisionMap() {
+	public BaseMap getVisionMap() {
 		return visionMap;
 	}
 
-	public void setVisionMap(Map visionMap) {
+	public void setVisionMap(BaseMap visionMap) {
 		this.visionMap = visionMap;
 	}
 

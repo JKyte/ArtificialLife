@@ -10,7 +10,7 @@ import utils.Coord;
 import utils.CoordHelper;
 import utils.CritterAction;
 import utils.VisionCritCoord;
-import world.Map;
+import world.BaseMap;
 
 public class SimpleBrain {
 
@@ -54,7 +54,7 @@ public class SimpleBrain {
 	 * @param map - a 2 dimensional int array representing the current creature's vision
 	 * @returns - a boolean indicating if food is in range
 	 */
-	public boolean isFoodInRange(Map map) {
+	public boolean isFoodInRange(BaseMap map) {
 		//map.printLogicalMap();
 		//System.out.println("h: " + map.mapHeight + " w: " + map.mapWidth);
 		for( int ii = 0; ii < map.mapWidth; ii++ ){
@@ -111,7 +111,7 @@ public class SimpleBrain {
 	}
 
 	public ArrayList<Coord> getValidMoves( VisionCritCoord vcc, int[] validOpts ){
-		Map vision = vcc.getVisionMap();
+		BaseMap vision = vcc.getVisionMap();
 		Coord visionLocation = vcc.getCritterVisionLocation();
 		ArrayList<Coord> validDestinations = new ArrayList<Coord>();
 		//vision.printLogicalMap();
@@ -161,7 +161,7 @@ public class SimpleBrain {
 
 		Coord worldLocation = visionMap.getCritterWorldLocation();
 		Coord critterLocation = visionMap.getCritterVisionLocation();
-		Map vision = visionMap.getVisionMap();
+		BaseMap vision = visionMap.getVisionMap();
 		int normalizedDistance = Integer.MAX_VALUE;
 
 		ArrayList<Coord> foodCoords = new ArrayList<Coord>();

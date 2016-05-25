@@ -9,7 +9,7 @@ import utils.ActionTarget;
 import utils.Coord;
 import utils.CritterAction;
 import utils.VisionCritCoord;
-import world.Map;
+import world.BaseMap;
 
 public class SimpleBrainTest {
 
@@ -29,7 +29,7 @@ public class SimpleBrainTest {
 
 	@Test
 	public void testIsFoodInRange(){
-		Map vision = new Map(5);
+		BaseMap vision = new BaseMap(5);
 		int[] food = new int[1];
 		food[0] = 1;
 		boolean foodExists = brain.isFoodInRange(vision);
@@ -44,7 +44,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testExploreNoOptionsSoWait(){
 
-		Map map = new Map(5);
+		BaseMap map = new BaseMap(5);
 
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
@@ -73,7 +73,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testExploreNorthOption(){
 
-		Map map = new Map(5);
+		BaseMap map = new BaseMap(5);
 
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
@@ -105,7 +105,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testExploreSouthOption(){
 
-		Map map = new Map(5);
+		BaseMap map = new BaseMap(5);
 
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 0);
@@ -137,7 +137,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testExploreEastOption(){
 
-		Map map = new Map(5);
+		BaseMap map = new BaseMap(5);
 
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
@@ -169,7 +169,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testExploreWestOption(){
 
-		Map map = new Map(5);
+		BaseMap map = new BaseMap(5);
 
 		map.setGrid(0, 0, 1);
 		map.setGrid(1, 0, 1);
@@ -205,7 +205,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testMoveTowardClosestObject(){
 
-		Map map = new Map(9);
+		BaseMap map = new BaseMap(9);
 		map.setGrid(8, 7, 1);	//	Set food at [1][1]
 		map.setGrid(8, 6, 2);	//	Set critter at [0][1]
 		map.printLogicalMap();
@@ -229,7 +229,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testProcessVisionMap_surrounded(){
 
-		Map map = new Map(5);	//	0	0	0	0	0
+		BaseMap map = new BaseMap(5);	//	0	0	0	0	0
 								//	0	7	7	7	0
 		map.setGrid(1, 1, 7);	//	0	7	2	7	0
 		map.setGrid(2, 1, 7);	//	0	7	7	7	0
@@ -258,7 +258,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testProcessVisionMap_emptySpace(){
 
-		Map map = new Map(5);	//	0	0	0	0	0
+		BaseMap map = new BaseMap(5);	//	0	0	0	0	0
 								//	0	0	0	0	0
 		map.setGrid(2, 2, 2);	//	0	0	2	0	0
 								//	0	0	0	0	0
@@ -279,7 +279,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testProcessVisionMap_eatSomeFood(){
 
-		Map map = new Map(5);	//	0	0	0	0	0
+		BaseMap map = new BaseMap(5);	//	0	0	0	0	0
 								//	0	0	1	0	0
 		map.setGrid(2, 2, 2);	//	0	0	2	0	0
 								//	0	0	0	0	0
@@ -301,7 +301,7 @@ public class SimpleBrainTest {
 	@Test
 	public void testProcessVisionMap_moveTowardsFood(){
 
-		Map map = new Map(7);	//	0	0	0	0	0
+		BaseMap map = new BaseMap(7);	//	0	0	0	0	0
 								//	0	0	0	1	0
 		map.setGrid(1, 1, 2);	//	0	0	0	0	0
 								//	0	2	0	0	0

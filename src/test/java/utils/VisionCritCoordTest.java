@@ -3,9 +3,7 @@ package utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import utils.Coord;
-import utils.VisionCritCoord;
-import world.Map;
+import world.BaseMap;
 
 public class VisionCritCoordTest {
 
@@ -14,7 +12,7 @@ public class VisionCritCoordTest {
 	@Test
 	public void testVisionCritCoord(){
 		
-		Map vision = new Map(2);
+		BaseMap vision = new BaseMap(2);
 		vision.setGrid(0, 0, 0);
 		vision.setGrid(0, 1, 1);
 		vision.setGrid(1, 0, 2);
@@ -25,7 +23,7 @@ public class VisionCritCoordTest {
 		
 		vcc = new VisionCritCoord(vision, critVisionLoc, critWorldLoc);
 		
-		Map critVision = vcc.getVisionMap();
+		BaseMap critVision = vcc.getVisionMap();
 		Assert.assertEquals(0, critVision.getGrid(0, 0));
 		Assert.assertEquals(1, critVision.getGrid(0, 1));
 		Assert.assertEquals(2, critVision.getGrid(1, 0));
