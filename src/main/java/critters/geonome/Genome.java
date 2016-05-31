@@ -13,7 +13,7 @@ import java.util.TreeSet;
  */
 public class Genome implements Sequenceable {
 
-    private HashMap<String, Gene> critterGenes;
+    protected HashMap<String, Gene> critterGenes;
 
     public Genome(){
         this.critterGenes = new HashMap<String, Gene>();
@@ -38,6 +38,10 @@ public class Genome implements Sequenceable {
         }
 
         return sb.toString().replaceAll("\\]\\[", ":");
+    }
+
+    public HashMap<String, Gene> getGenes(){
+        return critterGenes;
     }
 
     public Set<String> getKeys(){
