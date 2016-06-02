@@ -6,7 +6,7 @@ import java.util.HashSet;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sim.StandardSimulation;
+import sim.old.StandardSimulation;
 import critters.SimpleCritter;
 
 public class PopulationTest {

@@ -2,6 +2,7 @@ package sim;
 
 import org.junit.Assert;
 import org.junit.Test;
+import sim.old.BaseSimulation;
 
 public class BaseSimulationTest {
 

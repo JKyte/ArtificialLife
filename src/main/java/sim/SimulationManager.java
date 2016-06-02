@@ -1,6 +1,9 @@
 package sim;
 
 
+import sim.old.HeadlessSimulation;
+import sim.old.StandardSimulation;
+
 /**
  * 
  * @author JKyte
