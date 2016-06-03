@@ -1,6 +1,5 @@
 package sim.old;
 
-import sim.old.BaseSimulation;
 import world.GUI;
 
 /**
@@ -37,7 +36,7 @@ public class StandardSimulation extends BaseSimulation {
 		}
 		long total = System.currentTimeMillis()-start;
 		
-		System.out.println("Simulation ran in " + total + "ms.");
+		System.out.println("OldSimulation ran in " + total + "ms.");
 		System.out.println(pop.endOfSimStats());
 		System.out.println(pop.printSurvivalRatesByGenome());
 		

@@ -6,13 +6,12 @@ import java.util.Set;
 import brains.SimpleBrain;
 import critters.SimpleCritter;
 import population.Population;
-import sim.Simulation;
 import utils.ActionTarget;
 import utils.CritterAction;
 import utils.VisionCritCoord;
 import world.WorldMap;
 
-public class BaseSimulation implements Simulation {
+public class BaseSimulation implements OldSimulation {
 	
 	public WorldMap worldMap;
 
@@ -69,7 +68,7 @@ public class BaseSimulation implements Simulation {
 		}
 		long total = System.currentTimeMillis()-start;
 		
-		System.out.println("Simulation ran in " + total + "ms.");
+		System.out.println("OldSimulation ran in " + total + "ms.");
 		System.out.println(pop.endOfSimStats());
 		System.out.println(pop.printSurvivalRatesByGenome());
 	}

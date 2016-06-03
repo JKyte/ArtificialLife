@@ -113,14 +113,14 @@ public class BaseMap {
 		return grid[y][x];
 	}
 
-	/**
-	 * This method assumes valid start/destination Coordinate pairs in an effort to reduce
-	 * world-side processing.
-	 * @param startX
-	 * @param startY
-	 * @param targetX
-	 * @param targetY
-	 */
+    /**
+     * This method assumes valid start/destination Coordinate pairs in an effort to reduce
+     * world-side processing.
+     *
+     * @param start -- starting Coordinate
+     * @param dest -- destination Coordinate
+     * @return
+     */
 	public Coord moveObject( Coord start, Coord dest ){
 	//	System.out.println("Move from " + start.toString() + " to " + dest.toString());
 		grid[dest.getY()][dest.getX()] = grid[start.getY()][start.getX()];
