@@ -134,7 +134,7 @@ public class BaseSimulation implements OldSimulation {
 			}
 			
 			critter = null;					//	Set Critter to null
-			brain.setCritter(null);			//	Set the Brain's Critter pointer to null
+			brain.clearCritter();
 			visionCritCoord = null;			//	Set the visionCritCoord to null
 			actionTarget = null;			//	Set the ActionTarget to null
 		}
