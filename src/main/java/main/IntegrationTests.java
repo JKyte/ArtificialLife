@@ -18,6 +18,9 @@ public class IntegrationTests {
 		sm.runHeadlessSimulation();
 		sm.runHeadlessSimulation_largeMap();
 		sm.runHeadlessSimulation_largePop();
+
+        sm.runComplexSimulation_test();
+        sm.runComplexSimulation_testGUI();
 		System.out.println("Integration tests: PASSED");
 	}
 	

@@ -21,7 +21,7 @@ public class SimulationManager {
 	}
 	
 	public void runDefaultSimulation(){
-		StandardSimulation sim = new StandardSimulation(550);
+		StandardSimulation sim = new StandardSimulation(50);
 		sim.setupWorld(15, 15, 0.1);
 		sim.initializePopulation(10);
 		sim.createAndDisplayFixedGUI();
@@ -39,7 +39,7 @@ public class SimulationManager {
 	
 	//	This configuration used to stress test movement
 	public void runFastSimulationSmallMap(){
-		StandardSimulation sim = new StandardSimulation(100);
+		StandardSimulation sim = new StandardSimulation(50);
 		sim.setupWorld(10, 10, 0.4);
 		sim.initializePopulation(15);
 		sim.createAndDisplayFixedGUI();
@@ -47,7 +47,7 @@ public class SimulationManager {
 	}
 
 	public void runTestSimOneCreature(){
-		StandardSimulation sim = new StandardSimulation(250);
+		StandardSimulation sim = new StandardSimulation(50);
 		sim.setupWorld(8, 8, 0.2);
 		sim.initializePopulation(1);
 		sim.createAndDisplayFixedGUI();
@@ -74,4 +74,14 @@ public class SimulationManager {
 		headless.initializePopulation(2000);
 		headless.runSimulation(100000);
 	}
+
+    public void runComplexSimulation_test(){
+        ComplexSimulation simulation = ComplexSimulationFactory.createComplexSimulationForTest();
+        simulation.runSimulation();
+    }
+
+    public void runComplexSimulation_testGUI(){
+        GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationForTest();
+        simulation.runSimulation();
+    }
 }

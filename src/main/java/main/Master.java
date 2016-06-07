@@ -16,7 +16,10 @@ public class Master {
 		//	sm.runFastSimulationSmallMap();
 		//	sm.runHeadlessSimulation();
 		//	sm.runHeadlessSimulation_largeMap();
-			sm.runHeadlessSimulation_largePop();
+//			sm.runHeadlessSimulation_largePop();
+
+//        sm.runComplexSimulation_test();
+        sm.runComplexSimulation_testGUI();
 	}
 	
 }

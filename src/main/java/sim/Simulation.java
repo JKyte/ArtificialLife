@@ -3,6 +3,8 @@ package sim;
 import population.GeneticPopulation;
 import world.WorldMap;
 
+import java.util.UUID;
+
 /**
  * Created by JKyte on 6/2/2016.
  */
@@ -16,5 +18,5 @@ public interface Simulation {
 
     void simulateTurn();
 
-    void simulateCritter();
+    void simulateCritter(UUID uuid);
 }

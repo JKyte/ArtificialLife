@@ -1,7 +1,14 @@
 package sim;
 
+import brains.ComplexBrain;
+import critters.genes.GeneType;
+import critters.geneticcritter.GeneticCritter;
 import population.GeneticPopulation;
+import utils.ActionTarget;
+import utils.CritterAction;
 import world.WorldMap;
+
+import java.util.UUID;
 
 /**
  * Created by JKyte on 6/2/2016.
@@ -10,10 +17,12 @@ public class ComplexSimulation implements Simulation {
 
     private GeneticPopulation population;
 
-    private WorldMap worldMap;
+    protected WorldMap worldMap;
 
-    private int totalTurns;
-    private int currentTurn = 0;
+    private ComplexBrain brain;
+
+    protected int totalTurns;
+    protected int currentTurn = 0;
 
     public void setPopulation(GeneticPopulation population) {
         this.population = population;
@@ -23,11 +32,15 @@ public class ComplexSimulation implements Simulation {
         this.worldMap = worldMap;
     }
 
+    public WorldMap getWorld(){ return worldMap;    }
+
     public void setTotalTurns(int totalTurns){
         this.totalTurns = totalTurns;
     }
 
     public void runSimulation() {
+
+        brain = new ComplexBrain();
 
         while( currentTurn < totalTurns ){
 
@@ -35,13 +48,59 @@ public class ComplexSimulation implements Simulation {
             currentTurn++;
 
         }
+
+        System.out.println("Simulation concluded.");
     }
 
     public void simulateTurn() {
 
+        for( UUID uuid : population.keySet() ){
+            if( population.getCritter(uuid).isAlive()){
+                simulateCritter(uuid);
+            }
+        }
+
     }
 
-    public void simulateCritter() {
+    public void simulateCritter(UUID uuid) {
+        GeneticCritter critter = population.getCritter(uuid);
 
+        brain.setCritter(critter);
+
+        ActionTarget actionTarget = getActionTargetForCritter(critter);
+
+        //  Handle the action target
+        handleActionTarget(actionTarget, critter);
+        //  Do operations, maybe break them out into an interface
+
+        brain.clearCritter();
+        population.replaceCritter(critter);
+    }
+
+    public ActionTarget getActionTargetForCritter( GeneticCritter critter ){
+        return brain.processVisionMap(worldMap.getVisionMap(critter.getGeneValue(GeneType.VIS), critter.getLocation()));
+    }
+
+    public void handleActionTarget(ActionTarget actionTarget, GeneticCritter critter) {
+        if( actionTarget.getAction().equals(CritterAction.WAIT)){
+            //  Do nothing
+        }else if( actionTarget.getAction().equals(CritterAction.MOVE) ){
+
+            worldMap.moveObject(critter.getLocation(), actionTarget.getTarget());
+            critter.setLocation(actionTarget.getTarget());
+
+        }else if( actionTarget.getAction().equals(CritterAction.EAT) ){
+
+            //  Remove the food
+            worldMap.removeObject(actionTarget.getTarget());
+            critter.updateGeneValue(GeneType.VIT, 10);
+
+        }else{
+            System.err.println("Unhandled ActionTarget: " + actionTarget.toString());
+        }
+    }
+
+    public GeneticPopulation getPopulation() {
+        return population;
     }
 }

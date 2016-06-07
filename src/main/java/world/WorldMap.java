@@ -34,6 +34,10 @@ public class WorldMap extends BaseMap {
 		return (int) Math.round(preTarget);
 	}
 
+    public Coord placeObjectRandomly( int objectID ){
+        return placeObjectRandomly(objectID, false);
+    }
+
 	/**
 	 * WARNING -- if the map is full, this method WILL put the program into an infinite loop
 	 * 

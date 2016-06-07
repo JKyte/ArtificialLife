@@ -60,6 +60,11 @@ public class Genome implements Sequenceable {
         return critterGenes.get(key);
     }
 
+    public void updateGeneValue(String key, int updateValue){
+        updateValue += getGeneValue(key);
+        critterGenes.get(key).setGeneCurrentValue( updateValue );
+    }
+
     public int getGeneValue(String key){
         return critterGenes.get(key).getGeneCurrentValue();
     }

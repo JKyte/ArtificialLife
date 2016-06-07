@@ -3,6 +3,7 @@ package population;
 import critters.geneticcritter.GeneticCritter;
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -30,6 +31,10 @@ public class GeneticPopulation {
 
     public int getPopulationSize(){
         return popMap.size();
+    }
+
+    public Set<UUID> keySet(){
+        return popMap.keySet();
     }
 
     public void dumpFullPopulationSequences(){
