@@ -3,6 +3,8 @@ package critters.geonome;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashSet;
+
 /**
  * Created by JKyte on 5/10/2016.
  */
@@ -21,11 +23,12 @@ public class GenomeFactoryTest {
     @Test
     public void testGeneFactoryRandomizedCreate(){
         Genome complexGenome = GenomeFactory.createComplexGenome();
-        Genome randomGenome = GenomeFactory.createRandomizedGenome(complexGenome);
+        HashSet<Genome> randomGenomes = new HashSet<Genome>();
 
-//        System.out.println("Normal: " + complexGenome.sequenceGeonome());
-//        System.out.println("Random: " + randomGenome.sequenceGeonome());
+        for( int ii = 0; ii < 50; ii++ ){
+            randomGenomes.add(GenomeFactory.createRandomizedGenome(complexGenome));
+        }
 
-        Assert.assertFalse(complexGenome.sequence().equals(randomGenome.sequence()));
+        Assert.assertFalse( randomGenomes.size() == 1 );
     }
 }

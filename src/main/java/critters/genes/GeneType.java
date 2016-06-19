@@ -5,10 +5,10 @@ package critters.genes;
  */
 public interface GeneType {
 
-    String HP = "HP";
-    String STR = "STR";
-    String SPD = "SPD";
-    String VIS = "VIS";
-    String VIT = "VIT";
+    String HIT_POINTS = "HP";
+    String STRENGTH = "STR";
+    String SPEED = "SPD";
+    String VISION = "VIS";
+    String VITALITY = "VIT";
 
 }

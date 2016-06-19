@@ -1,56 +1,62 @@
 package critters.genes;
 
 /**
- * Created by JKyte on 5/10/2016.
+ * Created by JKyte on 5/10/2016. A gene is broken out into two major groups of variables. The
+ * first group handles everything for mutation and is what is sequenced. The second group deals
+ * largely with simulation.
+ *
+ * Gene sequenced as
+ * [name][mutateMin][mutateMax][mutateStepSize][mutateStartValue][variableDelta]
+ *
+ * The startValue and currentValue are set to mutateStartValue
  */
 public class Gene implements Sequenceable, GeneType{
 
     private String name;
-    private int geneStartValue;
-    private int geneCurrentValue;
-    private int geneMinValue;
-    private int geneMaxValue;
-    private int geneMutateStepSize;
+
+    private int mutateMin;      //  This collection of variables to be sequenced
+    private int mutateMax;
+    private int mutateStepSize;
+    private int mutateStartValue;
+
+    /*  The variableDelta allows a cap within a scenario on the currentValue. Also provides variation
+        for gene creation with random values within a window (startValue +/- variableDelta)     */
+    private int variableDelta;
+    private int startValue;
+    private int currentValue;
 
     public Gene(){
-
     }
 
     /**
-     * Fully copy another gene's values
+     * Fully copy another gene's values (deep copy)
      * @param other
      */
     public Gene(Gene other){
         this.setName(other.getName());
-        this.setGeneStartValue(other.getGeneStartValue());
-        this.setGeneCurrentValue(other.getGeneCurrentValue());
-        this.setGeneMinValue(other.getGeneMinValue());
-        this.setGeneMaxValue(other.getGeneMaxValue());
-        this.setGeneMutateStepSize(other.getGeneMutateStepSize());
+        this.setMutateMin(other.getMutateMin());
+        this.setMutateMax(other.getMutateMax());
+        this.setMutateStepSize(other.getMutateStepSize());
+        this.setMutateStartValue(other.getMutateStartValue());
+        this.setVariableDelta(other.getVariableDelta());
+        this.setStartValue(other.getStartValue());
+        this.setCurrentValue(other.getCurrentValue());
     }
 
     /**
-     * Sequence all values except the current value. Gene sequencing starts with
-     * setting the min/max values as those are used to filter setting the start
-     * and current values.
-     * @return
+     * Sequence all mutate values and the variableDelta.
+     *
+     * @returns a string in the form [name][mutateMin][mutateMax][mutateStepSize][mutateStartValue][variableDelta]
      */
     public String sequence() {
         StringBuilder sb = new StringBuilder();
         sb.append(getName()).append(".");
-        sb.append(getGeneMinValue()).append(".");
-        sb.append(getGeneMaxValue()).append(".");
-        sb.append(getGeneStartValue()).append(".");
-        sb.append(getGeneMutateStepSize());
+        sb.append(getMutateMin()).append(".");
+        sb.append(getMutateMax()).append(".");
+        sb.append(getMutateStepSize()).append(".");
+        sb.append(getMutateStartValue()).append(".");
+        sb.append(getVariableDelta());
         return sb.toString();
-    }
-
-    public boolean setValueIfValidRange(int value){
-        if( value <= getGeneMaxValue() && value >= getGeneMinValue() ){
-            return true;
-        }else{
-            return false;
-        }
     }
 
     public String getName() {
@@ -61,48 +67,67 @@ public class Gene implements Sequenceable, GeneType{
         this.name = name;
     }
 
-    public int getGeneStartValue() {
-        return geneStartValue;
+    public int getMutateMin() {
+        return mutateMin;
     }
 
-    public void setGeneStartValue(int geneStartValue) {
-        if( setValueIfValidRange(geneStartValue)) {
-            this.geneStartValue = geneStartValue;
+    public void setMutateMin(int mutateMin) {
+        this.mutateMin = mutateMin;
+    }
+
+    public int getMutateMax() {
+        return mutateMax;
+    }
+
+    public void setMutateMax(int mutateMax) {
+        this.mutateMax = mutateMax;
+    }
+
+    public int getMutateStepSize() {
+        return mutateStepSize;
+    }
+
+    public void setMutateStepSize(int mutateStepSize) {
+        this.mutateStepSize = mutateStepSize;
+    }
+
+    public int getMutateStartValue() {
+        return mutateStartValue;
+    }
+
+    public void setMutateStartValue(int mutateStartValue) {
+        if( mutateStartValue >= mutateMin && mutateStartValue <= mutateMax){
+            this.mutateStartValue = mutateStartValue;
         }
     }
 
-    public int getGeneCurrentValue() {
-        return geneCurrentValue;
+    public int getVariableDelta() {
+        return variableDelta;
     }
 
-    public void setGeneCurrentValue(int geneCurrentValue) {
-        if( setValueIfValidRange(geneCurrentValue)) {
-            this.geneCurrentValue = geneCurrentValue;
+    public void setVariableDelta(int variableDelta) {
+        if( variableDelta >= mutateMin && variableDelta <= mutateMax){
+            this.variableDelta = variableDelta;
         }
     }
 
-    public int getGeneMinValue() {
-        return geneMinValue;
+    public int getStartValue() {
+        return startValue;
     }
 
-    public void setGeneMinValue(int geneMinValue) {
-        this.geneMinValue = geneMinValue;
+    public void setStartValue(int startValue) {
+        if( startValue >= mutateMin &&  startValue <= mutateMax ){
+            this.startValue = startValue;
+        }
     }
 
-    public int getGeneMaxValue() {
-        return geneMaxValue;
+    public int getCurrentValue() {
+        return currentValue;
     }
 
-    public void setGeneMaxValue(int geneMaxValue) {
-        this.geneMaxValue = geneMaxValue;
+    public void setCurrentValue(int currentValue) {
+        if( currentValue >= mutateMin && currentValue <= mutateMax){
+            this.currentValue = currentValue;
+        }
     }
-
-    public int getGeneMutateStepSize() {
-        return geneMutateStepSize;
-    }
-
-    public void setGeneMutateStepSize(int geneMutateStepSize) {
-        this.geneMutateStepSize = geneMutateStepSize;
-    }
-
 }

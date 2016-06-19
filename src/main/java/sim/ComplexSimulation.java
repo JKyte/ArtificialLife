@@ -78,13 +78,14 @@ public class ComplexSimulation implements Simulation {
     }
 
     public ActionTarget getActionTargetForCritter( GeneticCritter critter ){
-        return brain.processVisionMap(worldMap.getVisionMap(critter.getGeneValue(GeneType.VIS), critter.getLocation()));
+        return brain.processVisionMap(worldMap.getVisionMap(critter.getGeneValue(GeneType.VISION), critter.getLocation()));
     }
 
     public void handleActionTarget(ActionTarget actionTarget, GeneticCritter critter) {
-        if( actionTarget.getAction().equals(CritterAction.WAIT)){
-            //  Do nothing
-        }else if( actionTarget.getAction().equals(CritterAction.MOVE) ){
+
+        //  Implicit do-nothing on a CritterAction.WAIT
+
+        if( actionTarget.getAction().equals(CritterAction.MOVE) ){
 
             worldMap.moveObject(critter.getLocation(), actionTarget.getTarget());
             critter.setLocation(actionTarget.getTarget());
@@ -93,7 +94,7 @@ public class ComplexSimulation implements Simulation {
 
             //  Remove the food
             worldMap.removeObject(actionTarget.getTarget());
-            critter.updateGeneValue(GeneType.VIT, 10);
+            critter.updateGeneValue(GeneType.VITALITY, 10);
 
         }else{
             System.err.println("Unhandled ActionTarget: " + actionTarget.toString());

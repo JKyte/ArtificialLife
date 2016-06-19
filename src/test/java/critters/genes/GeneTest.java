@@ -13,31 +13,33 @@ public class GeneTest {
         Gene gene = GeneFactory.createSpeedGene();
 
         //  Assert proper gene creation
-        Assert.assertEquals(GeneType.SPD, gene.getName());
-        Assert.assertEquals(1, gene.getGeneStartValue());
-        Assert.assertEquals(1, gene.getGeneCurrentValue());
-        Assert.assertEquals(1, gene.getGeneMinValue());
-        Assert.assertEquals(5, gene.getGeneMaxValue());
-        Assert.assertEquals(1, gene.getGeneMutateStepSize());
+        Assert.assertEquals(GeneType.SPEED, gene.getName());
+        Assert.assertEquals(1, gene.getMutateMin());
+        Assert.assertEquals(5, gene.getMutateMax());
+        Assert.assertEquals(1, gene.getMutateStepSize());
+        Assert.assertEquals(1, gene.getStartValue());
+        Assert.assertEquals(1, gene.getVariableDelta());
+        Assert.assertEquals(1, gene.getStartValue());
+        Assert.assertEquals(1, gene.getCurrentValue());
 
         //  Iterate through setCurrentValue() options
-        gene.setGeneCurrentValue(-3);
-        Assert.assertEquals(1, gene.getGeneCurrentValue());
+        gene.setCurrentValue(-3);
+        Assert.assertEquals(1, gene.getCurrentValue());
 
-        gene.setGeneCurrentValue(600);
-        Assert.assertEquals(1, gene.getGeneCurrentValue());
+        gene.setCurrentValue(600);
+        Assert.assertEquals(1, gene.getCurrentValue());
 
-        gene.setGeneCurrentValue(3);
-        Assert.assertEquals(3, gene.getGeneCurrentValue());
+        gene.setCurrentValue(3);
+        Assert.assertEquals(3, gene.getCurrentValue());
 
         //  Iterate through setStartValue() options
-        gene.setGeneStartValue(-3);
-        Assert.assertEquals(1, gene.getGeneStartValue());
+        gene.setStartValue(-3);
+        Assert.assertEquals(1, gene.getStartValue());
 
-        gene.setGeneStartValue(600);
-        Assert.assertEquals(1, gene.getGeneStartValue());
+        gene.setStartValue(600);
+        Assert.assertEquals(1, gene.getStartValue());
 
-        gene.setGeneStartValue(3);
-        Assert.assertEquals(3, gene.getGeneStartValue());
+        gene.setStartValue(3);
+        Assert.assertEquals(3, gene.getStartValue());
     }
 }

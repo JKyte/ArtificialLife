@@ -62,14 +62,12 @@ public class Genome implements Sequenceable {
 
     public void updateGeneValue(String key, int updateValue){
         updateValue += getGeneValue(key);
-        critterGenes.get(key).setGeneCurrentValue( updateValue );
+        critterGenes.get(key).setCurrentValue(updateValue);
     }
 
     public int getGeneValue(String key){
-        return critterGenes.get(key).getGeneCurrentValue();
+        return critterGenes.get(key).getCurrentValue();
     }
-
-    //  TODO getAndPutGeneValue(int i) -- yew know it.
 
     public boolean put( String key, Gene value ){
         return ( null == critterGenes.put(key, value) );

@@ -14,16 +14,20 @@ public class GeneFactory {
         Gene gene = new Gene();
         String[] elements = sequence.split("\\.");
         gene.setName(elements[0]);
-        gene.setGeneMinValue(Integer.parseInt(elements[1]));
-        gene.setGeneMaxValue(Integer.parseInt(elements[2]));
-        gene.setGeneStartValue(Integer.parseInt(elements[3]));
-        gene.setGeneCurrentValue(Integer.parseInt(elements[3]));    //  Current value not sequenced, copy start value.
-        gene.setGeneMutateStepSize(Integer.parseInt(elements[4]));
+        gene.setMutateMin(Integer.parseInt(elements[1]));
+        gene.setMutateMax(Integer.parseInt(elements[2]));
+        gene.setMutateStepSize(Integer.parseInt(elements[3]));
+        gene.setMutateStartValue(Integer.parseInt(elements[4]));    //  Current value not sequenced, copy start value.
+        gene.setVariableDelta(Integer.parseInt(elements[5]));
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
-    /*
-        They say variety is the spice of life...
+    /**
+     *  They say variety is the spice of life...
+     * @param gene -- the gene to randomize
+     * @returns a copy of the Gene
      */
     public static Gene randomizeGeneStartValue( Gene gene ){
         Gene copy = new Gene(gene);
@@ -32,21 +36,20 @@ public class GeneFactory {
         if( rand.nextInt(2) == 0 ){
 
             //  If zero then increase the starting value
-            //  TODO -- need to ensure we don't go above max/min
-            newValue = (gene.getGeneStartValue()+gene.getGeneMutateStepSize());
+            newValue = (gene.getMutateStartValue()+gene.getVariableDelta());
 
-            if( newValue <= copy.getGeneMaxValue() ){
-                copy.setGeneStartValue( newValue );
-                copy.setGeneCurrentValue( newValue );
-            }
+            copy.setMutateStartValue(newValue);
+            copy.setStartValue(newValue);
+            copy.setCurrentValue(newValue);
+
         }else{
 
             //  Else decrease the starting value
-            newValue = (gene.getGeneStartValue()-gene.getGeneMutateStepSize());
-            if( newValue >= copy.getGeneMinValue() ){
-                copy.setGeneStartValue( newValue );
-                copy.setGeneCurrentValue( newValue );
-            }
+            newValue = (gene.getMutateStartValue()-gene.getVariableDelta());
+
+            copy.setMutateStartValue(newValue);
+            copy.setStartValue(newValue);
+            copy.setCurrentValue(newValue);
         }
         return copy;
     }
@@ -61,12 +64,14 @@ public class GeneFactory {
      */
     public static Gene createSpeedGene(){
         Gene gene = new Gene();
-        gene.setName(Gene.SPD);
-        gene.setGeneMinValue(1);
-        gene.setGeneMaxValue(5);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
-        gene.setGeneMutateStepSize(1);
+        gene.setName(Gene.SPEED);
+        gene.setMutateMin(1);
+        gene.setMutateMax(5);
+        gene.setMutateStepSize(1);
+        gene.setMutateStartValue(1);
+        gene.setVariableDelta(1);
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
@@ -76,12 +81,14 @@ public class GeneFactory {
      */
     public static Gene createVisionGene(){
         Gene gene = new Gene();
-        gene.setName(GeneType.VIS);
-        gene.setGeneMinValue(1);
-        gene.setGeneMaxValue(5);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
-        gene.setGeneMutateStepSize(1);
+        gene.setName(GeneType.VISION);
+        gene.setMutateMin(1);
+        gene.setMutateMax(5);
+        gene.setMutateStepSize(1);
+        gene.setMutateStartValue(1);
+        gene.setVariableDelta(1);
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
@@ -90,17 +97,19 @@ public class GeneFactory {
      */
 
     /**
-     * Create a HP gene with default value of 5, max value of 25
+     * Create a HIT_POINTS gene with default value of 5, max value of 25
      * @return
      */
     public static Gene createHitPointGene(){
         Gene gene = new Gene();
-        gene.setName(GeneType.HP);
-        gene.setGeneMinValue(1);
-        gene.setGeneMaxValue(25);
-        gene.setGeneStartValue(5);
-        gene.setGeneCurrentValue(5);
-        gene.setGeneMutateStepSize(1);
+        gene.setName(GeneType.HIT_POINTS);
+        gene.setMutateMin(1);
+        gene.setMutateMax(25);
+        gene.setMutateStepSize(1);
+        gene.setMutateStartValue(5);
+        gene.setVariableDelta(1);
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
@@ -110,12 +119,14 @@ public class GeneFactory {
      */
     public static Gene createVitalityGene(){
         Gene gene = new Gene();
-        gene.setName(GeneType.VIT);
-        gene.setGeneMinValue(1);
-        gene.setGeneMaxValue(30);
-        gene.setGeneStartValue(15);
-        gene.setGeneCurrentValue(15);
-        gene.setGeneMutateStepSize(1);
+        gene.setName(GeneType.VITALITY);
+        gene.setMutateMin(1);
+        gene.setMutateMax(30);
+        gene.setMutateStepSize(1);
+        gene.setMutateStartValue(15);
+        gene.setVariableDelta(1);
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
@@ -125,12 +136,14 @@ public class GeneFactory {
      */
     public static Gene createStrengthGene(){
         Gene gene = new Gene();
-        gene.setName(GeneType.STR);
-        gene.setGeneMinValue(1);
-        gene.setGeneMaxValue(10);
-        gene.setGeneStartValue(1);
-        gene.setGeneCurrentValue(1);
-        gene.setGeneMutateStepSize(1);
+        gene.setName(GeneType.STRENGTH);
+        gene.setMutateMin(1);
+        gene.setMutateMax(10);
+        gene.setMutateStepSize(1);
+        gene.setMutateStartValue(1);
+        gene.setVariableDelta(1);
+        gene.setStartValue(gene.getMutateStartValue());
+        gene.setCurrentValue(gene.getMutateStartValue());
         return gene;
     }
 
