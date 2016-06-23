@@ -118,7 +118,8 @@ public class ComplexSimulation implements Simulation {
         critter.decrementGeneValue(GeneType.VITALITY, 1);
 
         //  Check to see if we're out of vitality
-        if( critter.getGeneValue(GeneType.VITALITY) <= 0 ){
+        if( critter.getGeneValue(GeneType.VITALITY) == 0 ){
+
             critter.decrementGeneValue(GeneType.HIT_POINTS, 1);
 
             //  Finally do a dead-check
