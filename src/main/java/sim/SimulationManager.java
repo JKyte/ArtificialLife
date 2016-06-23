@@ -80,8 +80,18 @@ public class SimulationManager {
         simulation.runSimulation();
     }
 
-    public void runComplexSimulation_testGUI(){
-        GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationForTest();
+    public void runComplexSimulationDefaultPop_testGUI(){
+        GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationDefaultPopForTest();
+        simulation.runSimulation();
+    }
+
+    public void runComplexSimulationSimplePop_testGUI(){
+        GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationSimplePopulationForTest();
+        simulation.runSimulation();
+    }
+
+    public void runComplexSimulationComplexPop_testGUI(){
+        GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationComplexPopulationForTest();
         simulation.runSimulation();
     }
 }

@@ -1,10 +1,9 @@
 package brains;
 
+import critters.SimpleCritter;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import critters.SimpleCritter;
 import utils.ActionTarget;
 import utils.Coord;
 import utils.CritterAction;

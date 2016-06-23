@@ -1,8 +1,8 @@
 package world;
 
-import java.util.Random;
-
 import utils.Coord;
+
+import java.util.Random;
 
 /**
  * @author JKyte

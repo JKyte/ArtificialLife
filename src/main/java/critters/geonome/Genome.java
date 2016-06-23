@@ -24,11 +24,8 @@ public class Genome implements Sequenceable {
     }
 
     public String sequence() {
-        Set<String> keys = critterGenes.keySet();
-        TreeSet<String> sortedKeys = new TreeSet<String>();
-        for( String key : keys ){
-            sortedKeys.add(key);
-        }
+
+        TreeSet<String> sortedKeys = new TreeSet<String>(critterGenes.keySet());
 
         StringBuilder sb = new StringBuilder();
         for( String sortedKey : sortedKeys ){
@@ -61,8 +58,20 @@ public class Genome implements Sequenceable {
     }
 
     public void updateGeneValue(String key, int updateValue){
+        if( critterGenes.get(key) == null ){
+            return;
+        }
         updateValue += getGeneValue(key);
         critterGenes.get(key).setCurrentValue(updateValue);
+    }
+
+    public void decrementGeneValue( String key, int decrementValue ){
+        if( critterGenes.get(key) == null ){
+            return;
+        }
+        System.out.println("Before: " + key + " " + critterGenes.get(key).getCurrentValue());
+        critterGenes.get(key).decrementCurrentValue(decrementValue);
+        System.out.println("After: " + key + " " + critterGenes.get(key).getCurrentValue());
     }
 
     public int getGeneValue(String key){

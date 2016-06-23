@@ -130,4 +130,8 @@ public class Gene implements Sequenceable, GeneType{
             this.currentValue = currentValue;
         }
     }
+
+    public void decrementCurrentValue(int decrementAmount){
+        this.currentValue = currentValue - decrementAmount;
+    }
 }

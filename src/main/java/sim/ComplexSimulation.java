@@ -4,6 +4,7 @@ import brains.ComplexBrain;
 import critters.genes.GeneType;
 import critters.geneticcritter.GeneticCritter;
 import population.GeneticPopulation;
+import population.PopulationHelper;
 import utils.ActionTarget;
 import utils.CritterAction;
 import world.WorldMap;
@@ -16,6 +17,7 @@ import java.util.UUID;
 public class ComplexSimulation implements Simulation {
 
     private GeneticPopulation population;
+    private boolean GLOBAL_POP_IS_DEAD;
 
     protected WorldMap worldMap;
 
@@ -44,22 +46,33 @@ public class ComplexSimulation implements Simulation {
 
         while( currentTurn < totalTurns ){
 
+            if( GLOBAL_POP_IS_DEAD ){
+                break;
+            }
+
             simulateTurn();
             currentTurn++;
 
         }
 
-        System.out.println("Simulation concluded.");
+        System.out.println("Simulation concluded at turn: " + currentTurn);
+        System.out.println("Population is dead: " + GLOBAL_POP_IS_DEAD);
+
+        PopulationHelper.printPopulationStats(population);
     }
 
     public void simulateTurn() {
-
+        boolean populationIsDead = true;
         for( UUID uuid : population.keySet() ){
             if( population.getCritter(uuid).isAlive()){
                 simulateCritter(uuid);
+                populationIsDead = false;
             }
         }
 
+        if( populationIsDead ){
+            GLOBAL_POP_IS_DEAD = true;
+        }
     }
 
     public void simulateCritter(UUID uuid) {
@@ -98,6 +111,22 @@ public class ComplexSimulation implements Simulation {
 
         }else{
             System.err.println("Unhandled ActionTarget: " + actionTarget.toString());
+        }
+
+        //  Always decrement critter energy by 1
+        critter.decrementGeneValue(GeneType.VITALITY, 1);
+
+        //  Check to see if we're out of vitality
+        if( critter.getGeneValue(GeneType.VITALITY) <= 0 ){
+            critter.decrementGeneValue(GeneType.HIT_POINTS, 1);
+
+            //  Finally do a dead-check
+            if( critter.getGeneValue(GeneType.HIT_POINTS) <= 0 ){
+                critter.setAlive(false);
+
+                //  Also update the map
+                worldMap.placeObjectAtCoord(3, critter.getLocation());
+            }
         }
     }
 

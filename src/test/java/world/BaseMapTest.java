@@ -3,7 +3,6 @@ package world;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import utils.Coord;
 import utils.VisionCritCoord;
 

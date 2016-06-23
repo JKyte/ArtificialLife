@@ -1,13 +1,12 @@
 package population;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
+import critters.SimpleCritter;
 import org.junit.Assert;
 import org.junit.Test;
-
 import sim.old.StandardSimulation;
-import critters.SimpleCritter;
+
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class PopulationTest {
 

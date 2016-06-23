@@ -1,7 +1,6 @@
 package sim.old;
 
 import population.Population;
-import sim.old.BaseSimulation;
 
 /**
  * 

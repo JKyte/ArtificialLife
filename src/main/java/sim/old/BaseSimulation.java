@@ -1,8 +1,5 @@
 package sim.old;
 
-import java.util.HashMap;
-import java.util.Set;
-
 import brains.SimpleBrain;
 import critters.SimpleCritter;
 import population.Population;
@@ -10,6 +7,9 @@ import utils.ActionTarget;
 import utils.CritterAction;
 import utils.VisionCritCoord;
 import world.WorldMap;
+
+import java.util.HashMap;
+import java.util.Set;
 
 public class BaseSimulation implements OldSimulation {
 	

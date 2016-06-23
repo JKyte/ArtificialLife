@@ -19,7 +19,9 @@ public class Master {
 //			sm.runHeadlessSimulation_largePop();
 
 //        sm.runComplexSimulation_test();
-        sm.runComplexSimulation_testGUI();
+//        sm.runComplexSimulationDefaultPop_testGUI();
+//        sm.runComplexSimulationSimplePop_testGUI();
+        sm.runComplexSimulationComplexPop_testGUI();
 	}
 	
 }

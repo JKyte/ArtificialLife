@@ -4,8 +4,6 @@ package utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import utils.Coord;
-
 public class CoordTest {
 	
 	private Coord coord;

@@ -9,7 +9,7 @@ public class GeneticPopulationTest {
 
     @Test
     public void testDefaultCreate(){
-        GeneticPopulation population = GeneticPopulationFactory.createDefaultGeneticPopulation();
+        GeneticPopulation population = GeneticPopulationFactory.createSimpleGeneticPopulation();
         population.dumpFullPopulationSequences();
     }
 }

@@ -1,13 +1,13 @@
 package population;
 
+import critters.SimpleCritter;
+import world.WorldMap;
+
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-
-import world.WorldMap;
-import critters.SimpleCritter;
 
 public class Population {
 	

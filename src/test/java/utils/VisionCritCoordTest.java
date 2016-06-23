@@ -2,7 +2,6 @@ package utils;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import world.BaseMap;
 
 public class VisionCritCoordTest {

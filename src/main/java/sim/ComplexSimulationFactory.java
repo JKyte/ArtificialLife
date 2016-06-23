@@ -28,7 +28,11 @@ public class ComplexSimulationFactory {
         return simulation;
     }
 
-    public static GuiComplexSimulation createGuiComplexSimulationForTest(){
+    /**
+     * Note: The concept of what a "Default" is will change as the project continues to evolve
+     * @return
+     */
+    public static GuiComplexSimulation createGuiComplexSimulationDefaultPopForTest(){
         GuiComplexSimulation simulation = new GuiComplexSimulation(50);
 
         simulation.setPopulation(GeneticPopulationFactory.createDefaultGeneticPopulation(1));
@@ -37,6 +41,36 @@ public class ComplexSimulationFactory {
         placePopulation(simulation.getWorld(), simulation.getPopulation());
 
         simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+
+        return simulation;
+    }
+
+    /**
+     * Run a simulation with a simple population
+     * @return
+     */
+    public static GuiComplexSimulation createGuiComplexSimulationSimplePopulationForTest(){
+        GuiComplexSimulation simulation = new GuiComplexSimulation(50);
+
+        simulation.setPopulation(GeneticPopulationFactory.createSimpleGeneticPopulation(20));
+        simulation.setWorld(WorldMapFactory.createStandardMapForTest());
+
+        placePopulation(simulation.getWorld(), simulation.getPopulation());
+
+        simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+
+        return simulation;
+    }
+
+    public static GuiComplexSimulation createGuiComplexSimulationComplexPopulationForTest(){
+        GuiComplexSimulation simulation = new GuiComplexSimulation(50);
+
+        simulation.setPopulation(GeneticPopulationFactory.createComplexGeneticCritter(20));
+        simulation.setWorld(WorldMapFactory.createStandardMapForTest());
+
+        placePopulation(simulation.getWorld(), simulation.getPopulation());
+
+        simulation.setTotalTurns(200);
 
         return simulation;
     }

@@ -1,11 +1,7 @@
 package world;
 
-import java.awt.Dimension;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * 

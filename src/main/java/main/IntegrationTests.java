@@ -4,7 +4,7 @@ import sim.SimulationManager;
 
 public class IntegrationTests {
 
-	SimulationManager sm;
+	private SimulationManager sm;
 	
 	public IntegrationTests(){
 		sm = new SimulationManager();
@@ -20,7 +20,9 @@ public class IntegrationTests {
 		sm.runHeadlessSimulation_largePop();
 
         sm.runComplexSimulation_test();
-        sm.runComplexSimulation_testGUI();
+        sm.runComplexSimulationDefaultPop_testGUI();
+        sm.runComplexSimulationSimplePop_testGUI();
+        sm.runComplexSimulationComplexPop_testGUI();
 		System.out.println("Integration tests: PASSED");
 	}
 	
