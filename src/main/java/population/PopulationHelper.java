@@ -12,13 +12,15 @@ import java.util.UUID;
  */
 public class PopulationHelper {
 
-    public static void printPopulationStats(GeneticPopulation population){
+    public static void printPopulationGeneSequences(GeneticPopulation population){
         System.out.println("Printing gene sequences");
         for( UUID uuid : population.keySet() ){
             System.out.println( uuid + "\t" + population.getCritter(uuid).sequence());
         }
+    }
 
-        System.out.println("Printing gene sequences");
+    public static void printPopulationCurrentGeneValues(GeneticPopulation population){
+        System.out.println("Printing gene current values");
         GeneticCritter critter;
         for( UUID uuid : population.keySet() ){
             critter = population.getCritter(uuid);

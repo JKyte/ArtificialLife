@@ -58,7 +58,8 @@ public class ComplexSimulation implements Simulation {
         System.out.println("Simulation concluded at turn: " + currentTurn);
         System.out.println("Population is dead: " + GLOBAL_POP_IS_DEAD);
 
-        PopulationHelper.printPopulationStats(population);
+        PopulationHelper.printPopulationCurrentGeneValues(population);
+        PopulationHelper.printPopulationGeneSequences(population);
     }
 
     public void simulateTurn() {
