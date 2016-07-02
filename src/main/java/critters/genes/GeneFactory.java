@@ -85,7 +85,7 @@ public class GeneFactory {
         gene.setMutateMin(1);
         gene.setMutateMax(5);
         gene.setMutateStepSize(1);
-        gene.setMutateStartValue(1);
+        gene.setMutateStartValue(2);
         gene.setVariableDelta(1);
         gene.setStartValue(gene.getMutateStartValue());
         gene.setCurrentValue(gene.getMutateStartValue());

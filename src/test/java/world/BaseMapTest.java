@@ -106,7 +106,7 @@ public class BaseMapTest {
 		//	map.printLogicalMap(map.map);
 
 		//	Clear map
-		map.removeObject(new Coord(2,1));
+		map.removeObject(new Coord(2, 1));
 		//	map.printLogicalMap(map.map);
 
 		//	Place another object at coord
@@ -115,11 +115,11 @@ public class BaseMapTest {
 		//	map.printLogicalMap(map.map);
 
 		//	Clear map
-		map.removeObject(new Coord(1,1));
+		map.removeObject(new Coord(1, 1));
 		//	map.printLogicalMap(map.map);
 
 		//	Place third and final object
-		map.placeObjectAtCoord(2, new Coord(0,1), false);
+		map.placeObjectAtCoord(2, new Coord(0, 1), false);
 		Assert.assertEquals(2, map.getGrid(0, 1));
 	}
 
@@ -130,18 +130,18 @@ public class BaseMapTest {
 		//	map.printLogicalMap(map.map);
 
 		//	Place object at logical(x,y) = [0][0]
-		map.placeObjectAtCoord(9, new Coord(0,0));
+		map.placeObjectAtCoord(9, new Coord(0, 0));
 		//	map.printLogicalMap(map.map);
-		Assert.assertEquals(9, map.getObjectAtCoord(new Coord(0,0)));
-		Assert.assertEquals(0, map.getObjectAtCoord(new Coord(0,1)));
+		Assert.assertEquals(9, map.getObjectAtCoord(new Coord(0, 0)));
+		Assert.assertEquals(0, map.getObjectAtCoord(new Coord(0, 1)));
 		Assert.assertEquals(9, map.getGrid(0, 0));
 		Assert.assertEquals(0, map.getGrid(0, 1));
 
 		//	Clear map
-		map.moveObject(new Coord(0,0), new Coord(0,1));
+		map.moveObject(new Coord(0, 0), new Coord(0, 1));
 		//	map.printLogicalMap(map.map);
-		Assert.assertEquals(0, map.getObjectAtCoord(new Coord(0,0)));
-		Assert.assertEquals(9, map.getObjectAtCoord(new Coord(0,1)));	
+		Assert.assertEquals(0, map.getObjectAtCoord(new Coord(0, 0)));
+		Assert.assertEquals(9, map.getObjectAtCoord(new Coord(0, 1)));
 		Assert.assertEquals(9, map.getGrid(0, 1));
 		Assert.assertEquals(0, map.getGrid(0, 0));
 	}
@@ -175,9 +175,8 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
 
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
 
@@ -214,9 +213,8 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
 
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
 
@@ -251,8 +249,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -288,8 +285,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -325,8 +321,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -366,8 +361,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -404,8 +398,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -441,8 +434,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -478,8 +470,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -521,8 +512,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -554,8 +544,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -588,8 +577,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -621,8 +609,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -657,8 +644,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -688,8 +674,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -719,8 +704,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -750,8 +734,7 @@ public class BaseMapTest {
 		VisionCritCoord vcc = map.getVisionMap(1, critterWorldLocation, false);
 
 		BaseMap vision = vcc.getVisionMap();
-		critterWorldLocation = null;
-		critterWorldLocation = vcc.getCritterWorldLocation();
+        critterWorldLocation = vcc.getCritterWorldLocation();
 
 		Coord critterVisionLocation = vcc.getCritterVisionLocation();
 		//	vision.printLogicalMap();
@@ -771,10 +754,859 @@ public class BaseMapTest {
 		Assert.assertEquals(4, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
 	}
 
+    /**
+     * End the edge cases and corner edge cases for critters with a vision length of 1 (ONE).
+     *
+     * Begin standard cases where the bounds for a vision map fall within the map.
+     * NOTE: These test cases only cover critters with a vision length of 1 (ONE)
+     *
+     * First five test cases are CENTER, then nested NORTH, SOUTH, EAST, WEST
+     *
+     * This first test case also tests the non-verbose getVisionMap()
+     *
+     * NOTE: Will likely have to add more unit tests when vision length becomes an evolvable trait
+     */
+    @Test
+    public void testGetVisionMap_2visionLen_centered(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(2,2);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5,4};
+        int[] secondRow = new int[]{1,2,7,4,3};
+        int[] thirdRow = new int[]{4,5,6,3,2};
+        int[] fourthRow = new int[]{9,0,1,2,1};
+        int[] fifthRow = new int[]{6,7,8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(2, critterWorldLocation.getX());
+        Assert.assertEquals(2, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(6, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_north_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(2,3);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] secondRow = new int[]{1,2,7,4,3};
+        int[] thirdRow = new int[]{4,5,6,3,2};
+        int[] fourthRow = new int[]{9,0,1,2,1};
+        int[] fifthRow = new int[]{6,7,8,9,0};
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(2, critterWorldLocation.getX());
+        Assert.assertEquals(3, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(1, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_south_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(2,1);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5,4};
+        int[] secondRow = new int[]{1,2,7,4,3};
+        int[] thirdRow = new int[]{4,5,6,3,2};
+        int[] fourthRow = new int[]{9,0,1,2,1};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(2, critterWorldLocation.getX());
+        Assert.assertEquals(1, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(1, critterVisionLocation.getY());
+
+        Assert.assertEquals(7, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_east_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(3,2);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{3,8,5,4};
+        int[] secondRow = new int[]{2,7,4,3};
+        int[] thirdRow = new int[]{5,6,3,2};
+        int[] fourthRow = new int[]{0,1,2,1};
+        int[] fifthRow = new int[]{7,8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(3, critterWorldLocation.getX());
+        Assert.assertEquals(2, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(3, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_west_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(1,2);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5};
+        int[] secondRow = new int[]{1,2,7,4};
+        int[] thirdRow = new int[]{4,5,6,3};
+        int[] fourthRow = new int[]{9,0,1,2};
+        int[] fifthRow = new int[]{6,7,8,9};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(1, critterWorldLocation.getX());
+        Assert.assertEquals(2, critterWorldLocation.getY());
+
+        Assert.assertEquals(1, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(5, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_northEast_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(3,3);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{2,7,4,3};
+        int[] secondRow = new int[]{5,6,3,2};
+        int[] thirdRow = new int[]{0,1,2,1};
+        int[] fourthRow = new int[]{7,8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(3, critterWorldLocation.getX());
+        Assert.assertEquals(3, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(2, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_northWest_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(1,3);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{1,2,7,4};
+        int[] secondRow = new int[]{4,5,6,3};
+        int[] thirdRow = new int[]{9,0,1,2};
+        int[] fourthRow = new int[]{6,7,8,9};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(1, critterWorldLocation.getX());
+        Assert.assertEquals(3, critterWorldLocation.getY());
+
+        Assert.assertEquals(1, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(0, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_southEast_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(3,1);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{3,8,5,4};
+        int[] secondRow = new int[]{2,7,4,3};
+        int[] thirdRow = new int[]{5,6,3,2};
+        int[] fourthRow = new int[]{0,1,2,1};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(3, critterWorldLocation.getX());
+        Assert.assertEquals(1, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(1, critterVisionLocation.getY());
+
+        Assert.assertEquals(4, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_southWest_inBounds(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(1,1);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(4, vision.mapHeight);
+        Assert.assertEquals(4, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5};
+        int[] secondRow = new int[]{1,2,7,4};
+        int[] thirdRow = new int[]{4,5,6,3};
+        int[] fourthRow = new int[]{9,0,1,2};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        Assert.assertEquals(1, critterWorldLocation.getX());
+        Assert.assertEquals(1, critterWorldLocation.getY());
+
+        Assert.assertEquals(1, critterVisionLocation.getX());
+        Assert.assertEquals(1, critterVisionLocation.getY());
+
+        Assert.assertEquals(2, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_north_edge(){//	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(2,4);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] thirdRow = new int[]{4,5,6,3,2};
+        int[] fourthRow = new int[]{9,0,1,2,1};
+        int[] fifthRow = new int[]{6,7,8,9,0};
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(2, critterWorldLocation.getX());
+        Assert.assertEquals(4, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(8, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_south_edge(){//	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(2,0);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5,4};
+        int[] secondRow = new int[]{1,2,7,4,3};
+        int[] thirdRow = new int[]{4,5,6,3,2};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(2, critterWorldLocation.getX());
+        Assert.assertEquals(0, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(0, critterVisionLocation.getY());
+
+        Assert.assertEquals(8, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_east_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(4,2);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{8,5,4};
+        int[] secondRow = new int[]{7,4,3};
+        int[] thirdRow = new int[]{6,3,2};
+        int[] fourthRow = new int[]{1,2,1};
+        int[] fifthRow = new int[]{8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(4, critterWorldLocation.getX());
+        Assert.assertEquals(2, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(2, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_west_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(0,2);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8};
+        int[] secondRow = new int[]{1,2,7};
+        int[] thirdRow = new int[]{4,5,6};
+        int[] fourthRow = new int[]{9,0,1};
+        int[] fifthRow = new int[]{6,7,8};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(0, critterWorldLocation.getX());
+        Assert.assertEquals(2, critterWorldLocation.getY());
+
+        Assert.assertEquals(0, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(4, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_northWest_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(0,4);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{4,5,6};
+        int[] secondRow = new int[]{9,0,1};
+        int[] thirdRow = new int[]{6,7,8};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(0, critterWorldLocation.getX());
+        Assert.assertEquals(4, critterWorldLocation.getY());
+
+        Assert.assertEquals(0, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(6, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_northEast_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(4,4);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{6,3,2};
+        int[] secondRow = new int[]{1,2,1};
+        int[] thirdRow = new int[]{8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(4, critterWorldLocation.getX());
+        Assert.assertEquals(4, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(2, critterVisionLocation.getY());
+
+        Assert.assertEquals(0, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_southWest_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(0,0);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8};
+        int[] secondRow = new int[]{1,2,7};
+        int[] thirdRow = new int[]{4,5,6};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(0, critterWorldLocation.getX());
+        Assert.assertEquals(0, critterWorldLocation.getY());
+
+        Assert.assertEquals(0, critterVisionLocation.getX());
+        Assert.assertEquals(0, critterVisionLocation.getY());
+
+        Assert.assertEquals(0, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    @Test
+    public void testGetVisionMap_2visionLen_southEast_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(4,0);
+        VisionCritCoord vcc = map.getVisionMap(2, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(3, vision.mapHeight);
+        Assert.assertEquals(3, vision.mapWidth);
+
+        int[] firstRow = new int[]{8,5,4};
+        int[] secondRow = new int[]{7,4,3};
+        int[] thirdRow = new int[]{6,3,2};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        Assert.assertEquals(4, critterWorldLocation.getX());
+        Assert.assertEquals(0, critterWorldLocation.getY());
+
+        Assert.assertEquals(2, critterVisionLocation.getX());
+        Assert.assertEquals(0, critterVisionLocation.getY());
+
+        Assert.assertEquals(4, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
+
+    /**
+     * This tests vision length greater than the map size
+     */
+    @Test
+    public void testGetVisionMap_XvisionLen_southEast_edge(){
+        //	map.printLogicalMap();
+        Coord critterWorldLocation = new Coord(4,0);
+        VisionCritCoord vcc = map.getVisionMap(100, critterWorldLocation);
+
+        BaseMap vision = vcc.getVisionMap();
+
+        critterWorldLocation = vcc.getCritterWorldLocation();
+        Coord critterVisionLocation = vcc.getCritterVisionLocation();
+        //	vision.printLogicalMap();
+
+        //  Assert expected Height/Width of new vision map
+        Assert.assertEquals(5, vision.mapHeight);
+        Assert.assertEquals(5, vision.mapWidth);
+
+        int[] firstRow = new int[]{0,3,8,5,4};
+        int[] secondRow = new int[]{1,2,7,4,3};
+        int[] thirdRow = new int[]{4,5,6,3,2};
+        int[] fourthRow = new int[]{9,0,1,2,1};
+        int[] fifthRow = new int[]{6,7,8,9,0};
+
+        for( int ii = 0; ii < firstRow.length; ii++ ){
+            Assert.assertEquals(firstRow[ii], vision.getGrid(ii, 0));
+        }
+
+        for( int ii = 0; ii < secondRow.length; ii++ ){
+            Assert.assertEquals(secondRow[ii], vision.getGrid(ii, 1));
+        }
+
+        for( int ii = 0; ii < thirdRow.length; ii++ ){
+            Assert.assertEquals(thirdRow[ii], vision.getGrid(ii, 2));
+        }
+
+        for( int ii = 0; ii < fourthRow.length; ii++ ){
+            Assert.assertEquals(fourthRow[ii], vision.getGrid(ii, 3));
+        }
+
+        for( int ii = 0; ii < fifthRow.length; ii++ ){
+            Assert.assertEquals(fifthRow[ii], vision.getGrid(ii, 4));
+        }
+
+        Assert.assertEquals(4, critterWorldLocation.getX());
+        Assert.assertEquals(0, critterWorldLocation.getY());
+
+        Assert.assertEquals(4, critterVisionLocation.getX());
+        Assert.assertEquals(0, critterVisionLocation.getY());
+
+        Assert.assertEquals(4, vision.getGrid(critterVisionLocation.getX(), critterVisionLocation.getY()));
+
+    }
 	/**
-	 * End the edge cases and corner edge cases for critters with a vision length of 1 (ONE).
-	 * 
-	 * NOTE: Will likely have to add more unit tests when vision length becomes an evolvable trait
+	 *  End tests for getVisionMap when vision length > 1. Start helper method tests.
 	 */
 
 	@Test

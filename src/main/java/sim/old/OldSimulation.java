@@ -2,7 +2,7 @@ package sim.old;
 
 public interface OldSimulation {
 
-	public void runSimulation(int turns);
+	void runSimulation(int turns);
 	
-	public boolean simulateTurn(int turn);
+	boolean simulateTurn(int turn);
 }

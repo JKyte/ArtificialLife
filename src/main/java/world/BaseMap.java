@@ -102,6 +102,13 @@ public class BaseMap {
 		return true;
 	}
 
+    /**
+     * Gets the grid coordinate of LOGICAL [x][y] from the int array which stores
+     * values in [y][x] form.
+     * @param x coord
+     * @param y coord
+     * @returns the int at [y][x]
+     */
 	public int getGrid( int x, int y ){
 		//	System.out.println("Get grid at ["+x+"]["+y+"]");
 		//	Ensure we aren't going out of bounds
@@ -165,7 +172,6 @@ public class BaseMap {
 	 * @returns a VisionCritCoord
 	 */
 	public VisionCritCoord getVisionMap( int visionLen, Coord critterWorldLocation, boolean verbose ){
-
 		//	Initialize cardinal directions
 		boolean north = false, 
 				south = false, 
@@ -174,11 +180,11 @@ public class BaseMap {
 
 		//	Initialize default values for the X and Y width of the visionMap
 		int xWidth = 1+visionLen*2;
-		int yWidth = 1+visionLen*2;
+		int yHeight = 1+visionLen*2;
 
 		//	Initialize default values for the X and Y coordinates of the critter on the visionMap
-		int critX = visionLen;
-		int critY = visionLen;
+		int critterXLoc = visionLen;
+		int critterYLoc = visionLen;
 
 		//	Initialize default values for the X and Y starting coordinates for the upper-left corner of the vision map
 		int xMin = critterWorldLocation.getX()-visionLen;
@@ -192,6 +198,12 @@ public class BaseMap {
 		int deltaX = 0;
 		int deltaY = 0;
 
+        //  Initialize directional deltas
+        int northDelta = 0,
+                southDelta = 0,
+                eastDelta = 0,
+                westDelta = 0;
+
 		/**
 		 * Determine if any deltas exist for X and Y
 		 */
@@ -199,7 +211,7 @@ public class BaseMap {
 			if(verbose) System.out.println("X < 0");
 			west = true;
 			deltaX = 0-xMin;
-
+            westDelta = 0 - xMin;
 
 		} else if ( xMax == grid.length ){
 			if(verbose) System.out.println("X == map.len");
@@ -207,11 +219,14 @@ public class BaseMap {
 			deltaX = xMax - grid.length;
 			xWidth--;
 
-		}else if ( xMax > grid.length ){
+		}
+        if ( xMax > grid.length ){
 			// Not exercised by unit tests. Will need a vision length of 2+
 			if(verbose) System.out.println("X > map.len");
 			east = true;
 			deltaX = xMax - grid.length;
+            eastDelta = xMax - grid.length;
+            xWidth--;
 
 		}
 
@@ -219,57 +234,67 @@ public class BaseMap {
 			if(verbose) System.out.println("Y < 0");
 			south = true;
 			deltaY = 0-yMin;
-
+            southDelta = 0 - yMin;
 
 		} else if ( yMax == grid[0].length ){
 			if(verbose) System.out.println("Y == map.len");
 			north = true;
 			deltaY = yMax - grid[0].length;
-			yWidth--;
+			yHeight--;
 
-		}else if ( yMax > grid[0].length ){
+		}
+        if ( yMax > grid[0].length ){
 			// Not exercised by unit tests. Will need a vision length of 2+
 			if(verbose) System.out.println("Y > map.len");
 			north = true;
 			deltaY = yMax - grid[0].length;
-
+            northDelta = yMax - grid[0].length;
+            yHeight--;
 		}
-
-
-		//	Some stats for us
-		if(verbose)	System.out.println("xMin: " + xMin + " yMin: " + yMin);
-		if(verbose)	System.out.println("xMax: " + xMax + " yMax: " + yMax);
-		if(verbose)	System.out.println("deltaX: " + deltaX + " deltaY: " + deltaY);		
-		if(verbose) System.out.println("N:"+north+" S:"+south+" W:"+west+" E:"+east);
 
 
 		/**
-		 * Apply deltas to X and Y
+		 * Apply deltas to X and Y, also subract deltas from X/Y widths
 		 */
-		if( south ){
-			yMin += deltaY;
-			yWidth -= deltaY;
-			critY -= deltaY;
-		}
+        if( northDelta != 0 ){
+            yMax -= northDelta;
+            yHeight -= northDelta;
+        }
+        if( southDelta != 0 ){
+            yMin += southDelta;
+            yHeight -= southDelta;
+            critterYLoc -= southDelta;
+        }
+        if( eastDelta != 0 ){
+            xMax -= eastDelta;
+            xWidth -= eastDelta;
 
-		if( west ){
-			xMin += deltaX;
-			xWidth -= deltaX;
-			critX -= deltaX;
-		}
+        }
+        if( westDelta != 0 ){
+            xMin += westDelta;
+            xWidth -= westDelta;
+            critterXLoc -= westDelta;
+        }
 
+        if(verbose) System.out.println("--------------------------------------------");
+        if(verbose)	System.out.println("xWidth: " + xWidth + " yWidth: " + yHeight);
+        //	Some stats for us
+        if(verbose)	System.out.println("xMin: " + xMin + " yMin: " + yMin);
+        if(verbose)	System.out.println("xMax: " + xMax + " yMax: " + yMax);
+        if(verbose)	System.out.println("deltaX: " + deltaX + " deltaY: " + deltaY);
+        if(verbose && north) System.out.println("North delta:"+northDelta);
+        if(verbose && south) System.out.println("South delta:"+southDelta);
+        if(verbose && east) System.out.println("East delta:"+eastDelta);
+        if(verbose && west) System.out.println("West delta:"+westDelta);
 		/**
 		 * Copy the world map into a visionMap
 		 */
 		int mapX = xMin;	//	Minimum is the starting position
 		int mapY = yMin;
-		
-		/**
-		 * Previously was	*/
-		BaseMap visionMap = new BaseMap(xWidth, yWidth);
+		BaseMap visionMap = new BaseMap(xWidth, yHeight);
 
 		for( int ii = 0; ii < xWidth; ii++ ){
-			for( int jj = 0; jj < yWidth; jj++ ){
+			for( int jj = 0; jj < yHeight; jj++ ){
 				visionMap.setGrid(ii, jj, grid[mapY++][mapX]);
 			}
 			mapY = yMin;	//	Reset yMin for next row
@@ -277,10 +302,9 @@ public class BaseMap {
 		}
 
 		if(verbose)	System.out.println("Coord: " + critterWorldLocation.toString() );
-		if(verbose)	System.out.println("xWidth: " + xWidth + " yWidth: " + yWidth);
-		if(verbose) System.out.println("visionX: " + critX + " visionY: " + critY);
+		if(verbose) System.out.println("visionX: " + critterXLoc + " visionY: " + critterYLoc);
 
-		return new VisionCritCoord(visionMap, new Coord(critX, critY), critterWorldLocation);
+		return new VisionCritCoord(visionMap, new Coord(critterXLoc, critterYLoc), critterWorldLocation);
 	}
 
 	/**
@@ -306,7 +330,7 @@ public class BaseMap {
 	 * <br> Correct way to print our 2D array LOGICALLY such that [x][y]
 	 * <br> 1. for( ii = X.len-1; ii >= 0; ii-- )
 	 * <br> 2. for( jj = 0; jj < Y.len; jj++ )
-	 * <br> 3. print [ii][jj]
+     * <br> 3. print [ii][jj]
 	 */
 	public void printLogicalMap(){
 		System.out.println( "Printing logical map" );

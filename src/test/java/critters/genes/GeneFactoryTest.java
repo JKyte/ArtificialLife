@@ -19,7 +19,7 @@ public class GeneFactoryTest {
 
     @Test
     public void testCreateVisionGene(){
-        String expectedSequence = "VIS.1.5.1.1.1";
+        String expectedSequence = "VIS.1.5.1.2.1";
         Gene speed = GeneFactory.createVisionGene();
         Assert.assertEquals(expectedSequence, speed.sequence());
     }
