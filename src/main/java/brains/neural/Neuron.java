@@ -7,6 +7,8 @@ import java.util.ArrayList;
  *
  * Original class was simplistic and pulled data forward, recalculating operations as it went. A better option is to
  * do a single calculation per Neuron and just tally the results.
+ *
+ * Well, in retrospect perhaps they had a point...
  */
 public class Neuron {
 

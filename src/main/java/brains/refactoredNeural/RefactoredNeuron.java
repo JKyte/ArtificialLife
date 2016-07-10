@@ -11,10 +11,16 @@ public class RefactoredNeuron {
     private ArrayList<RefactoredNeuron> inputs;
     private double weight;
     private double threshold;
+    private double multiplier;
     private boolean fired;
 
     public RefactoredNeuron( double threshold ){
+        this(threshold, 1.0d);
+    }
+
+    public RefactoredNeuron( double threshold, double multiplier ){
         setThreshold(threshold);
+        setMultiplier(multiplier);
         inputs = new ArrayList<RefactoredNeuron>();
     }
 
@@ -31,10 +37,10 @@ public class RefactoredNeuron {
             }
             weight = Math.tanh(weight);
             fired = weight > getThreshold();
-            return weight;
+            return weight * multiplier;
         }else if( weight != 0.0 ){
             fired = weight > getThreshold();
-            return weight;
+            return weight * multiplier;
         }else{
             return 0.0;
         }
@@ -43,7 +49,7 @@ public class RefactoredNeuron {
     @Override
     public String toString(){
         return getNeuronID() + " Weight: " + getWeight() + " Thresh: " + getThreshold() +
-                " Fired: " + isFired();
+                "Multiplier: " + getMultiplier() + " Fired: " + isFired();
     }
 
     public double getWeight() {
@@ -60,6 +66,14 @@ public class RefactoredNeuron {
 
     public void setThreshold(double threshold) {
         this.threshold = threshold;
+    }
+
+    public double getMultiplier() {
+        return multiplier;
+    }
+
+    public void setMultiplier(double multiplier) {
+        this.multiplier = multiplier;
     }
 
     public boolean isFired() {
