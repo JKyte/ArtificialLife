@@ -32,15 +32,17 @@ public class Gene implements Sequenceable, GeneType{
      * Fully copy another gene's values (deep copy)
      * @param other
      */
-    public Gene(Gene other){
-        this.setName(other.getName());
-        this.setMutateMin(other.getMutateMin());
-        this.setMutateMax(other.getMutateMax());
-        this.setMutateStepSize(other.getMutateStepSize());
-        this.setMutateStartValue(other.getMutateStartValue());
-        this.setVariableDelta(other.getVariableDelta());
-        this.setStartValue(other.getStartValue());
-        this.setCurrentValue(other.getCurrentValue());
+    public static Gene deepCopyGene(Gene other){
+        Gene gene = new Gene();
+        gene.setName(other.getName());
+        gene.setMutateMin(other.getMutateMin());
+        gene.setMutateMax(other.getMutateMax());
+        gene.setMutateStepSize(other.getMutateStepSize());
+        gene.setMutateStartValue(other.getMutateStartValue());
+        gene.setVariableDelta(other.getVariableDelta());
+        gene.setStartValue(other.getStartValue());
+        gene.setCurrentValue(other.getCurrentValue());
+        return gene;
     }
 
     /**

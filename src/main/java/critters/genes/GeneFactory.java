@@ -30,7 +30,7 @@ public class GeneFactory {
      * @returns a copy of the Gene
      */
     public static Gene randomizeGeneStartValue( Gene gene ){
-        Gene copy = new Gene(gene);
+        Gene copy = Gene.deepCopyGene(gene);
         Random rand = new Random();
         int newValue;
         if( rand.nextInt(2) == 0 ){
