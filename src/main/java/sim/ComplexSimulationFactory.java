@@ -13,6 +13,7 @@ import java.util.UUID;
  */
 public class ComplexSimulationFactory {
 
+    private final static int DEFAULT_TOTAL_GENERATIONS = 0;
     private final static int DEFAULT_TOTAL_TURNS = 25;
 
     public static ComplexSimulation createComplexSimulationForTest(){
@@ -24,6 +25,7 @@ public class ComplexSimulationFactory {
         placePopulation(simulation.getWorld(), simulation.getPopulation());
 
         simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+        simulation.setTotalGenerations(DEFAULT_TOTAL_GENERATIONS);
 
         return simulation;
     }
@@ -41,6 +43,7 @@ public class ComplexSimulationFactory {
         placePopulation(simulation.getWorld(), simulation.getPopulation());
 
         simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+        simulation.setTotalGenerations(DEFAULT_TOTAL_GENERATIONS);
 
         return simulation;
     }
@@ -58,6 +61,7 @@ public class ComplexSimulationFactory {
         placePopulation(simulation.getWorld(), simulation.getPopulation());
 
         simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+        simulation.setTotalGenerations(DEFAULT_TOTAL_GENERATIONS);
 
         return simulation;
     }
@@ -71,6 +75,7 @@ public class ComplexSimulationFactory {
         placePopulation(simulation.getWorld(), simulation.getPopulation());
 
         simulation.setTotalTurns(200);
+        simulation.setTotalGenerations(DEFAULT_TOTAL_GENERATIONS);
 
         return simulation;
     }

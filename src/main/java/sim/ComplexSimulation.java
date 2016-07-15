@@ -23,6 +23,9 @@ public class ComplexSimulation implements Simulation {
 
     private ComplexBrain brain;
 
+    private int totalGenerations;
+    private int currentGeneration = 0;
+
     protected int totalTurns;
     protected int currentTurn = 0;
 
@@ -40,22 +43,31 @@ public class ComplexSimulation implements Simulation {
         this.totalTurns = totalTurns;
     }
 
+    public void setTotalGenerations(int totalGenerations) {
+        this.totalGenerations = totalGenerations;
+    }
+
     public void runSimulation() {
 
         brain = new ComplexBrain();
 
-        while( currentTurn < totalTurns ){
+        while( currentGeneration < totalGenerations ) {
 
-            if( GLOBAL_POP_IS_DEAD ){
-                break;
+            while (currentTurn < totalTurns) {
+
+                if (GLOBAL_POP_IS_DEAD) {
+                    break;
+                }
+
+                simulateTurn();
+                currentTurn++;
+
             }
 
-            simulateTurn();
-            currentTurn++;
-
+            currentGeneration++;
         }
 
-        System.out.println("Simulation concluded at turn: " + currentTurn);
+        System.out.println("Simulation concluded at generation: " + currentGeneration + " and turn: " + currentTurn);
         System.out.println("Population is dead: " + GLOBAL_POP_IS_DEAD);
 
         PopulationHelper.printPopulationCurrentGeneValues(population);
