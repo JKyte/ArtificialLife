@@ -30,6 +30,20 @@ public class ComplexSimulationFactory {
         return simulation;
     }
 
+    public static ComplexSimulation createComplexSimulation_generational_ForTest(){
+        ComplexSimulation simulation = new ComplexSimulation();
+
+        simulation.setPopulation(GeneticPopulationFactory.createComplexGeneticCritter(1));
+        simulation.setWorld(WorldMapFactory.createStandardMapForTest());
+
+        placePopulation(simulation.getWorld(), simulation.getPopulation());
+
+        simulation.setTotalTurns(DEFAULT_TOTAL_TURNS);
+        simulation.setTotalGenerations(10);
+
+        return simulation;
+    }
+
     /**
      * Note: The concept of what a "Default" is will change as the project continues to evolve
      * @return

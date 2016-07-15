@@ -20,6 +20,7 @@ public class IntegrationTests {
 		sm.runHeadlessSimulation_largePop();
 
         sm.runComplexSimulation_test();
+        sm.runComplexSimulation_generational();
         sm.runComplexSimulationDefaultPop_testGUI();
         sm.runComplexSimulationSimplePop_testGUI();
         sm.runComplexSimulationComplexPop_testGUI();

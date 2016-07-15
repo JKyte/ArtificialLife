@@ -80,6 +80,11 @@ public class SimulationManager {
         simulation.runSimulation();
     }
 
+    public void runComplexSimulation_generational(){
+        ComplexSimulation simulation = ComplexSimulationFactory.createComplexSimulation_generational_ForTest();
+        simulation.runSimulation();
+    }
+
     public void runComplexSimulationDefaultPop_testGUI(){
         GuiComplexSimulation simulation = ComplexSimulationFactory.createGuiComplexSimulationDefaultPopForTest();
         simulation.runSimulation();
